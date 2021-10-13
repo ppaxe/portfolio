@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="title" content="LEICA CAM">
+<meta name="description" content="Emotional CAMERA"0>
+<meta property="og:title" content="LEICA CAM">
+<meta property="og:url" content="http://ppaxe.kr/pc">
+<meta property="og:description" content="Emotional CAMERA">
+<meta name="format-detection" content="telephone=no">
+<title>LEICA :: EMOTIONAL CAMERA</title>
+<meta name="apple-mobile-web-app-title" content="LEICA CAM">
+<!-- <link rel="apple-touch-startup-image" href="/content/images/icons/touch-icon-iphone-retina.png"> -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<!-- default css -->
+<link rel="stylesheet" href="contents/css/contents.css">
+<!-- common -->
+<link rel="stylesheet" href="contents/css/common.css">
+<script type="text/javascript" src="contents/js/common.js"></script>
+<!-- // common -->
+</head>
+<body>
+    <? include "contents/include/skipNav.html" ?>
+    <div id="container">
+        <div id="contents">
+            <!-- header -->
+            <? include "contents/include/header.html" ?>
+            <!-- //header -->
+            <section class="wwa" id="section">
+                <h2 class="toc">메인 컨텐츠</h2>
+                <article>
+                    <h3 class="c_w info">LEICA is a global manufacturer of premium cam and optics.</h2>
+                </article>
+                <article>
+                    <h3 class="toc">기업 소개</h3>
+                    <div class="inner">
+                        <div class="mt_50">
+                            <img src="contents/images/contents/wwa_content_img1.jpg" alt="leica company picture">
+                            <p class="fs_36 ta_c c_w fw_b mt_20">LEICA stands for the best German engineering technology.</p>
+                        </div>
+                        <div class="d_f mt_50 ai_c">
+                            <div class="w_50">
+                                <img src="contents/images/contents/wwa_content_img2.jpg" alt="ceo Matthias Harsch">
+                            </div>
+                            <div class="w_50">
+                                <p class="fs_36 ta_r c_w fw_b">"LEICA ideal is to incorporate technology into culture."<br /><span class="fs_24">- LEICA CEO Matthias Harsch</span></p>
+                            </div>
+                        </div>
+                        <div class="mt_50">
+                            <img src="contents/images/contents/wwa_content_img3.jpg" alt="leica labs">
+                            <p class="fs_36 ta_c c_w fw_b mt_20">LEICA reputation can be found in years of tradition,<br />
+                            lens and the excellence of optical instruments.</p>
+                        </div>
+                        <div class="d_f mt_50 ai_c">
+                            <div class="w_50">
+                                <p class="fs_36 ta_l c_w fw_b">All Leica products are made for the user's unique visual experience. </p>
+                            </div>
+                            <div class="w_50">
+                                <img src="contents/images/contents/wwa_content_img4.jpg" alt="ceo Matthias Harsch">
+                            </div>
+                        </div>
+                        <div class="mt_50 last d_f ai_c">
+                            <p class="w_100 ta_c c_w">Today's LEICA guarantees<br />you excellent image quality and perfection.</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <!-- footer -->
+            <? include "contents/include/footer.html" ?>
+            <!-- //footer -->
+        </div>
+    </div>
+</body>
+<script>
+     window.addEventListener('scroll',(e) => {
+
+        console.log('scrolled');
+
+        let $scrollY = window.scrollY,
+            $vhPer = Math.floor((window.innerHeight - 185) / 100),
+            $sumVal = $scrollY / $vhPer;
+
+        $sumVal >= 100 ? $sumVal = 100 : $sumVal <= 0 ? $sumVal = 0 : $sumVal == $sumVal;
+        
+        document.querySelector('article').style.filter = `grayscale(${ $sumVal }%)`;
+        document.querySelector('.info').style.transform = `scale(${ 1 - ($sumVal / 100) }, ${ 1 - ($sumVal / 100) }) translate(-50%, -50%)`;
+    })
+</script>
+</html>

@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="title" content="LEICA CAM">
+<meta name="description" content="Emotional CAMERA"0>
+<meta property="og:title" content="LEICA CAM">
+<meta property="og:url" content="http://ppaxe.kr/pc">
+<meta property="og:description" content="Emotional CAMERA">
+<meta name="format-detection" content="telephone=no">
+<title>LEICA :: EMOTIONAL CAMERA</title>
+<meta name="apple-mobile-web-app-title" content="LEICA CAM">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<!-- default css -->
+<link rel="stylesheet" href="contents/css/index.css">
+<!-- common -->
+<link rel="stylesheet" href="contents/css/common.css">
+<link rel="stylesheet" href="contents/css/contents.css">
+<script type="text/javascript" src="contents/js/common.js"></script>
+<!-- // common -->
+<!-- plugins -->
+<script type="text/javascript" src="contents/js/plugins.js"></script>
+<link rel="stylesheet" href="contents/css/plugins.css">
+<!-- plugins -->
+</head>
+<body>
+    <? include "contents/include/skipNav.html" ?>
+    <div id="container">
+        <div id="contents">
+            <!-- header -->
+            <? include "contents/include/header.html" ?>
+            <!-- //header -->
+            <section id="section">
+                <h2 class="toc">메인 컨텐츠</h2>
+                <div class="swiper main-swiper">
+                    <div class="swiper-wrapper">
+                        <article class="swiper-slide main_slide1">
+                            <h3 class="toc" aria-hidden="true">브랜드 아이덴티티 영상</h3>
+                            <div class="video">
+                                <video src="contents/content/leica_info.mp4" autoplay muted loop></video>
+                           </div>
+                        </article>
+                        <article class="swiper-slide main_slide2">
+                            <div class="inner">
+                                <div class="ta_l d_f fd_c jc_c h_100">
+                                    <h3 class="c_r fw_b fs_48">LEICA<br />M10 MONOCHROM</h3>
+                                    <p class="c_w fw_6 fs_24">The Leica M10 Monochrom opens the door<br />
+                                    to a new dimension of black-and-white photography. </p>
+                                    <div class="btn_el">
+                                        <div class="">
+                                            <a href="prod.php?series=m10" role="button" title="LEICA M10 제품 이동" class="button red">LEARN MORE .</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide main_slide3">
+                            <h3 class="toc" aria-hidden="true">제품군 상세히 보기</h3>
+                            <div class="prod_info">
+                                <div class="prod_img">
+                                    <img src="contents/images/product/prod_s3.png" alt="LEICA S3 제품 이미지" />
+                                </div>
+                            </div>
+                            <div class="tab_prod">
+                                <div class="inner">
+                                    <ul>
+                                        <li>
+                                            <button type="button" onClick="tabChange(this)">
+                                                <div class="img">
+                                                    <img src="contents/images/product/prod_s3.png" alt="LEICA S3 제품 이미지" />
+                                                </div>
+                                                <p class="info fw_b">LEICA<br /><strong class="c_r">S3</strong></p>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" onClick="tabChange(this)">
+                                                <div class="img">
+                                                    <img src="contents/images/product/prod_sl2.png" alt="LEICA SL2 제품 이미지" />
+                                                </div>
+                                                <p class="info fw_b">LEICA<br /><strong class="c_r">SL2</strong></p>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" onClick="tabChange(this)">
+                                                <div class="img">
+                                                    <img src="contents/images/product/prod_m10.png" alt="LEICA M10 제품 이미지" />
+                                                </div>
+                                                <p class="info fw_b">LEICA<br /><strong class="c_r">M10</strong></p>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" onClick="tabChange(this)">
+                                                <div class="img">
+                                                    <img src="contents/images/product/prod_q.png" alt="LEICA Q 제품 이미지" />
+                                                </div>
+                                                <p class="info fw_b">LEICA<br /><strong class="c_r">Q</strong></p>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" onClick="tabChange(this)">
+                                                <div class="img">
+                                                    <img src="contents/images/product/prod_vlux5.png" alt="LEICA V-LUX5 제품 이미지" />
+                                                </div>
+                                                <p class="info fw_b">LEICA<br /><strong class="c_r">V-LUX5</strong></p>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide main_slide4">
+                            <div class="inner">
+                                <div class="d_f fd_c jc_c h_100 ta_r">
+                                    <h3 class="c_r fw_b fs_48">NO BETTER WAY TO<br />LEARN LEICA</h3>
+                                    <p class="c_w fw_6 fs_24">The Akademie’s goal is to increase the fun<br />
+                                    and enjoyment of photography.</p>
+                                    <div class="btn_el">
+                                        <div class="">
+                                            <a href="academy.html" role="button" title="라이카 아카데미 바로가기" class="button red">BOOK NOW .</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-pagination vertical_pagination"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    const mainSwiper = new Swiper('.main-swiper',{
+        direction: "vertical",
+        slidesPerView: 1,
+        mousewheel: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        on: {
+            activeIndexChange: function () {
+                let $slideIndex = this.realIndex,
+                    $slideEl = document.getElementsByTagName('article');
+                
+                $slideIndex == 3 ? actionEvt('shutter') : null;
+
+                actionEvt('focus');
+
+                for(let i = 0; i < $slideEl.length; i ++){
+
+                    $slideEl[i].classList.add('blur');
+                    
+                    i == $slideIndex ? setTimeout(() => { $slideEl[i].classList.remove('blur')},500) : null;
+
+                }
+
+            }
+        },
+        speed:500,
+    })
+
+    const tabChange = (el) => {
+
+        let $select = document.querySelector('.prod_img').getElementsByTagName('img')[0],
+            $selected = el.getElementsByTagName('img')[0],
+            $bg = document.querySelector('.prod_info');
+
+        $select.setAttribute('alt', $selected.getAttribute('alt'));
+        $select.setAttribute('src', $selected.getAttribute('src'));
+
+
+        for(let i = 0; i < el.parentNode.parentNode.childNodes.length; i++){
+
+            el.parentNode.parentNode.childNodes[i] == el.parentNode? $bg.style.backgroundImage = `url(contents/images/contents/main_slide_bg3_${ i }.jpg)` : null;
+
+        }
+    }
+</script>
+</html>

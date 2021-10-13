@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="title" content="LEICA CAM">
+<meta name="description" content="Emotional CAMERA"0>
+<meta property="og:title" content="LEICA CAM">
+<meta property="og:url" content="http://ppaxe.kr/pc">
+<meta property="og:description" content="Emotional CAMERA">
+<meta name="format-detection" content="telephone=no">
+<title>LEICA :: EMOTIONAL CAMERA</title>
+<meta name="apple-mobile-web-app-title" content="LEICA CAM">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<!-- default css -->
+<link rel="stylesheet" href="contents/css/contents.css">
+<!-- common -->
+<link rel="stylesheet" href="contents/css/common.css">
+<script type="text/javascript" src="contents/js/common.js"></script>
+<!-- // common -->
+<!-- plugins -->
+<script type="text/javascript" src="contents/js/plugins.js"></script>
+<link rel="stylesheet" href="contents/css/plugins.css">
+<!-- plugins -->
+</head>
+<body>
+    <? include "contents/include/skipNav.html" ?>
+    <div id="container">
+        <div id="contents">
+            <!-- header -->
+            <? include "contents/include/header.html" ?>
+            <!-- //header -->
+            <section class="academy" id="section">
+                <article>
+                <div class="swiper academy-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- academy -->
+                    </div>
+                    <button type="button" class="arrow_prev">이전 슬라이드</button>
+                    <button type="button" class="arrow_next">다음 슬라이드</button>
+                    <div class="swiper-pagination horizon_pagination"></div>
+                </div>
+                <div class="innerS bg_g">
+                    <ul class="accordion-list academy_profile">
+                        <li>
+                            <button id="academyBtn0_1" aria-controls="academyCont0_1" aria-expanded="false" type="button" class="accordion-button">
+                                <div class="profile_img">
+                                    <img src="" alt="">
+                                </div>
+                                <p class="profile_name"></p>
+                            </button>
+                            <div id="academyCont0_1" aria-labelledby="academyBtn0_1" class="accordion-panel">
+                                <dl class="profile_info">
+                                    <dt>SCHEDULE</dt>
+                                    <dd></dd>
+                                    <dt>PLACE</dt>
+                                    <dd></dd>
+                                    <dt>TOOLS</dt>
+                                    <dd></dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </article>
+            </section>
+            <? include "contents/include/footer.html" ?>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    const swiperWrapper = document.querySelector('.swiper-wrapper'),
+          profile = document.querySelector('.academy_profile'),
+          $img = profile.getElementsByTagName('img')[0],
+          $name = profile.getElementsByTagName('p')[0],
+          $schedule = profile.getElementsByTagName('dd')[0],
+          $place = profile.getElementsByTagName('dd')[1],
+          $tools = profile.getElementsByTagName('dd')[2],
+
+          academyArr = [
+              {
+                name : `PHIL PENMAN Pro.`,
+                title : 'A Pictorial Secret',
+                profile : {
+                    image : 'perman',
+                    schedule : `AUGUST 7-9`,
+                    place : `Seoul`,
+                    tools : `Leica S3`
+                },
+              },
+              {
+                name : `Emily Pro.`,
+                title : 'Express colors not seen in real life',
+                profile : {
+                    image : 'emily',
+                    schedule : `OCTOBER 17-24`,
+                    place : `Gyeonggi`,
+                    tools : `Leica SL2`
+                },
+              },
+              {
+                name : `MARK MANN Pro.`,
+                title : `Capture the moment of one's journey`,
+                profile : {
+                    image : 'mann',
+                    schedule : `JANUARY 22-24`,
+                    place : `Busan`,
+                    tools : `Leica V-LUX`
+                },
+              },
+              {
+                name : `Crystal Pro.`,
+                title : `Deeper black and white`,
+                profile : {
+                    image : 'crystal',
+                    schedule : `OCTOBER 22-28`,
+                    place : `Seoul`,
+                    tools : `Leica M10 Monochrome`
+                },
+              },
+              {
+                name : `MARK DE PAOLA Pro.`,
+                title : `Blue, the beauty of color`,
+                profile : {
+                    image : 'paola',
+                    schedule : `AUGUST 9-11`,
+                    place : `Busan`,
+                    tools : `Leica Q`
+                },
+              },
+            ]
+
+            academyArr.sort(() => Math.random() - 0.5);
+
+            academyArr.forEach((element,index) => {
+
+                let $slide = document.createElement('div'),
+                    $title = document.createElement('p');
+
+                $slide.classList.add('swiper-slide');
+                $slide.style.backgroundImage = `url(contents/images/contents/academy_picture_${ element.profile.image }.jpg)`;
+                $slide.setAttribute('data-arr',index);
+
+                $title.textContent = element.title;
+
+                $slide.appendChild($title);
+
+                swiperWrapper.appendChild($slide);
+
+            })
+
+        const swiper = new Swiper('.academy-swiper',{
+
+            centeredSlides: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            on: {
+            activeIndexChange: function () {
+
+                let index = this.realIndex;
+
+                $img.setAttribute('src',`contents/images/contents/academy_profile_${ academyArr[index].profile.image }.jpg`);
+                $name.textContent = academyArr[index].name;
+                $schedule.textContent = academyArr[index].profile.schedule;
+                $place.textContent = academyArr[index].profile.place;
+                $tools.textContent = academyArr[index].profile.tools;
+
+            }
+        },
+            navigation: {
+                nextEl: ".arrow_next",
+                prevEl: ".arrow_prev",
+            },
+        })
+
+  </script>
+</html>
