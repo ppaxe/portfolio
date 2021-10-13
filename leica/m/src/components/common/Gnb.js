@@ -1,0 +1,279 @@
+// eslint-disable-next-line
+
+import React, { useState, useEffect, memo } from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
+import styled, { css, keyframes } from 'styled-components';
+
+const siteMaps = [{
+
+    'Product' : [{'LEICA M' : ''}, {'LEICA S' : ''}, {'LEICA SL' : ''}, {'LEICA Q' : ''}, {'LEICA V-LUX' : ''}]
+
+},
+{
+
+    'Academy' : [{'Academy' : ''}]
+
+},
+{
+
+    'Our Story' : [{'Our Story' : ''}]
+
+},
+{
+
+    'Find Store' : [{'Cheongdam' : ''}, {'Gangnam' : ''}, {'Chungmuro' : ''}, {'Busan' : ''}]
+
+},
+{
+
+    'Support' : [{'Support' : ''}]
+
+},
+]
+
+function Gnb(props) {
+
+const $Gnb_before__keyframes = keyframes`
+
+    0%{
+      margin-top: 150%;
+    }
+    100%{
+      margin-top: 0;
+    }
+
+  `;
+
+  const $Gnb_after__keyframes = keyframes`
+
+    0%{
+      transform: translate(-50%,-50%) scale(0,0);
+    }
+    100%{
+      transform: translate(-50%,-50%) scale(20,20);
+    }
+
+  `;
+
+  const $Gnb_inner__keyframes = keyframes`
+
+  0%{
+    left:100%;
+  }
+  100%{
+    left:40%;
+  }
+
+`;
+
+  const $Gnb = styled.nav`
+
+    position: fixed;
+    z-index: 9999;
+    left: ${ props => props.theme.isActive('0','100%') };
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    display: block;
+    overflow: hidden;
+    background: transparent;
+
+    &:before{
+        ${props => props.theme.isImagin };
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 15vw;
+        height: 15vw;
+        transform: translate(-50%,-50%);
+        background: #e1262a;
+        border-radius: 50%;
+        margin-top: 150%;
+        ${
+          props => props.active === 'active' ? css`
+            animation : ${$Gnb_before__keyframes} 0.5s linear 0.5s normal forwards running
+          ` : props.active === 'inactive' && css`
+            animation : ${$Gnb_before__keyframes} 0.5s linear 1s reverse backwards running
+          `
+        }
+        // animation : ${$Gnb_before__keyframes} 0.5s linear 1s reverse backwards running
+  
+      }
+  
+      &:after{
+        ${props => props.theme.isImagin };
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 15vw;
+        height: 15vw;
+        background: #e1262a;
+        border-radius: 50%;
+        transform: translate(-50%,-50%) scale(0,0);
+        ${
+          props => props.active === 'active' ? css`
+            animation : ${$Gnb_after__keyframes} 0.5s linear 1s normal forwards running
+          ` : props.active === 'inactive' && css`
+            animation : ${$Gnb_after__keyframes} 0.5s linear 0.5s reverse backwards running
+          `
+        }
+        // animation : ${$Gnb_after__keyframes} 0.5s linear 0.5s reverse backwards running
+  
+  
+      }
+      
+      div{
+            
+            position: fixed;
+            top: 0;
+            display: block;
+            width: 60%;
+            height: 100%;
+            background: #111;
+            transition: 0.3s;
+            overflow: auto;
+            z-index: 1;
+            left: 100%;
+            ${
+              props => props.active === 'active' ? css`
+                animation : ${$Gnb_inner__keyframes} 0.3s linear 1.25s normal forwards running
+              ` : props.active === 'inactive' && css`
+                animation : ${$Gnb_inner__keyframes} 0.3s linear 0s reverse backwards running
+              `
+            }
+
+    }
+
+    ul{
+
+      display:block;
+      overflow:hidden;
+      margin-top:2rem;
+
+    }
+  `;
+
+  return (
+    <>
+     
+     <$Gnb active={ props.active }>
+        <div>
+            <ul>
+                {
+                    siteMaps.map((list, index) => {
+                        
+                        return(
+
+                            <Depth1 key={index} list={list} />
+
+                        )
+
+                    })
+                }
+            </ul>
+        </div>
+     </$Gnb>
+
+    </>
+  );
+}
+
+
+
+const Depth1 = memo(function(props) {
+
+    let [gnbDepth, gnbDepthChange] = useState('');
+
+    const $Depth1 = styled.li`
+
+        button{
+
+            display: block;
+            width: 100%;
+            padding: 2rem 0;
+            font-size: 2.0rem;
+            text-align: center;
+            font-weight: bold;
+            ${ props => props.theme.isColor('white') }
+
+        }
+
+        ul{
+
+            margin-top: 0;
+            display: block;
+            overflow: hidden;
+            background: #666;
+            transition: 0.3s;
+            height : ${ props => props.theme.isActive('auto','0') }
+
+        }
+
+    `;
+
+    return(
+        
+        <>
+            <$Depth1 active={gnbDepth === Object.keys(props.list) && 'active'}>
+
+                <button type="button" onClick={() => { gnbDepth === Object.keys(props.list) ? gnbDepthChange('') : gnbDepthChange(Object.keys(props.list))} } title={`${Object.keys(props.list)} 탭 열림`} >{Object.keys(props.list)}</button>
+
+                <ul active={gnbDepth === Object.keys(props.list) && 'active'}>
+
+                    {
+                        props.list[Object.keys(props.list)].map((menu, index) => {
+
+                            return(
+
+                                <Depth2 key={index} menu={menu} />
+
+                            )
+
+                        })
+                    }
+
+                </ul>
+
+            </$Depth1>
+        </>
+
+    )
+
+});
+
+const Depth2 = memo(function(props) {
+
+    const $Depth2 = styled.li`
+
+        a{
+            font-weight: bold;
+            display: block;
+            overflow: hidden;
+            padding: 2rem 0;
+            font-size: 1.6rem;
+            text-align: center;
+            color:#fff;
+        }
+
+    `;
+
+    return(
+        
+        <>
+
+            <$Depth2>
+                <Link to="" title={` ${Object.keys(props.menu)} 바로가기` } role="button">
+                    {Object.keys(props.menu)}
+                </Link>
+            </$Depth2>
+
+        </>
+        
+    )
+
+}
+);
+
+
+export default Gnb;

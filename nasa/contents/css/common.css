@@ -1,0 +1,496 @@
+@charset "utf-8";
+
+/* 
+======================================================================================
+
+Reset css
+
+======================================================================================
+*/
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+img {
+  border: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+
+input {
+  line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+html {
+  font-size: 62.5%;
+  width: 100%;
+}
+
+body {
+  font-size: 1.4rem;
+  color: transparent;
+  word-break: keep-all;
+  min-height: 100vh;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+li,
+dd,
+dt {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* 
+======================================================================================
+
+Common css
+
+======================================================================================
+*/
+
+/* common */
+#container{
+  background: url(../images/common/bg_galaxy.jpg) center center no-repeat;
+  background-size: cover;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+#container:before{
+  content: '';
+  display: block;
+  background: url(../images/common/splash_stars.png) top left repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  animation-name: splash_stars;
+  animation-duration: 300s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* extend css */
+
+.c_neon{
+ color : #aafff0;
+ text-shadow: 0px 0px 5px #aafff0;
+}
+.c_w{
+  color : #fff;
+}
+
+/* common - web - aria */
+
+.toc{
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: -1px;
+  left: -1px;
+  text-indent: -9999rem;
+  color: transparent;
+}
+
+
+/* common - header */
+
+header{
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 100%;
+  background: #111;
+  display: block;
+}
+
+header h1{
+  position: reative;
+  top: 0;
+  left: 0;
+  padding: 30px 0 0 30px;
+  display: block;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+header h1 a{
+    display: inline-block;
+    width: 85px;
+    height: 70px;
+    background: url(../images/common/header_logo.png) center center no-repeat;
+    background-size: 85px auto;
+    text-indent: -9999rem;;
+    color: transparent;
+    overflow: hidden;
+}
+
+
+/* common - nav */
+
+nav{
+  display: block;
+  overflow: hidden;
+}
+
+
+/* common - splash (loader) */
+
+.splash{
+  background: url(../images/common/bg_galaxy.jpg) center center no-repeat;
+  background-size: cover;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.splash:before{
+  content: '';
+  display: block;
+  background: url(../images/common/splash_stars.png) top left repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation-name: splash_stars;
+  animation-duration: 300s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.splash i{
+  display: block;
+  position: absolute;
+  width: 20vw;
+  height: 20vw;
+  background: url(../images/common/splash_earth.png) center center no-repeat;
+  background-size: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+}
+
+
+.splash i:before{
+  display: block;
+  content: '';
+  position: fixed;
+  width: 100vw;
+  height: 100vw;
+  background: url(../images/common/splash_planet_move.png) center center no-repeat;
+  background-size: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation-name: splash_planet;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.splash i:after{
+  display: block;
+  content: '';
+  position: fixed;
+  width: 50vw;
+  height: 50vw;
+  background: url(../images/common/splash_planet_move.png) center center no-repeat;
+  background-size: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation-name: splash_planet;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+}
+
+.splash p{
+  color: #fff;
+  font-weight: bold;
+  font-size: 2.4rem;
+  position: absolute;
+  width: 100%;
+  display: block;
+  text-align: center;
+  bottom: 5rem;
+  z-index: 1;
+}
+
+@keyframes splash_stars {
+	from {background-position:0 0;}
+	to {background-position:-10000px 5000px;}
+}
+
+@keyframes splash_planet {
+	from {
+    transform: translate(-50%, -50%) rotate(0deg);}
+	to {
+    transform: translate(-50%, -50%) rotate(360deg);}
+}
+
+
+/* common - content */
+
+section{
+  padding-left: 70px;
+  overflow-y: auto;
+}
