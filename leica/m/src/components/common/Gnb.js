@@ -74,7 +74,6 @@ const $Gnb_before__keyframes = keyframes`
     top: 0;
     width: 100%;
     height: 100%;
-    background: #111;
     display: block;
     overflow: hidden;
     background: transparent;
@@ -97,7 +96,6 @@ const $Gnb_before__keyframes = keyframes`
             animation : ${$Gnb_before__keyframes} 0.5s linear 1s reverse backwards running
           `
         }
-        // animation : ${$Gnb_before__keyframes} 0.5s linear 1s reverse backwards running
   
       }
   
@@ -118,12 +116,10 @@ const $Gnb_before__keyframes = keyframes`
             animation : ${$Gnb_after__keyframes} 0.5s linear 0.5s reverse backwards running
           `
         }
-        // animation : ${$Gnb_after__keyframes} 0.5s linear 0.5s reverse backwards running
-  
   
       }
       
-      div{
+      .nav__section{
             
             position: fixed;
             top: 0;
@@ -143,7 +139,35 @@ const $Gnb_before__keyframes = keyframes`
               `
             }
 
-    }
+      }
+
+      .nav__button--main{
+
+        ${ props => props.theme.isIR };
+        position: relative;
+        left: 50%;
+        margin-top: 80px;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 70px;
+        background: url(/assets/images/common/gnb_logo.png) center center no-repeat;
+        background-size: 200px auto;
+
+      }
+      
+      
+      .nav__button--close{
+
+        ${ props => props.theme.isIR };
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: url(/assets/images/common/gnb_close.png) center center no-repeat;
+        background-size: 40px auto;
+
+      }
 
     ul{
 
@@ -158,7 +182,11 @@ const $Gnb_before__keyframes = keyframes`
     <>
      
      <$Gnb active={ props.active }>
-        <div>
+        <div className="nav__section">
+          <div>
+            <h2 className="nav__button--main"><Link to="/" role="button" title="메인으로 이동">Leica</Link></h2>
+            <button className="nav__button--close" type="button" title="네비게이션 닫기" onClick={() => { props.activeChange('inactive') }}>네비게이션 닫기</button>
+          </div>
             <ul>
                 {
                     siteMaps.map((list, index) => {
@@ -195,6 +223,7 @@ const Depth1 = memo(function(props) {
             font-size: 2.0rem;
             text-align: center;
             font-weight: bold;
+            
             ${ props => props.theme.isColor('white') }
 
         }

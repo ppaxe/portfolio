@@ -81,7 +81,7 @@ function Header() {
             <button title="글로벌 네비게이션 열기" onClick={() => { gnbActChange('active') }}>글로벌 네비게이션 열기</button>
         </h2>
      </$header>
-     <Gnb active={ gnbAct } />
+     <Gnb active={ gnbAct } activeChange={ gnbActChange } />
     </>
   );
 }
