@@ -244,11 +244,13 @@ const Depth1 = memo(function(props) {
     return(
         
         <>
-            <$Depth1 active={gnbDepth === Object.keys(props.list) && 'active'}>
+            <$Depth1 active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
 
-                <button type="button" onClick={() => { gnbDepth === Object.keys(props.list) ? gnbDepthChange('') : gnbDepthChange(Object.keys(props.list))} } title={`${Object.keys(props.list)} 탭 열림`} >{Object.keys(props.list)}</button>
+                <button type="button" onClick={() => { gnbDepth === `${Object.keys(props.list)}` ? gnbDepthChange('') : gnbDepthChange(`${Object.keys(props.list)}`)} } title={`${Object.keys(props.list)} 탭 열림`} >
+                  {Object.keys(props.list)}
+                  </button>
 
-                <ul active={gnbDepth === Object.keys(props.list) && 'active'}>
+                <ul active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
 
                     {
                         props.list[Object.keys(props.list)].map((menu, index) => {
