@@ -17,7 +17,6 @@ const Theme = {
     isCenter : (top = null, left = null) => `position: absolute; top: ${top}%; ${ left != null ?  `left: ${left}%` : ';' }; transform: translateY(-${top}%) ${ left != null ? 'translateX(-50%)' : ';' }; text-align: center; `,
     isImagin : `content: ''; display: block; position: absolute;`,
     isIR : 'text-indent: -9999rem; color: transparent; overflow: hidden;',
-    // isActiveColor : `color: ${props => props.active === 'active' ? props.theme.mainRed : props.theme.mainWhite }; text-shadow : ${props => props.active === 'active' ? props.theme.textRedShadow : props.theme.textWhiteShadow }; `,
     isColor : (col = 'white') => `color : ${ col === 'white' ? Theme.mainWhite : col === 'black' ?  Theme.mainBlack : col === 'red' ? Theme.mainRed : 'transparent;' } text-shadow : ${ col === 'white' ? Theme.textWhiteShadow : col === 'black' ?Theme.textRedShadow : col === 'red' ? Theme.textRedShadow : '0;'} `,
 
   }
