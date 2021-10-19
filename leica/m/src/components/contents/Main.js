@@ -68,21 +68,21 @@ function Main() {
             },
           },
       ],
-      mainSelector = useRef(),
       productSelector = useRef(),
       academySelector = useRef(),
       [productActive, setProductActive] = useState(false),
       [academyActive, setAcademyActive] = useState(false);
 
+
     const throttling = useMemo(
       () =>
         throttle(() => {
 
-          if(productSelector.current.getBoundingClientRect().top < 0){
+          if(productSelector.current.getBoundingClientRect().top < 200){
 
               setProductActive(true);
 
-            if(academySelector.current.getBoundingClientRect().top < 0){
+            if(academySelector.current.getBoundingClientRect().top < 200){
 
               setAcademyActive(true);
 
@@ -331,7 +331,7 @@ function Main() {
             opacity:0;
             width: 0;
             height: 0;
-            animation : ${ $article__academy__keyframes } 0.2s linear 0.5s normal forwards running;
+            animation : ${ $article__academy__keyframes } 0.2s linear 0.2s normal forwards running;
           `}
         }
 
@@ -449,8 +449,8 @@ function Main() {
       <SwiperStyles />
       {/* article 1 */}
       <$article>
-        <$article__main>
-          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} onSlideChange={ (swiper)=> {  } } className="mainSwiper">
+        <$article__main active={slideIndex}>
+          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} className="mainSwiper">
             {
                 productArr.map((elements,index) => {
 
@@ -467,11 +467,13 @@ function Main() {
                   
                   );
                 })
+
               }
               </Swiper>
         </$article__main>
       </$article>
       {/* // article 1 */}
+
       {/* article 2 */}
       <$article>
         <$article__prod ref={ productSelector } active={ productActive }>
@@ -485,6 +487,7 @@ function Main() {
         </$article__prod>
       </$article>
       {/* // article 2 */}
+
       {/* article3 */}
       <$article>
         <$article__academy ref={academySelector} active={academyActive}>
