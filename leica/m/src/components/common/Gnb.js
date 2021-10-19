@@ -211,7 +211,7 @@ const $Gnb_before__keyframes = keyframes`
 
 const Depth1 = memo(function(props) {
 
-    let [gnbDepth, gnbDepthChange] = useState('');
+    let [gnbDepth, setGnbDepth] = useState('');
 
     const $Depth1 = styled.li`
 
@@ -246,7 +246,7 @@ const Depth1 = memo(function(props) {
         <>
             <$Depth1 active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
 
-                <button type="button" onClick={() => { gnbDepth === `${Object.keys(props.list)}` ? gnbDepthChange('') : gnbDepthChange(`${Object.keys(props.list)}`)} } title={`${Object.keys(props.list)} 탭 열림`} >
+                <button type="button" onClick={() => { gnbDepth === `${Object.keys(props.list)}` ? setGnbDepth('') : setGnbDepth(`${Object.keys(props.list)}`)} } title={`${Object.keys(props.list)} 탭 열림`} >
                   {Object.keys(props.list)}
                   </button>
 

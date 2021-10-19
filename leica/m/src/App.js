@@ -7,6 +7,7 @@ import Header from './components/common/Header';
 import Gnb from './components/common/Gnb';
 import Footer from './components/common/Footer';
 import Main from './components/contents/Main';
+import Product from './components/contents/Product';
 
 
 
@@ -27,6 +28,11 @@ function App() {
                 <Route exact path="/">
 
                   <Main />
+
+                </Route>
+                <Route exact path="/product">
+
+                  <Product />
 
                 </Route>
               </div>

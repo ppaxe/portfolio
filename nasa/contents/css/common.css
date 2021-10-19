@@ -345,7 +345,7 @@ Common css
 
 /* common - header */
 
-header{
+.header{
   z-index: 999;
   position: fixed;
   top: 0;
@@ -356,7 +356,7 @@ header{
   display: block;
 }
 
-header h1{
+.header__logo{
   position: reative;
   top: 0;
   left: 0;
@@ -366,7 +366,7 @@ header h1{
   text-align: center;
 }
 
-header h1 a{
+.header__logo__button{
     display: inline-block;
     width: 85px;
     height: 70px;
@@ -380,9 +380,29 @@ header h1 a{
 
 /* common - nav */
 
-nav{
+.gnb{
   display: block;
   overflow: hidden;
+  transform: rotate(90deg);
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.gnb__inner{
+  display: flex;
+  overflow: hidden;
+  width: 80vh;
+}
+
+.gnb__inner--list{
+  width: 100%;
+  display: block;
+}
+
+.gnb__inner--list-button{
+  line-height: 70px;
+  color: #fff;
 }
 
 

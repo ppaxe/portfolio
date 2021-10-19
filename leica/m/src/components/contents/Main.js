@@ -7,14 +7,14 @@ import SwiperCore, { Autoplay,Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { SwiperStyles } from './../../styles/CommonStyles';
 
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 SwiperCore.use([Autoplay,Pagination]);
 
 
 function Main() {
 
-  const [mainSlide,mainSlideChange] = useState(''),
+  const [slideIndex, setSlideIndex] = useState(''),
         productArr = ['m10', 's3', 'sl2', 'q', 'vlux5'],
         academyArr = [
           {
@@ -67,11 +67,27 @@ function Main() {
                 tools : `Leica Q`
             },
           },
-      ];
+      ],
+      mainSelector = useRef(),
+      productSelector = useRef(),
+      academySelector = useRef(),
+      [productActive, setProductActive] = useState(false),
+      [academyActive, setAcademyActive] = useState(false);
 
     const throttling = useMemo(
       () =>
         throttle(() => {
+
+          if(productSelector.current.getBoundingClientRect().top < 0){
+
+              setProductActive(true);
+
+            if(academySelector.current.getBoundingClientRect().top < 0){
+
+              setAcademyActive(true);
+
+            }
+          } 
 
         }, 300),
         []
@@ -122,7 +138,7 @@ function Main() {
           position:relative;
           dispaly:block;
           overflow:hidden;
-          background: url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props => props.prod}.jpg) center center no-repeat;
+          background: url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${ props => props.active }.jpg) center center no-repeat;
           background-size:cover;
 
           .mainSwiper{
@@ -170,6 +186,28 @@ function Main() {
       
     `;
 
+    const $article__before__keyframes = keyframes`
+
+          0%{
+            transform:  translateY(-50%) scale(0,0);
+          }
+          100%{
+            transform: translateY(-50%) scale(1,1);
+          }
+
+    `;
+
+    const $article__prod__keyframes = keyframes`
+
+      0%{
+        left: -100%;
+      }
+      100%{
+        left : 0;
+      }
+
+    `;
+
     const $article__prod = styled.div`
 
           width:100%;
@@ -195,15 +233,29 @@ function Main() {
               background: ${props => props.theme.mainRed};
               border-radius:50%;
               top:50%;
+              transform-origin: 50% 50%;
               left:0;
-              transform:translateY(-50%);
+              transform:translateY(-50%) scale(0, 0);
+              ${ 
+                props => props.active && css`
+                animation : ${ $article__before__keyframes } 0.3s linear normal forwards running;
+              `}
               z-index: -1;
             }
+
             img{
+              ${props => props.theme.isCenter(50)};
+              position:absolute;
               width:100%;
               max-width:600px;
+              left:-100%;
+              ${ 
+                props => props.active && css`
+                animation : ${ $article__prod__keyframes } 0.3s linear 0.3s normal forwards running;
+              `}
             }
           }
+  
           div:nth-of-type(2){
             position:absolute;
             ${props => props.theme.isCenter(50)}
@@ -219,15 +271,46 @@ function Main() {
               font-weight:bold;
               font-size: 3.6rem;
             }
+
             p{
               ${props => props.theme.isColor('white')};
               margin-top: 2rem;
               font-size: 2.4rem;
               font-weight : bold;
             }
+
           }
 
     `;
+
+    const $article__academy__keyframes = keyframes`
+      0%{
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+      }
+      1%{
+          opacity: 1;
+          width: 100%;
+          height: 100%;
+      }
+      50%{
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+      }
+      75%{
+          opacity: 1;
+          width: 100%;
+          height: 100%;
+      }
+      100%{
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+    `;
+
     const $article__academy = styled.div`
 
         width:100%;
@@ -235,6 +318,22 @@ function Main() {
         position:relative;
         dispaly:block;
         overflow:hidden;
+
+        &:before{
+
+          ${props => props.active && css`
+            ${ props => props.theme.isImagin }
+            position:fixed;
+            z-index:9999;
+            top:0;
+            left:0;
+            background:#fff;
+            opacity:0;
+            width: 0;
+            height: 0;
+            animation : ${ $article__academy__keyframes } 0.2s linear 0.5s normal forwards running;
+          `}
+        }
 
         h3{
           position:absolute;
@@ -317,12 +416,12 @@ function Main() {
 
     `;
 
-    const $button__main = styled.div`
+    const $button = styled.div`
         
         display:block;
-        position:fixed;
-        bottom:0;
-        left:0;
+        position:absolute;
+        bottom:20px;
+        left:20px;
         z-index:999;
 
         div{
@@ -330,7 +429,8 @@ function Main() {
           width:100vw;
 
           a{
-            width:100%;
+            width:calc(100% - 40px);
+            border-radius:5px;
             height:60px;
             line-height:60px;
             text-align:center;
@@ -349,8 +449,8 @@ function Main() {
       <SwiperStyles />
       {/* article 1 */}
       <$article>
-        <$article__main prod={ mainSlide }>
-          <Swiper slidesPerView={1} speed={500} loop={true} onSlideChange={(swiper) => console.log(productArr[swiper.realIndex]) } pagination={{ "clickable": true }} className="mainSwiper">
+        <$article__main>
+          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} onSlideChange={ (swiper)=> {  } } className="mainSwiper">
             {
                 productArr.map((elements,index) => {
 
@@ -359,7 +459,7 @@ function Main() {
                   <SwiperSlide key={index}>
                     
                     <div>
-                      <img  src={`http://ppaxe.kr/pc/contents/images/product/prod_${productArr[index]}.png`} alt={`${productArr[index].toUpperCase()} 제품 이미지`} />
+                      <img  src={ `http://ppaxe.kr/pc/contents/images/product/prod_${productArr[index]}.png` } alt={`${productArr[index].toUpperCase()} 제품 이미지`} />
                       <span>LEICA { productArr[index].toUpperCase() }</span>
                     </div>
                   
@@ -368,13 +468,13 @@ function Main() {
                   );
                 })
               }
-          </Swiper>
+              </Swiper>
         </$article__main>
       </$article>
       {/* // article 1 */}
       {/* article 2 */}
       <$article>
-        <$article__prod>
+        <$article__prod ref={ productSelector } active={ productActive }>
             <div>
               <img src="http://ppaxe.kr/pc/contents/images/product/prod_m10.png" alt="M10 제품 이미지" />
             </div>
@@ -387,7 +487,7 @@ function Main() {
       {/* // article 2 */}
       {/* article3 */}
       <$article>
-        <$article__academy>
+        <$article__academy ref={academySelector} active={academyActive}>
         
               <h3>LEICA<br />ACADEMY</h3>
               <Swiper slidesPerView={1.3} speed={1000} spaceBetween={30} centeredSlides={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} className="academySwiper">
@@ -422,11 +522,6 @@ function Main() {
         </$article__academy>
       </$article>
       {/* // article3 */}
-      <$button__main>
-          <div>
-            <Link to="" title="" role="button">{ }</Link>
-          </div>
-      </$button__main>
 
     </>
   );

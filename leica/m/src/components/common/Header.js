@@ -7,7 +7,7 @@ import Gnb from './Gnb';
 
 function Header() {
 
-  let [gnbAct, gnbActChange] = useState('');
+  const [gnbAct, setGnbAct] = useState('');
 
 
       const $header = styled.header`
@@ -78,10 +78,10 @@ function Header() {
             <Link to="/" title="메인으로 이동" role="button">Leica</Link>
         </h1>
         <h2>
-            <button title="글로벌 네비게이션 열기" onClick={() => { gnbActChange('active') }}>글로벌 네비게이션 열기</button>
+            <button title="글로벌 네비게이션 열기" onClick={() => { setGnbAct('active') }}>글로벌 네비게이션 열기</button>
         </h2>
      </$header>
-     <Gnb active={ gnbAct } activeChange={ gnbActChange } />
+     <Gnb active={ gnbAct } activeChange={ setGnbAct } />
     </>
   );
 }
