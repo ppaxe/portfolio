@@ -34,10 +34,10 @@ function Header() {
             a{
 
                 display: inline-block;
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
                 background: url(http://ppaxe.kr/pc/contents/images/common/logo.png) center center no-repeat;
-                background-size: auto 60px;
+                background-size: auto 50px;
                 ${ props => props.theme.isIR };
 
             }
@@ -58,10 +58,10 @@ function Header() {
             button{
 
                 display: inline-block;
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
                 background: url(/assets/images/common/gnb_icon.png) center center no-repeat;
-                background-size: auto 60px;
+                background-size: auto 50px;
                 ${ props => props.theme.isIR };
 
             }
