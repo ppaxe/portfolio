@@ -450,7 +450,7 @@ function Main() {
       {/* article 1 */}
       <$article>
         <$article__main active={slideIndex}>
-          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} className="mainSwiper">
+          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${ productArr[swiper.realIndex] }.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center' }} className="mainSwiper">
             {
                 productArr.map((elements,index) => {
 
