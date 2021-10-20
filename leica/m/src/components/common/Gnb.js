@@ -3,33 +3,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
-
-const siteMaps = [{
-
-    'Product' : [{'LEICA M' : ''}, {'LEICA S' : ''}, {'LEICA SL' : ''}, {'LEICA Q' : ''}, {'LEICA V-LUX' : ''}]
-
-},
-{
-
-    'Academy' : [{'Academy' : ''}]
-
-},
-{
-
-    'Our Story' : [{'Our Story' : ''}]
-
-},
-{
-
-    'Find Store' : [{'Cheongdam' : ''}, {'Gangnam' : ''}, {'Chungmuro' : ''}, {'Busan' : ''}]
-
-},
-{
-
-    'Support' : [{'Support' : ''}]
-
-},
-]
+import { siteMaps } from './../../Data';
 
 function Gnb(props) {
 
@@ -189,6 +163,7 @@ const $Gnb_before__keyframes = keyframes`
           </div>
             <ul>
                 {
+
                     siteMaps.map((list, index) => {
                         
                         return(
@@ -198,6 +173,7 @@ const $Gnb_before__keyframes = keyframes`
                         )
 
                     })
+                    
                 }
             </ul>
         </div>
@@ -209,7 +185,7 @@ const $Gnb_before__keyframes = keyframes`
 
 
 
-const Depth1 = memo(function(props) {
+const Depth1 = function(props) {
 
     let [gnbDepth, setGnbDepth] = useState('');
 
@@ -246,11 +222,11 @@ const Depth1 = memo(function(props) {
         <>
             <$Depth1 active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
 
-                <button type="button" onClick={() => { gnbDepth === `${Object.keys(props.list)}` ? setGnbDepth('') : setGnbDepth(`${Object.keys(props.list)}`)} } title={`${Object.keys(props.list)} 탭 열림`} >
+                <button id={`${Object.keys(props.list)}Btn`} aria-controls={`${Object.keys(props.list)}Panel`} aria-expanded={gnbDepth === `${Object.keys(props.list)}` ? 'true' : 'false'} type="button" onClick={() => { gnbDepth === `${Object.keys(props.list)}` ? setGnbDepth('') : setGnbDepth(`${Object.keys(props.list)}`)} } title={`${Object.keys(props.list)} 탭 열림`} >
                   {Object.keys(props.list)}
                   </button>
 
-                <ul active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
+                <ul id={`${Object.keys(props.list)}Panel`} aria-labelledby={`${Object.keys(props.list)}Btn`} active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
 
                     {
                         props.list[Object.keys(props.list)].map((menu, index) => {
@@ -271,9 +247,9 @@ const Depth1 = memo(function(props) {
 
     )
 
-});
+};
 
-const Depth2 = memo(function(props) {
+const Depth2 = function(props) {
 
     const $Depth2 = styled.li`
 
@@ -290,12 +266,13 @@ const Depth2 = memo(function(props) {
     `;
 
     return(
-        
+
+
         <>
 
             <$Depth2>
-                <Link to="" title={` ${Object.keys(props.menu)} 바로가기` } role="button">
-                    {Object.keys(props.menu)}
+                <Link to={props.menu[Object.keys(props.menu)]} title={` ${Object.keys(props.menu)} 바로가기` } role="button">
+                    { Object.keys(props.menu) }
                 </Link>
             </$Depth2>
 
@@ -304,7 +281,7 @@ const Depth2 = memo(function(props) {
     )
 
 }
-);
+;
 
 
 export default Gnb;

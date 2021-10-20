@@ -1,6 +1,8 @@
+// eslint-disable-next-line
+
 import React, { useRef, useMemo, useState, useEffect } from 'react';
 // import plugins
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { throttle } from 'lodash';
 
 import SwiperCore, { Autoplay,Pagination } from 'swiper';
@@ -12,66 +14,14 @@ import styled, { css, keyframes } from "styled-components";
 SwiperCore.use([Autoplay,Pagination]);
 
 
-function Main() {
+function Main(props) {
 
-  const [slideIndex, setSlideIndex] = useState(''),
-        productArr = ['m10', 's3', 'sl2', 'q', 'vlux5'],
-        academyArr = [
-          {
-            name : `PHIL PENMAN Pro.`,
-            title : 'A Pictorial Secret',
-            profile : {
-                image : 'perman',
-                schedule : `AUGUST 7-9`,
-                place : `Seoul`,
-                tools : `Leica S3`
-            },
-          },
-          {
-            name : `Emily Pro.`,
-            title : 'Express colors not seen in real life',
-            profile : {
-                image : 'emily',
-                schedule : `OCTOBER 17-24`,
-                place : `Gyeonggi`,
-                tools : `Leica SL2`
-            },
-          },
-          {
-            name : `MARK MANN Pro.`,
-            title : `Capture the moment of one's journey`,
-            profile : {
-                image : 'mann',
-                schedule : `JANUARY 22-24`,
-                place : `Busan`,
-                tools : `Leica V-LUX`
-            },
-          },
-          {
-            name : `Crystal Pro.`,
-            title : `Deeper black and white`,
-            profile : {
-                image : 'crystal',
-                schedule : `OCTOBER 22-28`,
-                place : `Seoul`,
-                tools : `Leica M10 Monochrome`
-            },
-          },
-          {
-            name : `MARK DE PAOLA Pro.`,
-            title : `Blue, the beauty of color`,
-            profile : {
-                image : 'paola',
-                schedule : `AUGUST 9-11`,
-                place : `Busan`,
-                tools : `Leica Q`
-            },
-          },
-      ],
-      productSelector = useRef(),
-      academySelector = useRef(),
-      [productActive, setProductActive] = useState(false),
-      [academyActive, setAcademyActive] = useState(false);
+  const productSelector = useRef(),
+        academySelector = useRef(),
+        [productActive, setProductActive] = useState(false),
+        [academyActive, setAcademyActive] = useState(false);
+
+
 
 
     const throttling = useMemo(
@@ -449,18 +399,18 @@ function Main() {
       <SwiperStyles />
       {/* article 1 */}
       <$article>
-        <$article__main active={slideIndex}>
-          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${ productArr[swiper.realIndex] }.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center' }} className="mainSwiper">
+        <$article__main>
+          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center' }} className="mainSwiper">
             {
-                productArr.map((elements,index) => {
+                props.product.map((elements,index) => {
 
                   return(
                   
                   <SwiperSlide key={index}>
                     
                     <div>
-                      <img  src={ `http://ppaxe.kr/pc/contents/images/product/prod_${productArr[index]}.png` } alt={`${productArr[index].toUpperCase()} 제품 이미지`} />
-                      <span>LEICA { productArr[index].toUpperCase() }</span>
+                      <img  src={ `http://ppaxe.kr/pc/contents/images/product/prod_${props.product[index].name}.png` } alt={`${props.product[index].title} 제품 이미지`} />
+                      <span>{ props.product[index].title.toUpperCase() }</span>
                     </div>
                   
                   </SwiperSlide>
@@ -496,22 +446,22 @@ function Main() {
               <Swiper slidesPerView={1.3} speed={1000} spaceBetween={30} centeredSlides={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} className="academySwiper">
                 {
 
-                  academyArr.map((elements,index) => (
+                  props.academy.map((elements,index) => (
 
                     <SwiperSlide key={index}>
 
                       <$academySlideWrap>
                         <div>
                           <div>
-                            <img src={`http://ppaxe.kr/pc/contents/images/contents/academy_profile_${ academyArr[index].profile.image }.jpg`} alt={` ${ academyArr[index].name } 프로필 이미지 `} />
+                            <img src={`http://ppaxe.kr/pc/contents/images/contents/academy_profile_${ props.academy[index].profile.image }.jpg`} alt={` ${ props.academy[index].name } 프로필 이미지 `} />
                           </div>
-                          <p>{ academyArr[index].name }</p>
+                          <p>{ props.academy[index].name }</p>
                         </div>
                         <div>
-                          <img src={`http://ppaxe.kr/pc/contents/images/contents/academy_picture_${ academyArr[index].profile.image }.jpg`} alt="" />
+                          <img src={ `http://ppaxe.kr/pc/contents/images/contents/academy_picture_${ props.academy[index].profile.image }.jpg` } alt="" />
                         </div>
                         <div>
-                          " { academyArr[index].title } "
+                          " { props.academy[index].title } "
                         </div>
                       </$academySlideWrap>
 

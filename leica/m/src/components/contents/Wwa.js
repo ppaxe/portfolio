@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-function Product(props) {
+function Wwa(props) {
 
     return(
         <>
@@ -13,4 +13,4 @@ function Product(props) {
 
 }
 
-export default Product;
+export default Wwa;
