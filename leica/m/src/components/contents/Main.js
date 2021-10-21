@@ -2,7 +2,6 @@
 
 import React, { useRef, useMemo, useState, useEffect } from 'react';
 // import plugins
-import { Link, Route } from 'react-router-dom';
 import { throttle } from 'lodash';
 
 import SwiperCore, { Autoplay,Pagination } from 'swiper';
@@ -54,7 +53,7 @@ function Main(props) {
       };
     }, [throttling]);
 
-    const $article = styled.article`
+    const StyledArticle = styled.article`
 
           width:100vw;
           display:block;
@@ -81,7 +80,7 @@ function Main(props) {
 
     `;
 
-    const $article__main = styled.div`
+    const StyledMain = styled.div`
 
           width:100%;
           height:100%;
@@ -136,7 +135,7 @@ function Main(props) {
       
     `;
 
-    const $article__before__keyframes = keyframes`
+    const KeyframesArticleBefore = keyframes`
 
           0%{
             transform:  translateY(-50%) scale(0,0);
@@ -147,7 +146,7 @@ function Main(props) {
 
     `;
 
-    const $article__prod__keyframes = keyframes`
+    const KeyframesProduct = keyframes`
 
       0%{
         left: -100%;
@@ -158,7 +157,7 @@ function Main(props) {
 
     `;
 
-    const $article__prod = styled.div`
+    const StyledProduct = styled.div`
 
           width:100%;
           height:100%;
@@ -188,7 +187,7 @@ function Main(props) {
               transform:translateY(-50%) scale(0, 0);
               ${ 
                 props => props.active && css`
-                animation : ${ $article__before__keyframes } 0.3s linear normal forwards running;
+                animation : ${ KeyframesArticleBefore } 0.3s linear normal forwards running;
               `}
               z-index: -1;
             }
@@ -201,7 +200,7 @@ function Main(props) {
               left:-100%;
               ${ 
                 props => props.active && css`
-                animation : ${ $article__prod__keyframes } 0.3s linear 0.3s normal forwards running;
+                animation : ${ KeyframesProduct } 0.3s linear 0.3s normal forwards running;
               `}
             }
           }
@@ -233,7 +232,7 @@ function Main(props) {
 
     `;
 
-    const $article__academy__keyframes = keyframes`
+    const KeyframesAcademy = keyframes`
       0%{
           opacity: 0;
           width: 100%;
@@ -261,7 +260,7 @@ function Main(props) {
       }
     `;
 
-    const $article__academy = styled.div`
+    const StyledAcademy = styled.div`
 
         width:100%;
         height:100%;
@@ -281,7 +280,7 @@ function Main(props) {
             opacity:0;
             width: 0;
             height: 0;
-            animation : ${ $article__academy__keyframes } 0.2s linear 0.2s normal forwards running;
+            animation : ${ KeyframesAcademy } 0.2s linear 0.2s normal forwards running;
           `}
         }
 
@@ -326,7 +325,7 @@ function Main(props) {
 
     `;
 
-    const $academySlideWrap = styled.div`
+    const StyledSlideWrap = styled.div`
 
         display:block;
         background : ${props => props.theme.mainWhite };
@@ -365,42 +364,14 @@ function Main(props) {
         }
 
     `;
-
-    const $button = styled.div`
-        
-        display:block;
-        position:absolute;
-        bottom:20px;
-        left:20px;
-        z-index:999;
-
-        div{
-          display:flex;
-          width:100vw;
-
-          a{
-            width:calc(100% - 40px);
-            border-radius:5px;
-            height:60px;
-            line-height:60px;
-            text-align:center;
-            display:block;
-            font-size: 2.4rem;
-            ${props => props.theme.isColor('white')};
-            font-weight:bold;
-            overflow:hidden;
-            background:${props => props.theme.mainRed};
-          }
-        }
-    `;
   return (
     <>
 
       <SwiperStyles />
       {/* article 1 */}
-      <$article>
-        <$article__main>
-          <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center' }} className="mainSwiper">
+      <StyledArticle>
+        <StyledMain>
+          <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center' }} className="mainSwiper">
             {
                 props.product.map((elements,index) => {
 
@@ -420,13 +391,13 @@ function Main(props) {
 
               }
               </Swiper>
-        </$article__main>
-      </$article>
+        </StyledMain>
+      </StyledArticle>
       {/* // article 1 */}
 
       {/* article 2 */}
-      <$article>
-        <$article__prod ref={ productSelector } active={ productActive }>
+      <StyledArticle>
+        <StyledProduct ref={ productSelector } active={ productActive }>
             <div>
               <img src="http://ppaxe.kr/pc/contents/images/product/prod_m10.png" alt="M10 제품 이미지" />
             </div>
@@ -434,13 +405,13 @@ function Main(props) {
               <h3>M10</h3>
               <p>Monochrom</p>
             </div>
-        </$article__prod>
-      </$article>
+        </StyledProduct>
+      </StyledArticle>
       {/* // article 2 */}
 
       {/* article3 */}
-      <$article>
-        <$article__academy ref={academySelector} active={academyActive}>
+      <StyledArticle>
+        <StyledAcademy ref={academySelector} active={academyActive}>
         
               <h3>LEICA<br />ACADEMY</h3>
               <Swiper slidesPerView={1.3} speed={1000} spaceBetween={30} centeredSlides={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} className="academySwiper">
@@ -450,7 +421,7 @@ function Main(props) {
 
                     <SwiperSlide key={index}>
 
-                      <$academySlideWrap>
+                      <StyledSlideWrap>
                         <div>
                           <div>
                             <img src={`http://ppaxe.kr/pc/contents/images/contents/academy_profile_${ props.academy[index].profile.image }.jpg`} alt={` ${ props.academy[index].name } 프로필 이미지 `} />
@@ -458,12 +429,12 @@ function Main(props) {
                           <p>{ props.academy[index].name }</p>
                         </div>
                         <div>
-                          <img src={ `http://ppaxe.kr/pc/contents/images/contents/academy_picture_${ props.academy[index].profile.image }.jpg` } alt="" />
+                          <img src={ `http://ppaxe.kr/pc/contents/images/contents/academy_picture_${ props.academy[index].profile.image }.jpg` } alt={` ${ props.academy[index].name } 작품 이미지 `} />
                         </div>
                         <div>
                           " { props.academy[index].title } "
                         </div>
-                      </$academySlideWrap>
+                      </StyledSlideWrap>
 
                     </SwiperSlide>
 
@@ -472,8 +443,8 @@ function Main(props) {
                 }
               </Swiper>
 
-        </$article__academy>
-      </$article>
+        </StyledAcademy>
+      </StyledArticle>
       {/* // article3 */}
 
     </>

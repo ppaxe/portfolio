@@ -1,13 +1,13 @@
 // eslint-disable-next-line
 
-import React, { useState, useEffect, memo } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 import { siteMaps } from './../../Data';
 
 function Gnb(props) {
 
-const $Gnb_before__keyframes = keyframes`
+const KeyframesGnbBefore = keyframes`
 
     0%{
       margin-top: 150%;
@@ -18,7 +18,7 @@ const $Gnb_before__keyframes = keyframes`
 
   `;
 
-  const $Gnb_after__keyframes = keyframes`
+  const KeyframesGnbAfter = keyframes`
 
     0%{
       transform: translate(-50%,-50%) scale(0,0);
@@ -29,7 +29,7 @@ const $Gnb_before__keyframes = keyframes`
 
   `;
 
-  const $Gnb_inner__keyframes = keyframes`
+  const KeyframesGnbInner = keyframes`
 
   0%{
     left:100%;
@@ -40,7 +40,7 @@ const $Gnb_before__keyframes = keyframes`
 
 `;
 
-  const $Gnb = styled.nav`
+  const StyledGnb = styled.nav`
 
     position: fixed;
     z-index: 9999;
@@ -65,9 +65,9 @@ const $Gnb_before__keyframes = keyframes`
         margin-top: 150%;
         ${
           props => props.active === 'active' ? css`
-            animation : ${$Gnb_before__keyframes} 0.5s linear 0.5s normal forwards running
+            animation : ${KeyframesGnbBefore} 0.5s linear 0.5s normal forwards running
           ` : props.active === 'inactive' && css`
-            animation : ${$Gnb_before__keyframes} 0.5s linear 1s reverse backwards running
+            animation : ${KeyframesGnbBefore} 0.5s linear 1s reverse backwards running
           `
         }
   
@@ -85,9 +85,9 @@ const $Gnb_before__keyframes = keyframes`
         transform: translate(-50%,-50%) scale(0,0);
         ${
           props => props.active === 'active' ? css`
-            animation : ${$Gnb_after__keyframes} 0.5s linear 1s normal forwards running
+            animation : ${KeyframesGnbAfter} 0.5s linear 1s normal forwards running
           ` : props.active === 'inactive' && css`
-            animation : ${$Gnb_after__keyframes} 0.5s linear 0.5s reverse backwards running
+            animation : ${KeyframesGnbAfter} 0.5s linear 0.5s reverse backwards running
           `
         }
   
@@ -107,9 +107,9 @@ const $Gnb_before__keyframes = keyframes`
             left: 100%;
             ${
               props => props.active === 'active' ? css`
-                animation : ${$Gnb_inner__keyframes} 0.3s linear 1.25s normal forwards running
+                animation : ${KeyframesGnbInner} 0.3s linear 1.25s normal forwards running
               ` : props.active === 'inactive' && css`
-                animation : ${$Gnb_inner__keyframes} 0.3s linear 0s reverse backwards running
+                animation : ${KeyframesGnbInner} 0.3s linear 0s reverse backwards running
               `
             }
 
@@ -155,7 +155,7 @@ const $Gnb_before__keyframes = keyframes`
   return (
     <>
      
-     <$Gnb active={ props.active }>
+     <StyledGnb active={ props.active }>
         <div className="nav__section">
           <div>
             <h2 className="nav__button--main"><Link to="/" role="button" title="메인으로 이동">Leica</Link></h2>
@@ -177,7 +177,7 @@ const $Gnb_before__keyframes = keyframes`
                 }
             </ul>
         </div>
-     </$Gnb>
+     </StyledGnb>
 
     </>
   );
@@ -189,7 +189,7 @@ const Depth1 = function(props) {
 
     let [gnbDepth, setGnbDepth] = useState('');
 
-    const $Depth1 = styled.li`
+    const StyledOneDepth = styled.li`
 
         button{
 
@@ -220,7 +220,7 @@ const Depth1 = function(props) {
     return(
         
         <>
-            <$Depth1 active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
+            <StyledOneDepth active={gnbDepth === `${Object.keys(props.list)}` && 'active'}>
 
                 <button id={`${Object.keys(props.list)}Btn`} aria-controls={`${Object.keys(props.list)}Panel`} aria-expanded={gnbDepth === `${Object.keys(props.list)}` ? 'true' : 'false'} type="button" onClick={() => { gnbDepth === `${Object.keys(props.list)}` ? setGnbDepth('') : setGnbDepth(`${Object.keys(props.list)}`)} } title={`${Object.keys(props.list)} 탭 열림`} >
                   {Object.keys(props.list)}
@@ -242,7 +242,7 @@ const Depth1 = function(props) {
 
                 </ul>
 
-            </$Depth1>
+            </StyledOneDepth>
         </>
 
     )
@@ -251,7 +251,7 @@ const Depth1 = function(props) {
 
 const Depth2 = function(props) {
 
-    const $Depth2 = styled.li`
+    const StyledTwoDepth = styled.li`
 
         a{
             font-weight: bold;
@@ -270,11 +270,11 @@ const Depth2 = function(props) {
 
         <>
 
-            <$Depth2>
+            <StyledTwoDepth>
                 <Link to={props.menu[Object.keys(props.menu)]} title={` ${Object.keys(props.menu)} 바로가기` } role="button">
                     { Object.keys(props.menu) }
                 </Link>
-            </$Depth2>
+            </StyledTwoDepth>
 
         </>
         

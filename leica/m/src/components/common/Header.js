@@ -1,8 +1,8 @@
 // eslint-disable-next-line
 
-import React, { useState, useEffect, memo } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import styled, { css, keyframes } from 'styled-components';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import Gnb from './Gnb';
 
 function Header() {
@@ -10,7 +10,7 @@ function Header() {
   const [gnbAct, setGnbAct] = useState('');
 
 
-      const $header = styled.header`
+      const StyledHeader = styled.header`
 
         position:fixed;
         top: 2rem;
@@ -34,10 +34,10 @@ function Header() {
             a{
 
                 display: inline-block;
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 background: url(http://ppaxe.kr/pc/contents/images/common/logo.png) center center no-repeat;
-                background-size: auto 50px;
+                background-size: auto 60px;
                 ${ props => props.theme.isIR };
 
             }
@@ -58,10 +58,10 @@ function Header() {
             button{
 
                 display: inline-block;
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 background: url(/assets/images/common/gnb_icon.png) center center no-repeat;
-                background-size: auto 50px;
+                background-size: auto 60px;
                 ${ props => props.theme.isIR };
 
             }
@@ -73,14 +73,14 @@ function Header() {
   return (
     <>
      
-     <$header active={ gnbAct }>
+     <StyledHeader active={ gnbAct }>
         <h1>
             <Link to="/" title="메인으로 이동" role="button">Leica</Link>
         </h1>
         <h2>
             <button title="글로벌 네비게이션 열기" onClick={() => { setGnbAct('active') }}>글로벌 네비게이션 열기</button>
         </h2>
-     </$header>
+     </StyledHeader>
      <Gnb active={ gnbAct } activeChange={ setGnbAct } />
     </>
   );

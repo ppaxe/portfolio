@@ -2,14 +2,14 @@
 
 import styled from 'styled-components';
 
-const $footer = styled.footer`
+const StyledFooter = styled.footer`
 
   display:block;
   background:#111;
 
 `;
 
-const $footer__inner = styled.div`
+const StyledFooterInner = styled.div`
 
   position:relative;
   overflow:hidden;
@@ -17,23 +17,19 @@ const $footer__inner = styled.div`
   text-align:center;
   color: #fff;
 
-`;
+  h2{
+    text-indent: -9999rem;
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    width: 120px;
+    height: 60px;
+    background: url(http://ppaxe.kr/pc/contents/images/common/footer_logo.png) center center no-repeat;
+    background-size: auto 60px;
+    margin-bottom: 2rem;
+  }
 
-const $footer__logo = styled.h2`
-
-  text-indent: -9999rem;
-  color: transparent;
-  overflow: hidden;
-  display: inline-block;
-  width: 120px;
-  height: 60px;
-  background: url(http://ppaxe.kr/pc/contents/images/common/footer_logo.png) center center no-repeat;
-  background-size: auto 60px;
-  margin-bottom: 2rem;
-
-`;
-
-const $footer__sns = styled.ul`
+  ul{
     padding: 2rem 0;
     border: 2px solid #ffffff;
     border-width: 2px 0 2px 0;
@@ -43,9 +39,12 @@ const $footer__sns = styled.ul`
     width: 200px;
     margin: 2rem auto;
     justify-content: space-around;
+  }
+
 `;
 
-const $footer__sns__link = styled.a.attrs({
+
+const StyledSnsLink = styled.a.attrs({
     target: '_blank',
     role: 'button'
 })`
@@ -66,36 +65,36 @@ function Footer() {
   return (
 
     <>
-      <$footer>
-          <$footer__inner>
-              <$footer__logo>Leica</$footer__logo>
+      <StyledFooter>
+          <StyledFooterInner>
+              <h2>Leica</h2>
               <p>LEICA CAMERA KOREA</p>
-              <$footer__sns>
+              <ul>
                 <li>
-                  <$footer__sns__link href="https://www.instagram.com/leica_kr/" title="인스타그램 바로가기" position="0px 0">
+                  <StyledSnsLink href="https://www.instagram.com/leica_kr/" title="인스타그램 바로가기" position="0px 0">
                     인스타그램
-                  </$footer__sns__link>
+                  </StyledSnsLink>
                 </li>
                 <li>
-                  <$footer__sns__link href="https://www.facebook.com/LeicaCameraKr" title="페이스북 바로가기" position="-40px 0">
+                  <StyledSnsLink href="https://www.facebook.com/LeicaCameraKr" title="페이스북 바로가기" position="-40px 0">
                     페이스북
-                  </$footer__sns__link>
+                  </StyledSnsLink>
                 </li>
                 <li>
-                  <$footer__sns__link href="https://www.instagram.com/ppaxe/" title="트위터 바로가기" position="-80px 0">
+                  <StyledSnsLink href="https://www.instagram.com/ppaxe/" title="트위터 바로가기" position="-80px 0">
                     트위터
-                  </$footer__sns__link>
+                  </StyledSnsLink>
                 </li>
                 <li>
-                  <$footer__sns__link href="https://www.youtube.com/user/Mrleicacamera" title="유튜브 바로가기" position="-120px 0">
+                  <StyledSnsLink href="https://www.youtube.com/user/Mrleicacamera" title="유튜브 바로가기" position="-120px 0">
                     유튜브
-                  </$footer__sns__link>
+                  </StyledSnsLink>
                 </li>
-              </$footer__sns>
+              </ul>
               <p><strong>CEO</strong> : Sunil Kaul</p>
               <p><strong>ADDRESS</strong> : 208, Teheran-ro, Gangnam-gu, Seoul, Republic of Korea | <strong>CRN</strong> : 211-88-55103 | <strong>TEL</strong> : 1661-0405</p>
-          </$footer__inner>
-      </$footer>
+          </StyledFooterInner>
+      </StyledFooter>
     </>
 
   );
