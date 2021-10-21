@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 import { siteMaps } from './../../Data';
 
@@ -159,7 +159,7 @@ const KeyframesGnbBefore = keyframes`
         <div className="nav__section">
           <div>
             <h2 className="nav__button--main"><Link to="/" role="button" title="메인으로 이동">Leica</Link></h2>
-            <button className="nav__button--close" type="button" title="네비게이션 닫기" onClick={() => { props.activeChange('inactive') }}>네비게이션 닫기</button>
+            <button className="nav__button--close" type="button" title="네비게이션 닫기" onClick={() => { props.setActive('inactive') }}>네비게이션 닫기</button>
           </div>
             <ul>
                 {
@@ -168,7 +168,7 @@ const KeyframesGnbBefore = keyframes`
                         
                         return(
 
-                            <Depth1 key={index} list={list} />
+                            <Depth1 key={index} list={list} setActive={ props.setActive } />
 
                         )
 
@@ -233,7 +233,7 @@ const Depth1 = function(props) {
 
                             return(
 
-                                <Depth2 key={index} menu={menu} />
+                                <Depth2 key={index} menu={menu} setActive={ props.setActive }/>
 
                             )
 
@@ -271,9 +271,9 @@ const Depth2 = function(props) {
         <>
 
             <StyledTwoDepth>
-                <Link to={props.menu[Object.keys(props.menu)]} title={` ${Object.keys(props.menu)} 바로가기` } role="button">
+                <NavLink to={props.menu[Object.keys(props.menu)]} title={` ${Object.keys(props.menu)} 바로가기` } onClick={() => {props.setActive('')}} role="button">
                     { Object.keys(props.menu) }
-                </Link>
+                </NavLink>
             </StyledTwoDepth>
 
         </>

@@ -81,7 +81,7 @@ function Header() {
             <button title="글로벌 네비게이션 열기" onClick={() => { setGnbAct('active') }}>글로벌 네비게이션 열기</button>
         </h2>
      </StyledHeader>
-     <Gnb active={ gnbAct } activeChange={ setGnbAct } />
+     <Gnb active={ gnbAct } setActive={ setGnbAct } />
     </>
   );
 }
