@@ -493,7 +493,7 @@ function Main(props) {
               </Swiper>
               <StyledButton>
                 <div>
-                  <Link to="">BOOK NOW .</Link>
+                  <Link to="/academy">BOOK NOW .</Link>
                 </div>
               </StyledButton>
 

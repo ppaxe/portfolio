@@ -6,6 +6,7 @@ const StyledFooter = styled.footer`
 
   display:block;
   background:#111;
+  padding-bottom: 8rem;
 
 `;
 

@@ -1,10 +1,10 @@
 // eslint-disable-next-line
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-import SwiperCore, { Autoplay,Pagination } from 'swiper';
+import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { SwiperStyles } from './../../styles/CommonStyles';
 
@@ -18,7 +18,7 @@ function Product(props) {
     const KeyframesMain = keyframes`
 
         0%{
-            border-radius:0%;
+            border-radius:50%;
         }
 
         25%{
@@ -33,7 +33,7 @@ function Product(props) {
             border-radius: 40% 10%; / 20% 50%
         }
         100%{
-            border-radius:0%;
+            border-radius:50%;
         }
 
     `;
@@ -65,7 +65,7 @@ function Product(props) {
                 left:50%;
                 top:50%;
                 transform:translate(-50%, -50%);
-                animation: ${KeyframesMain} 2s linear alternate forwards running infinite;
+                animation: ${KeyframesMain} 2s linear forwards running infinite;
             }
 
             .swiper-pagination{
