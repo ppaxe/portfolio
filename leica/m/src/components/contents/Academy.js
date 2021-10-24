@@ -136,6 +136,7 @@ function Academy(props) {
                     margin-left: 1rem;
                     font-weight:bold;
                     font-size:1.6rem;
+                    color : ${props => props.active ? props.theme.mainRed : props.theme.mainWhite }
                 }
             }
 
@@ -204,7 +205,7 @@ function Academy(props) {
 
                         return(
 
-                            <StyledSlideWrap key={index} onClick={() => {index === academyActive ? setAcademyActive(false) : setAcademyActive(index)}} active={index === academyActive && true}>
+                            <StyledSlideWrap id={`academyBtn${index}`} aria-controls={`academyPanel${index}`} aria-expanded={index === academyActive ? 'true' : 'false'} role="button" tabindex="1" key={index} onClick={() => {index === academyActive ? setAcademyActive(false) : setAcademyActive(index)}} active={index === academyActive && true}>
                                 <div className="academy__title">
                                     <div>
                                         <img src={`http://ppaxe.kr/pc/contents/images/contents/academy_profile_${props.academy[index].profile.image}.jpg`} alt="아카데미 강사 이미지" />
@@ -216,7 +217,7 @@ function Academy(props) {
                                 </div>
                                 <div className="academy__info">
                                     <h4>" { props.academy[index].title } "</h4>
-                                    <dl>
+                                    <dl id={`academyPanel${index}`} aira-labelledby={`academyBtn${index}`}>
                                         <dt>SCHEDULE</dt>
                                         <dd>
                                             {props.academy[index].profile.schedule}

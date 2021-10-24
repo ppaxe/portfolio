@@ -1,8 +1,9 @@
 // eslint-disable-next-line
 
-import React from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import { throttle } from 'lodash';
+import styled, { keyframes, css } from 'styled-components';
 
 import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,28 +13,60 @@ SwiperCore.use([Pagination]);
 
 function Product(props) {
 
-    const { id } = useParams();
+    const { id } = useParams(),
+          pictureSelector = useRef(null),
+          [pictureActive, setPictureActive] = useState(false);
 
+    const throttling = useMemo(
+        () =>
+            throttle(() => {
+      
+            if(! pictureSelector.current) return
+      
+            if(pictureSelector.current.getBoundingClientRect().top <= 0){
+      
+                setPictureActive(true)
+      
+            }
+      
+        }, 300),[]
+    );
+
+    useEffect(() => {
+
+        window.addEventListener('scroll', throttling);
+      
+        return () => {
+      
+            window.removeEventListener('scroll', throttling);
+      
+        };
+    }, [throttling]);
 
     const KeyframesMain = keyframes`
 
         0%{
             border-radius:50%;
+            transform:translate(-50%, -50%) rotate(0deg);
         }
 
         25%{
             border-radius: 50% 20% / 10% 40%;
+            transform:translate(-50%, -50%) rotate(90deg);
         }
 
         50%{
             border-radius: 50%;
+            transform:translate(-50%, -50%) rotate(180deg);
         }
 
         75%{
             border-radius: 40% 10%; / 20% 50%
+            transform:translate(-50%, -50%) rotate(270deg);
         }
         100%{
             border-radius:50%;
+            transform:translate(-50%, -50%) rotate(360deg);
         }
 
     `;
@@ -64,8 +97,8 @@ function Product(props) {
                 z-index: -1;
                 left:50%;
                 top:50%;
-                transform:translate(-50%, -50%);
-                animation: ${KeyframesMain} 2s linear forwards running infinite;
+                transform:translate(-50%, -50%) rotate(0deg);
+                animation: ${KeyframesMain} 3s linear forwards running infinite;
             }
 
             .swiper-pagination{
@@ -184,6 +217,35 @@ function Product(props) {
 
     `;
 
+    
+    const KeyframesAcademy = keyframes`
+      0%{
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+      }
+      1%{
+          opacity: 1;
+          width: 100%;
+          height: 100%;
+      }
+      50%{
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+      }
+      75%{
+          opacity: 1;
+          width: 100%;
+          height: 100%;
+      }
+      100%{
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+    `;
+
     const StyledPicture = styled.article`
 
         ${props => props.theme.isVh()};
@@ -223,6 +285,24 @@ function Product(props) {
           bottom: 0;
           background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0)0%, rgba(0, 0, 0, 1) 80%);
         }
+
+        
+        &:after{
+
+            ${props => props.active && css`
+              position:fixed;
+              z-index:9999;
+              top:0;
+              left:0;
+              background:#fff;
+              opacity:0;
+              width: 0;
+              height: 0;
+              animation : ${ KeyframesAcademy } 0.2s linear 0.2s normal forwards running;
+            `}
+
+          }
+  
 
     `;
 
@@ -291,7 +371,7 @@ function Product(props) {
                     <img src={`http://ppaxe.kr/pc/contents/images/product/prod_${props.product[id].name}_pic2.png`} />
                 </div>
             </StyledInfo>
-            <StyledPicture>
+            <StyledPicture ref={pictureSelector} active={pictureActive}>
                  <h3><span>Maybe, this is your picture.</span></h3>
             </StyledPicture>
             <StyledButton>
