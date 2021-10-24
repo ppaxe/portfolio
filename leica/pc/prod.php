@@ -13,7 +13,7 @@ $prodData = ['m10' => [
                 'tag' => 'A UNIQUE APPROACH TO PHOTOGRAPHY',
                 'src' => 'https://player.vimeo.com/video/368004670?title=0&byline=0&portrait=0'
                 ],
-              's' => [
+              's3' => [
                   'title' => 'Leica S3',
                   'info' => 'A Class of Its Own',
                   'price' => '13,500,000',
@@ -24,7 +24,7 @@ $prodData = ['m10' => [
                   'tag' => 'A UNIQUE APPROACH TO PHOTOGRAPHY',
                   'src' => 'https://player.vimeo.com/video/395411918?title=0&byline=0&portrait=0'
               ], 
-              'sl' => [
+              'sl2' => [
                 'title' => 'Leica SL2',
                 'info' => 'Fast, Intuitive mirrorless camera',
                 'price' => '8,450,000',
@@ -46,7 +46,7 @@ $prodData = ['m10' => [
                 'tag' => 'A UNIQUE APPROACH TO PHOTOGRAPHY',
                 'src' => 'https://player.vimeo.com/video/321248116?title=0&byline=0&portrait=0'
               ],
-              'vlux' => [
+              'vlux5' => [
                 'title' => 'Leica V-LUX5',
                 'info' => 'THE SUPERZOOM FOR EXPLORERS',
                 'price' => '1,740,000',
