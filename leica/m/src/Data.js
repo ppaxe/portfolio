@@ -9,7 +9,7 @@ const products = [
     heading : 'DISCOVER MORE IN BLACK & WHITE',
     subj : 'THE LEICA M10 MONOCHROM WITH 40MP',
     sub_title : 'Why LEICA M-SYSTEM?',
-    sub_info : 'When you take a photograph with a Leica M-System camera,<br />you experience a different kind of photography.',
+    sub_info : 'When you take a photograph with a Leica M-System camera,you experience a different kind of photography.',
     tag : 'A UNIQUE APPROACH TO PHOTOGRAPHY',
     src : 'https://player.vimeo.com/video/368004670?title=0&byline=0&portrait=0'
     },
@@ -132,7 +132,7 @@ const stores = [
         tel : '070-7510-7822',
         hour : '10:30 - 20:00',
         parking : 'Two hours free parking',
-        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.<br /><br /> Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.<br /><br /> Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
+        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products. Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie. Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
         location : 'Leica Store Cheongdam, 420, Dosan-daero, Gangnam-gu',
         map : { 'x' : '37.523312', 'y' : '127.041975' }
     },
@@ -142,7 +142,7 @@ const stores = [
         tel : '02-3479-1134',
         hour : '11:00 - 21:00',
         parking : 'Three hours free parking',
-        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.<br /><br />Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.<br /><br />Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
+        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
         location : 'Leica Store Gangnam, 176, Sinbanpo-ro, Seocho-gu',
         map : { 'x' : '37.503820', 'y' : '127.004606' }
     },
@@ -152,7 +152,7 @@ const stores = [
         tel : '02-2274-8003',
         hour : '09:30 - 19:00',
         parking : 'One hours free parking',
-        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.<br /><br />Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.<br /><br />Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
+        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
         location : 'Leica Store Chungmuro, 16, Samil-daero 4-gil, Jung-gu',
         map : { 'x' : '37.562106', 'y' : '126.990016' }
     },
@@ -162,7 +162,7 @@ const stores = [
         tel : '1800-5600',
         hour : '09:00 - 20:00',
         parking : 'Four hours free parking',
-        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.<br /><br />Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.<br /><br />Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
+        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
         location : 'Leica Store Busan, 299, Haeundaehaebyeon-ro, Haeundae-gu',
         map : { 'x' : '35.161413', 'y' : '129.163550' }
     }

@@ -18,6 +18,16 @@ function Academy(props) {
         background: url('http://ppaxe.kr/pc/contents/images/contents/academy_main_banner.jpg') center center no-repeat;
         background-size:cover;
         background-attachment: fixed;
+        
+        &:before{
+            ${props => props.theme.isImagin };
+            width: 100%;
+            height: 150px;
+            left: 0;
+            z-index: 10;
+            top: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1));
+          }
 
         .article__main_info{
             position:absolute;

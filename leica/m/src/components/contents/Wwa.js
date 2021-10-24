@@ -13,14 +13,35 @@ function Wwa(props) {
         ${props => props.theme.isColor('white')};
         text-align:center;
 
+        &:before{
+            ${props => props.theme.isImagin };
+            width: 100%;
+            height: 150px;
+            left: 0;
+            z-index: 10;
+            top: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1));
+          }
+
         .article__inner{
             display:block;
             width:100%;
             max-width:700px;
-            margin: 8rem auto 0;
+            margin: 10rem auto 0;
             position:relative;
             overflow:hidden;
             line-height:160%;
+            z-index:111;
+
+        &:after{
+            ${props => props.theme.isImagin };
+            width: 100%;
+            height: 150px;
+            left: 0;
+            z-index: 10;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+          }
 
             div{
                 margin: 2rem 0;

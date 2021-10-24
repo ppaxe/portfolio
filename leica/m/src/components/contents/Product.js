@@ -80,6 +80,16 @@ function Product(props) {
         ${props => props.theme.isVh()};
         flex-direction : column;
         justify-content: center;
+        
+        &:before{
+            ${props => props.theme.isImagin };
+            width: 100%;
+            height: 150px;
+            left: 0;
+            z-index: 10;
+            top: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1));
+          }
 
         .mainSwiper{
 
