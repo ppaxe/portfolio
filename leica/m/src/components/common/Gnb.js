@@ -127,6 +127,13 @@ const KeyframesGnbBefore = keyframes`
         background: url(/assets/images/common/gnb_logo.png) center center no-repeat;
         background-size: 200px auto;
 
+        a{
+          display:block;
+          overflow:hidden;
+          width:100%;
+          height:100%;
+        }
+
       }
       
       
@@ -158,7 +165,7 @@ const KeyframesGnbBefore = keyframes`
      <StyledGnb active={ props.active }>
         <div className="nav__section">
           <div>
-            <h2 className="nav__button--main"><Link to="/" role="button" title="메인으로 이동">Leica</Link></h2>
+            <h2 className="nav__button--main"><Link to="/" role="button" title="메인으로 이동" onClick={() => {props.setActive('')}}>Leica</Link></h2>
             <button className="nav__button--close" type="button" title="네비게이션 닫기" onClick={() => { props.setActive('inactive') }}>네비게이션 닫기</button>
           </div>
             <ul>

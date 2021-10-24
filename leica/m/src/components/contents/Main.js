@@ -4,6 +4,8 @@ import React, { useRef, useMemo, useState, useEffect } from 'react';
 // import plugins
 import { throttle } from 'lodash';
 
+import { Link } from 'react-router-dom';
+
 import SwiperCore, { Autoplay,Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { SwiperStyles } from './../../styles/CommonStyles';
@@ -27,6 +29,8 @@ function Main(props) {
       () =>
         throttle(() => {
 
+          if(! productSelector.current) return
+
           if(productSelector.current.getBoundingClientRect().top < 200){
 
               setProductActive(true);
@@ -34,9 +38,10 @@ function Main(props) {
             if(academySelector.current.getBoundingClientRect().top < 200){
 
               setAcademyActive(true);
-
+              
             }
-          } 
+
+          }
 
         }, 300),
         []
@@ -150,9 +155,15 @@ function Main(props) {
 
       0%{
         left: -100%;
+        opacity:0;
+      }
+      80%{
+        left: -20%;
+        opacity:.5;
       }
       100%{
         left : 0;
+        opacity:1;
       }
 
     `;
@@ -198,6 +209,7 @@ function Main(props) {
               width:100%;
               max-width:600px;
               left:-100%;
+              opacity:0;
               ${ 
                 props => props.active && css`
                 animation : ${ KeyframesProduct } 0.3s linear 0.3s normal forwards running;
@@ -364,14 +376,46 @@ function Main(props) {
         }
 
     `;
+
+    const StyledButton = styled.div`
+
+    position:absolute;
+    z-index:99;
+    bottom:0;
+    left:0;
+    dispaly:block;
+    overflow:hidden;
+    width:100%;
+
+    div{
+        
+        display:flex;
+        overflow:hidden;
+        padding:2rem;
+
+        a{
+
+            display:block;
+            border-radius: .5rem;
+            width:100%;
+            background : ${props => props.theme.mainRed};
+            text-align:center;
+            ${props => props.theme.isColor('white')};
+            font-size: 2.4rem;
+            line-height:280%;
+
+        }
+    }
+    `;
   return (
     <>
 
       <SwiperStyles />
       {/* article 1 */}
       <StyledArticle>
+        <h3 className="blind">라이카 제품군 보기</h3>
         <StyledMain>
-          <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center' }} className="mainSwiper">
+          <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center'; }} className="mainSwiper">
             {
                 props.product.map((elements,index) => {
 
@@ -406,6 +450,11 @@ function Main(props) {
               <p>Monochrom</p>
             </div>
         </StyledProduct>
+        <StyledButton>
+          <div>
+            <Link to="/product/0" title="LEICA M10 모노크롬 제품 자세히 보기" role="button">LEARN MORE .</Link>
+          </div>
+        </StyledButton>
       </StyledArticle>
       {/* // article 2 */}
 
@@ -442,6 +491,11 @@ function Main(props) {
 
                 }
               </Swiper>
+              <StyledButton>
+                <div>
+                  <Link to="">BOOK NOW .</Link>
+                </div>
+              </StyledButton>
 
         </StyledAcademy>
       </StyledArticle>

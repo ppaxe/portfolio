@@ -28,6 +28,7 @@ function App() {
           <ThemeProvider theme={Theme}>
             <Header />
               <div id="contents">
+                <section>
                 <Route exact path="/">
 
                   <Main product={ products } academy={ academys } />
@@ -58,6 +59,7 @@ function App() {
                   <Support />
 
                 </Route>
+                </section>
               </div>
             <Footer />
         </ThemeProvider>
