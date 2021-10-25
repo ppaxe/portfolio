@@ -10,7 +10,7 @@ import Academy from './components/contents/Academy';
 import Wwa from './components/contents/Wwa';
 import Store from './components/contents/Store';
 import Support from './components/contents/Support';
-import { products, academys, stores } from './Data';
+import { products, academys, stores, supports } from './Data';
 
 
 
@@ -23,6 +23,7 @@ function App() {
             <Header />
               <div id="contents">
                 <section>
+                  <h2 className="blind">메인 컨텐츠</h2>
                 <Route exact path="/">
 
                   <Main product={ products } academy={ academys } />
@@ -50,7 +51,7 @@ function App() {
                 </Route>
                 <Route path="/support">
 
-                  <Support />
+                  <Support support={supports} />
 
                 </Route>
                 </section>

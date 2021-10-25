@@ -35,7 +35,7 @@ const products = [
     heading : 'PHOTOGRAPHY IS ABOUT CHOICES.',
     subj : 'PHOTOGRAPHY IS ABOUT CHOICES.THE QUALITY OF THE SL2 IS UNPARALLELED.',
     sub_title : 'Why LEICA SL-SYSTEM?',
-    sub_info : 'The quality of the SL2 is unparalleled. I’ve always depended on the best of equipment, and in my view, it doesn’t get any better than this.',
+    sub_info : 'The quality of the SL2 is unparalleled.\nI’ve always depended on the best of equipment, and in my view, it doesn’t get any better than this.',
     tag : 'A UNIQUE APPROACH TO PHOTOGRAPHY',
     src : 'https://player.vimeo.com/video/368004670?title=0&byline=0&portrait=0'
   },
@@ -132,7 +132,7 @@ const stores = [
         tel : '070-7510-7822',
         hour : '10:30 - 20:00',
         parking : 'Two hours free parking',
-        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products. Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie. Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
+        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.\nProfessionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.\nLeica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
         location : 'Leica Store Cheongdam, 420, Dosan-daero, Gangnam-gu',
         map : { 'x' : '37.523312', 'y' : '127.041975' }
     },
@@ -142,7 +142,7 @@ const stores = [
         tel : '02-3479-1134',
         hour : '11:00 - 21:00',
         parking : 'Three hours free parking',
-        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
+        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.\nLeica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
         location : 'Leica Store Gangnam, 176, Sinbanpo-ro, Seocho-gu',
         map : { 'x' : '37.503820', 'y' : '127.004606' }
     },
@@ -152,7 +152,7 @@ const stores = [
         tel : '02-2274-8003',
         hour : '09:30 - 19:00',
         parking : 'One hours free parking',
-        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.Professionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
+        info : 'The Leica Store Cheongdam provides access to the full line of current Leica products, from the legendary M-System to the groundbreaking SL-System, to a select range of innovative sport optics products.\nProfessionals, enthusiasts and hobbyists alike are welcome to experience German engineering at its best through hands-on demos, expert advice from our knowledgeable staff, and special programming through the Leica Akademie.\n Leica Store and Gallery Cheongdam serves as a venue to explore the world of Leica photography and ignite your passion for creating perfect pictures.',
         location : 'Leica Store Chungmuro, 16, Samil-daero 4-gil, Jung-gu',
         map : { 'x' : '37.562106', 'y' : '126.990016' }
     },
@@ -167,6 +167,52 @@ const stores = [
         map : { 'x' : '35.161413', 'y' : '129.163550' }
     }
 ]
+
+
+const supports = [
+  {
+    question : 'LEICA HUNTING DEALERS',
+    answer : 'This is where hunters will find an extensive range of Leica Sport Optics products.\nThe product portfolio includes binoculars, rangefinders, spotting scopes and riflescopes.\nLeica hunting dealers also stock an extensive range of technical equipment and accessories for your hunting needs.\n Professional staff with in-depth knowledge of the range on offer are always on hand to help you, provide detailed information and offer assistance in finding the product to meet your specific needs.'
+  },
+  {
+    question : 'WHAT MEANS HD?',
+    answer : 'High Definition means highest quality, both in terms of optics and mechanical measures.\nIt features special fluoride glass materials and includes AquaDura® coating.\nUltravid HD focusing remains fully functional, even in extreme temperatures – with unerringly smooth action.'
+  },
+  {
+    question : 'WHAT IS THE EXIT PUPIL?',
+    answer : 'The bright, circular field that can be seen by looking through the eyepiece from a distance of around 30 cm is called exit pupil.\nIt is calculated by dividing the front lens diameter by the magnification.\nA sign of quality: the circular field should always be perfectly round with sharp edges.'
+  },
+  {
+    question : 'WHAT MEANS ER i?',
+    answer : 'ER stands for extended eye relief.\n‘i’ is for ‘illuminated’, designating illumination suitable for twilight use.'
+  },
+  {
+    question : 'WHAT MEANS EHR?',
+    answer : 'EHR stands for Equivalent Horizontal Range, a helpful parameter for shots in mountainous terrain.\nA special Leica algorithm always takes at least one ballistic trajectory into account when calculating the EHR, providing results far more accurate than the ‘rifleman’s rule’.'
+  },
+  {
+    question : 'WHAT IS THE EXIT PUPIL?',
+    answer : 'The bright, circular field that can be seen by looking through the eyepiece from a distance of around 30 cm is called exit pupil.\nIt is calculated by dividing the front lens diameter by the magnification.\nA sign of quality: the circular field should always be perfectly round with sharp edges.'
+  },
+  {
+    question : 'WHAT IS THE AUTOMATIC POWER-OFF FUNCTION?',
+    answer : 'Via acceleration and position sensors, this intelligent technology switches off the illuminated dot when the rifle is not in shooting position.\nIt also extends battery life considerably.'
+  },
+  {
+    question : 'WHAT MEANS ASPH. ?',
+    answer : 'This abbreviation means that an aspherical lens is used in the optical system.\nLight rays passing through the edges of the aspherical lens are refracted differently – this results in perfect edge-to-edge sharpness across the entire field of view.'
+  },
+  {
+    question : 'WHAT IS THE AQUADURA® COATING?',
+    answer : 'Its water and dirt repellent properties guarantee a clear view – even in unfavourable weather conditions. \nAquaDura® improves viewing comfort and the increased abrasion resistance protects the precious optical elements even more effectively against damage.'
+  },
+  {
+    question : 'WHAT MEANS HLS®?',
+    answer : 'HLS® ist the HighLux-System, used in Duovid and Ultravid binoculars.\nIt can significantly increase transmission, contrast and sharpness.\nIt is a system of mechanical measures for the reduction of stray light (for example baffles, anti-reflective paints) in combination with special reflective coating of prisms.'
+  },
+]
+
+
 
 const siteMaps = [{
 
@@ -195,4 +241,4 @@ const siteMaps = [{
 },
 ]
 
-export { products, academys, stores, siteMaps };
+export { products, academys, stores, supports, siteMaps };
