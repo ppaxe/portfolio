@@ -124,7 +124,7 @@ const KeyframesGnbBefore = keyframes`
         transform: translateX(-50%);
         width: 200px;
         height: 70px;
-        background: url(/assets/images/common/gnb_logo.png) center center no-repeat;
+        background: url(http://ppaxe.kr/pc/contents/images/common/gnb_logo.png) center center no-repeat;
         background-size: 200px auto;
 
         a{
@@ -145,7 +145,7 @@ const KeyframesGnbBefore = keyframes`
         right: 20px;
         width: 40px;
         height: 40px;
-        background: url(/assets/images/common/gnb_close.png) center center no-repeat;
+        background: url(http://ppaxe.kr/pc/contents/images/common/gnb_close.png) center center no-repeat;
         background-size: 40px auto;
 
       }

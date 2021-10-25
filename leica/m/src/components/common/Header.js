@@ -60,7 +60,7 @@ function Header() {
                 display: inline-block;
                 width: 60px;
                 height: 60px;
-                background: url(/assets/images/common/gnb_icon.png) center center no-repeat;
+                background: url(http://ppaxe.kr/pc/contents/images/common/gnb_icon.png) center center no-repeat;
                 background-size: auto 60px;
                 ${ props => props.theme.isIR };
 
