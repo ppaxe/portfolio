@@ -12,15 +12,9 @@ import Store from './components/contents/Store';
 import Support from './components/contents/Support';
 import { products, academys, stores } from './Data';
 
+
+
 function App() {
-
-
-  
-  useEffect(()=>{
-
-
-  
-  },[])
 
   return (
     <div id="container">

@@ -417,7 +417,7 @@ function Main(props) {
         <StyledMain>
           <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center'; }} className="mainSwiper">
             {
-                props.product.map((elements,index) => {
+                props.product?.map((elements,index) => {
 
                   return(
                   
@@ -466,7 +466,7 @@ function Main(props) {
               <Swiper slidesPerView={1.3} speed={1000} spaceBetween={30} centeredSlides={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} className="academySwiper">
                 {
 
-                  props.academy.map((elements,index) => (
+                  props.academy?.map((elements,index) => (
 
                     <SwiperSlide key={index}>
 

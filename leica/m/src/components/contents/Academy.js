@@ -210,8 +210,7 @@ function Academy(props) {
 
                 {
 
-                    props.academy.map((element, index) => {
-                        console.log(element);
+                    props.academy?.map((element, index) => {
 
                         return(
 
@@ -226,7 +225,7 @@ function Academy(props) {
                                     <img src={`http://ppaxe.kr/pc/contents/images/contents/academy_picture_${props.academy[index].profile.image}.jpg`} alt="아카데미 사진 대표 이미지" />
                                 </div>
                                 <div className="academy__info">
-                                    <h4>" { props.academy[index].title } "</h4>
+                                    <h4>"{ props.academy[index].title }"</h4>
                                     <dl id={`academyPanel${index}`} aira-labelledby={`academyBtn${index}`}>
                                         <dt>SCHEDULE</dt>
                                         <dd>
