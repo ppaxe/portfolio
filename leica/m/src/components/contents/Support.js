@@ -59,30 +59,23 @@ function Support(props) {
                 color : ${ props => props.active ? props.theme.mainRed : props.theme.mainWhite };
                 font-weight : bold;
 
-                &.active{
-
-                    &:before{
-                        transform: translateY(-50%) rotate(90deg);
-                    }
-
-                }
-
                 &:before, &:after{
                     background: ${props => props.active ? props.theme.mainRed : '#555' };
                     ${props => props.theme.isImagin};
                     top:50%;
-                    transform: translateY(-50%);
                 }
 
                 &:before{
                     right: 20px;
                     width: 2px;
                     height : 24px;
+                    transform : ${props => props.active ? 'translateY(-50%) rotate(90deg)' : 'transform: translateY(-50%)'};
                 }
                 &:after{
                     right: 9px;
                     width: 24px;
                     height: 2px;
+                    transform: translateY(-50%);
                 }
             }
         
@@ -116,7 +109,7 @@ function Support(props) {
                         return(
                             <StyledList key={index} active={index === faqActive ? true : false}>
                                 <div className="list__faq-top">
-                                    <button id={`faqBtn${index}`} className={ index === faqActive && 'active' } aria-controls={`faqPanel${index}`} aria-expanded={index === faqActive ? 'true' : 'false'} onClick={() => { index === faqActive ? setFaqActive(false) : setFaqActive(index) }}>
+                                    <button id={`faqBtn${index}`} aria-controls={`faqPanel${index}`} aria-expanded={index === faqActive ? 'true' : 'false'} onClick={() => { index === faqActive ? setFaqActive(false) : setFaqActive(index) }}>
                                         <strong>Q.</strong> { element.question }
                                     </button>
                                 </div>
