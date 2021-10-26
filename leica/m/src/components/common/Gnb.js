@@ -9,12 +9,12 @@ function Gnb(props) {
 
 const KeyframesGnbBefore = keyframes`
 
-    0%{
-      margin-top: 150%;
-    }
-    100%{
-      margin-top: 0;
-    }
+      0%{
+        margin-top: 100vh;
+      }
+      100%{
+        margin-top: -7.5vw;
+      }
 
   `;
 
@@ -59,10 +59,10 @@ const KeyframesGnbBefore = keyframes`
         left: 50%;
         width: 15vw;
         height: 15vw;
-        transform: translate(-50%,-50%);
+        margin-left : -7.5vw;
+        margin-top : 100vh;
         background: #e1262a;
         border-radius: 50%;
-        margin-top: 150%;
         ${
           props => props.active === 'active' ? css`
             animation : ${KeyframesGnbBefore} 0.5s linear 0.5s normal forwards running
@@ -85,9 +85,9 @@ const KeyframesGnbBefore = keyframes`
         transform: translate(-50%,-50%) scale(0,0);
         ${
           props => props.active === 'active' ? css`
-            animation : ${KeyframesGnbAfter} 0.5s linear 1s normal forwards running
+            animation : ${ KeyframesGnbAfter } 0.5s linear 1s normal forwards running
           ` : props.active === 'inactive' && css`
-            animation : ${KeyframesGnbAfter} 0.5s linear 0.5s reverse backwards running
+            animation : ${ KeyframesGnbAfter } 0.5s linear 0.5s reverse backwards running
           `
         }
   
