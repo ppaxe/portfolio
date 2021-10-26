@@ -1,4 +1,4 @@
-# profile
+# project
 
 ## Project setup
 ```
