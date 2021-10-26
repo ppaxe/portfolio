@@ -6,8 +6,7 @@ import styled from 'styled-components';
 
 function Academy(props) {
 
-    const { id } = useParams(),
-          [academyActive, setAcademyActive] = useState(false);
+    const [academyActive, setAcademyActive] = useState(false);
 
     const StyledMain = styled.article`
 
@@ -15,9 +14,6 @@ function Academy(props) {
         width:100vw;
         ${props => props.theme.isVh()};
         overflow:hidden;
-        background: url('http://ppaxe.kr/pc/contents/images/contents/academy_main_banner.jpg') center center no-repeat;
-        background-size:cover;
-        background-attachment: fixed;
         
         &:before{
             ${props => props.theme.isImagin };
@@ -36,6 +32,7 @@ function Academy(props) {
             bottom:0;
             left:0;
             text-align : right;
+            z-index : 1;
 
             h3{
                 margin-bottom: 2rem;
@@ -54,6 +51,66 @@ function Academy(props) {
         }
     `;
 
+    const StyledFixed = styled.div`
+
+        width: 100%;
+        ${ props => props.theme.isVh()};
+        position: relative;
+
+        &.main_banner{
+
+            ${props => props.theme.isVh()};
+
+            .bg{
+                background-image: url(http://ppaxe.kr/pc/contents/images/contents/academy_main_banner.jpg);
+            }
+        }
+
+        &.sub_banner{
+            height: 200px;
+
+            .bg{
+                background-image: url(http://ppaxe.kr/pc/contents/images/contents/academy_sub_banner.jpg);
+            }
+
+            &:before{
+                ${ props => props.theme.isImagin};
+                left:50%;
+                bottom:0;
+                width:320px;
+                height:300px;
+                margin-left:-160px;
+                z-index:1;
+                background-image: url(http://ppaxe.kr/pc/contents/images/contents/academy_sub_banner_man.png);
+                background-position: center center;
+                background-size: cover;
+            }
+        }
+
+        .background__fixed_clip{
+
+            clip: rect(0, auto, auto, 0);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            .bg{
+                position: fixed;
+                display: block;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                background-size:cover;
+                background-position: center center;
+            }
+        }
+
+    `;
+
     const StyledInfo = styled.article`
 
             position:relative;
@@ -67,26 +124,6 @@ function Academy(props) {
                 padding: 4rem 0;
             }
 
-            .article__img{
-                position:relative;
-                display:block;
-                width:100%;
-                height:200px;
-                background:url(http://ppaxe.kr/pc/contents/images/contents/article_sub_banner.jpg) center center no-repeat;
-                background-size:cover;
-                background-attachment: fixed;
-
-                &:before{
-                    ${props => props.theme.isImagin};
-                    bottom: 0;
-                    left: 50%;
-                    margin-left: -160px;
-                    width: 320px;
-                    height: 300px;
-                    background: url(http://ppaxe.kr/pc/contents/images/contents/article_sub_banner_man.png) center no-repeat;
-                    background-size: cover;
-                }
-            }
             p{
                 
                 padding:4rem 2rem;
@@ -195,6 +232,11 @@ function Academy(props) {
     return(
         <>
             <StyledMain>
+                <StyledFixed className="main_banner">
+                    <div className="background__fixed_clip" aria-hidden="true">
+                        <div className="bg" aria-hidden="true"></div>
+                    </div>
+                </StyledFixed>
                 <div className="article__main_info">
                     <h3>Learn Fantastic Photography Skills</h3>
                     <p>The Leica Academy is going to pass on your photographic knowledge to you.<br />It tells me how to express myself.</p>
@@ -202,7 +244,11 @@ function Academy(props) {
             </StyledMain>
             <StyledInfo>
                 <h3>Leica Academy wait for you.</h3>
-                <div className="article__img" aria-hidden="true"></div>
+                <StyledFixed className="sub_banner">
+                    <div className="background__fixed_clip" aria-hidden="true">
+                        <div className="bg" aria-hidden="true"></div>
+                    </div>
+                </StyledFixed>
                 <p>Let's follow Leica Artist footsteps and walk together.<br />Capture an amazing moment with Laika photographers.</p>
             </StyledInfo>
             <StyledAcademy>

@@ -50,6 +50,8 @@ function Support(props) {
             padding: 2rem;
             
             button{
+                display:block;
+                width:100%;
                 color : ${ props => props.active ? props.theme.mainRed : props.theme.mainWhite };
                 font-weight : bold;
             }
