@@ -46,7 +46,6 @@ function Support(props) {
         .list__faq-top{
 
             display : block;
-            overflow : hidden;
             padding: 2rem;
             
             button{

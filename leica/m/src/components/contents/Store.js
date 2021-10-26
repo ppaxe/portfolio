@@ -18,7 +18,12 @@ function Store(props) {
                   center : new kakao.maps.LatLng(props.store[id].map['x'], props.store[id].map['y']),
                   level : 3
               },
-              map = new kakao.maps.Map(kakaoMaps, options)
+              map = new kakao.maps.Map(kakaoMaps, options),
+              markerPosition = new kakao.maps.LatLng(props.store[id].map['x'], props.store[id].map['y']),
+              marker = new kakao.maps.Marker({
+                  position: markerPosition
+              });
+              marker.setMap(map);
 
     }, []);
     
