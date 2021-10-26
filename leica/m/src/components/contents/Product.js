@@ -23,7 +23,7 @@ function Product(props) {
       
             if(! pictureSelector.current) return
       
-            if(pictureSelector.current.getBoundingClientRect().top <= 0){
+            if(pictureSelector.current.getBoundingClientRect().top < 200){
       
                 setPictureActive(true)
       
@@ -378,7 +378,7 @@ function Product(props) {
                 </div>
                 <h4>{props.product[id].tag}</h4>
                 <div className="article__img">
-                    <img src={`http://ppaxe.kr/pc/contents/images/product/prod_${props.product[id].name}_pic2.png`} />
+                    <img src={`http://ppaxe.kr/pc/contents/images/product/prod_${props.product[id].name}_pic2.png`} alt="제품으로 찍은 사진 예시" />
                 </div>
             </StyledInfo>
             <StyledPicture ref={pictureSelector} active={pictureActive}>

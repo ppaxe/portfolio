@@ -54,7 +54,6 @@ function Academy(props) {
     const StyledFixed = styled.div`
 
         width: 100%;
-        ${ props => props.theme.isVh()};
         position: relative;
 
         &.main_banner{
