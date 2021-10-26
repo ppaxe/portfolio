@@ -69,7 +69,7 @@ function Support(props) {
                     right: 20px;
                     width: 2px;
                     height : 24px;
-                    transform : ${props => props.active ? 'translateY(-50%) rotate(90deg)' : 'transform: translateY(-50%)'};
+                    transform : ${props => props.active ? 'translateY(-50%) rotate(90deg)' : 'translateY(-50%)'};
                 }
                 &:after{
                     right: 9px;

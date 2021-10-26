@@ -13,6 +13,13 @@ function Store(props) {
 
     useEffect(() => {
 
+        const kakaoMaps = document.getElementById('map'),
+              options = {
+                  center : new kakao.maps.LatLng(props.store[id].map['x'], props.store[id].map['y']),
+                  level : 3
+              },
+              map = new kakao.maps.Map(kakaoMaps, options)
+
     }, []);
     
     const StyledMain = styled.article`
@@ -102,7 +109,13 @@ function Store(props) {
 
     const StyledLocation = styled.article`
 
+        padding:4rem 2rem;
 
+        h3{
+            padding: 2rem 0;
+            ${props => props.theme.isColor('black')}
+            font-size:2.4rem;
+        }
 
     `;
 
@@ -149,9 +162,7 @@ function Store(props) {
                     Location
                 </h3>
                 {/* kakao maps */}
-                <div id="map">
-
-                </div>
+                <div id="map" style={{width: '100%', height: '300px'}}></div>
             </StyledLocation>
 
         </>
