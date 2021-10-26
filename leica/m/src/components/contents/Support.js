@@ -51,7 +51,7 @@ function Support(props) {
             button{
                 position:relative;
                 padding-left : 1.4rem;
-                text-indent : -1.6rem;
+                text-indent : -1.4rem;
                 line-height: 160%;
                 display:block;
                 width:100%;
