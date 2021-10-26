@@ -15,6 +15,78 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <title>::</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        width:100vw;
+        height: 100vh;
+        overflow: hidden;
+        cursor: none;
+    }
+    header,nav{
+        display: none;
+    }
+    article{
+        display:block;
+        overflow: hidden;
+        height: 100vh;
+        background: #f0f0f0;
+    }
+
+    .cursor{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #ee6c4d;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+    }
+
+    .view{
+
+        display:block;
+        position:relative;
+        width:100vw;
+        height:100vw;
+        background: #bbb;
+
+    }
+    .view__depth-01{
+        
+        display:block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        
+    }
+</style>
+<script>
+    // cursor effect
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener("mousemove", (e) => {
+        
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        
+        });
+
+    })
+
+</script>
 </head>
 <body>
 <div class="cursor"></div>
@@ -56,11 +128,20 @@
             </ul>
         </nav>
         <section id="">
-            <h2 class="blind"></h2>
             <!-- pc / vanilla js -->
             <article id="">
                 <h3 class="blind"></h3>
-
+                <div class="view">
+                    <div class="view__depth-01">
+                        <div class="view__depth-02">
+                            <div class="view__depth-03">
+                                <div class="view__depth-04">
+                                    <div class="view__depth-05"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
             <!-- mobile / react -->
             <article id="">
@@ -80,7 +161,20 @@
             <!-- contact -->
             <article id="">
                 <h3 class="blind"></h3>
-
+                <ul>
+                    <li>
+                        <a href="" role="button" title="" target="_blank"></a>
+                    </li>
+                    <li>
+                        <a href="" role="button" title="" target="_blank"></a>
+                    </li>
+                    <li>
+                        <a href="" role="button" title="" target="_blank"></a>
+                    </li>
+                    <li>
+                        <a href="" role="button" title="" target="_blank"></a>
+                    </li>
+                </ul>
             </article>
         </section>
         <!-- contents -->

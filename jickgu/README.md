@@ -1,4 +1,4 @@
-# project
+# jickgu
 
 ## Project setup
 ```

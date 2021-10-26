@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Theme from './styles/Theme';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
+import NotFound from './components/common/NotFound';
 import Main from './components/contents/Main';
 import Product from './components/contents/Product';
 import Academy from './components/contents/Academy';
@@ -24,36 +25,43 @@ function App() {
               <div id="contents">
                 <section>
                   <h2 className="blind">메인 컨텐츠</h2>
-                <Route exact path="/">
+                <Switch>
+                  <Route exact path="/">
 
-                  <Main product={ products } academy={ academys } />
+                    <Main product={ products } academy={ academys } />
 
-                </Route>
-                <Route path="/product/:id">
+                  </Route>
+                  <Route path="/product/:id">
 
-                  <Product product={products} />
+                    <Product product={products} />
 
-                </Route>
-                <Route path="/academy">
+                  </Route>
+                  <Route path="/academy">
 
-                  <Academy academy={academys} />
+                    <Academy academy={academys} />
 
-                </Route>
-                <Route path="/wwa">
+                  </Route>
+                  <Route path="/wwa">
 
-                  <Wwa />
-                
-                </Route>
-                <Route path="/store/:id">
+                    <Wwa />
+                  
+                  </Route>
+                  <Route path="/store/:id">
 
-                  <Store store={stores} />
+                    <Store store={stores} />
 
-                </Route>
-                <Route path="/support">
+                  </Route>
+                  <Route path="/support">
 
-                  <Support support={supports} />
+                    <Support support={supports} />
 
-                </Route>
+                  </Route>
+                  <Route path="*">
+
+                    <NotFound />
+
+                  </Route>
+                </Switch>
                 </section>
               </div>
             <Footer />
@@ -62,5 +70,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
