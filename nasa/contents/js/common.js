@@ -5,6 +5,11 @@ $(function(){
     // common :: init
     scrollEvt.init();
 
+    $(window).on('mousemove',function(e){
+        var cursor = $('.cursor');
+
+        cursor.css({left : e.clientX + 'px', top : e.clientY + 'px'})
+    })
 
 })
 

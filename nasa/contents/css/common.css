@@ -13,6 +13,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  cursor: none;
 }
 
 body {
@@ -287,6 +288,30 @@ Common css
 
 ======================================================================================
 */
+
+/* .cursor{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ee6c4d;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+} */
+
+.blind{
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: -1px;
+  left: -1px;
+  text-indent: -9999rem;
+  color: transparent;
+}
 
 /* common */
 #container{

@@ -414,7 +414,7 @@ function Main(props) {
       {/* article 1 */}
       <StyledArticle>
         <h3 className="blind">라이카 제품군 보기</h3>
-        <StyledMain>
+        <StyledMain style={ { backgroundImage : 'url("http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_m10.jpg")' } }>
           <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/pc/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center'; }} className="mainSwiper">
             {
                 props.product?.map((elements,index) => {
