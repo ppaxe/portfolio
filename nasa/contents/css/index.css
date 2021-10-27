@@ -11,7 +11,7 @@ article{
     width: 100vw;
     display: block;
     min-height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 article:first-of-type:before{
@@ -49,7 +49,7 @@ article:first-of-type:after{
     animation-direction: reverse;
 }
 
-.main_title{
+.main__title{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -63,10 +63,16 @@ article:first-of-type:after{
 }
 
 .video{
-    width: 100%;
-    height: 100%;
+    width: 50vw;
+    height: 50vw;
     overflow: hidden;
     position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
 }
 
 .video video{
