@@ -63,6 +63,7 @@ const KeyframesGnbBefore = keyframes`
         margin-top : 100vh;
         background: #e1262a;
         border-radius: 50%;
+
         ${
           props => props.active === 'active' ? css`
             animation : ${KeyframesGnbBefore} 0.5s linear 0.5s normal forwards running
@@ -105,6 +106,13 @@ const KeyframesGnbBefore = keyframes`
             overflow: auto;
             z-index: 1;
             left: 100%;
+            ${
+              props => props.active === 'active' ? css`
+                display: block;
+              ` : props.active === 'inactive' && css`
+                display: none;
+              `
+            }
             ${
               props => props.active === 'active' ? css`
                 animation : ${KeyframesGnbInner} 0.3s linear 1.25s normal forwards running
