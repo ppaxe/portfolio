@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import { ThemeProvider } from 'styled-components';
+import Theme from './styles/Theme';
+import Header from './components/common/Header';
+import Screens from './screens/Screens';
 
 function App() {
+
+  useEffect(() => {
+
+
+
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <div id="container">
+        
+        <ThemeProvider theme={Theme} >
+          <Header />
+          <Screens />
+        </ThemeProvider>
+      
+      </div>
+
   );
 }
 
