@@ -1,3 +1,7 @@
+import Utils from './../utils/Utils';
+
+const vhUnit = window.innerHeight / 100,
+      user = Utils.checkUser();
 
 const Theme = {
 
@@ -8,7 +12,19 @@ const Theme = {
     mainPoint : '#15A0A2',
     mainRed : '#f00',
     mainWhite : '#F2F2F2',
-    mainBlack : '#404040'
+    mainBlack : '#404040',
+    isVh : (unit = 100) => {
+
+        let deviceInnerHeight;
+
+        user.os &&
+            user.os === 'ios' ? 
+                deviceInnerHeight = `${( Math.floor(unit * vhUnit) )}px` :
+                deviceInnerHeight = `${unit}vh`;
+
+        return `height : ${deviceInnerHeight}`;
+
+    }
 
 }
 
