@@ -16,15 +16,15 @@ function BgmControler(props){
 
     const controlsAudio = () => {
 
-        props.bgmStatus ? props.setBgmStatus(true) : props.setBgmStatus(false);
+            props.setPlayStorage(! props.bgmStatus);
+            props.setNoneStorage( props.bgmStatus );
 
     }
 
     return(
         <>
             <ControlerWrap>
-                <p>{ props.bgmStatus ? '실행 중' : '멈춤' }</p>
-                <button type="button">
+                <button type="button" onClick={ controlsAudio }>
                     { props.bgmStatus ? 'pause' : 'play' }
                 </button>
             </ControlerWrap>

@@ -17,8 +17,6 @@ function Screens(){
 
     // variables useRefs
 
-    const bgmRef = useRef(false);
-
     // function
 
     noneBgm && localStorage.setItem('BGM_AGREE','none');
@@ -61,6 +59,7 @@ function Screens(){
     `;
 
     return(
+        <>
         <ScreenWrapper id="contents" onClick={ () => { winClick() } }>
             <div>
                 {/* modal */}
@@ -79,14 +78,17 @@ function Screens(){
                 {/* //modal */}
                 {/* background - bgm */}
                 {
-                    ( bgmPlay || noneBgm ) && <audio autoPlay={bgmPlay} loop ref={ bgmRef } />
+                    ( bgmPlay || noneBgm ) && 
+                    <audio autoPlay={ bgmPlay } loop src="http://ppaxe.kr/profile/contents/sound/background_explore_bgm.mp3"/>
                 }
                 {/* //background - bgm */}
                 {/* click - bgm */}
                 {
-                    clickSound && <audio autoPlay={clickSound} />
+                    clickSound && 
+                    <audio autoPlay={ clickSound } src="http://ppaxe.kr/profile/contents/sound/sound_click.mp3" />
                 }
                 {/* //click - bgm */}
+
                 {/* contents */}
                 <section id="section">
 
@@ -94,14 +96,16 @@ function Screens(){
 
                 </section>
                 {/* //contents */}
+                
                 {/* bgm controls */}
                 {
-                    bgmControls && <BgmControler setBgmEl={ bgmRef } bgmStatus={ bgmPlay } setBgmStatus={ setBgmPlay } />
+                    // bgmControls && 
+                    <BgmControler bgmStatus={ bgmPlay } setPlayStorage={ setBgmPlay } setNoneStorage={ setNoneBgm } />
                 }
                 {/* //bgm controls */}
             </div>
         </ScreenWrapper>
-
+        </>
     )
 
 }
