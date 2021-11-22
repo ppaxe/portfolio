@@ -1,98 +1,139 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function BrowserModal(){
+function BrowserModal(props){
 
-    const { pathname } = useLocation();
-
-    useEffect(() => {
-
-
-    }, [pathname] )
-
+    // variables styled-components
 
     const Browser = styled.div`
-
+    
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 640px;
+        ${ props => props.theme.isVh(100) };
+        max-height: 640px;
+        background: ${ props => props.theme.mainLGray };
+        border-radius: 1rem;
+        border: 2px solid ${ props => props.theme.mainBlack };
+        overflow: hidden;
+
+    `;
+
+    const BrowserTop = styled.div`
+    
+        position:relative;
+        overflow:hidden;
+        display: flex;
+        height: auto;
+        padding: 1rem;
+        justify-content: space-between;
+        border-bottom: 2px solid ${ props => props.theme.mainBlack };
+        box-sizing: border-box;
+
+    `;
+
+    const TopBtnWrap = styled.div`
+
+        overflow: hidden;
+        display:inline-block;
+        margin-right: 10px;
+
+    `;
+
+    const CloseButton = styled.button`
+    
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: transparent;
         display: block;
         overflow: hidden;
-    
-        .browser{
-            
-            position: relative;
-            display: block;
-            overflow: hidden;
+        text-indent : -9999rem;
+        color: transparent;
+        border-radius: 50%;
+        box-sizing:border-box;
+        border: 2px solid ${ props => props.theme.mainBlack };
+        cursor: pointer;
+
+        &:before, &:after{
+
+            display:block;
+            content: '';
+            position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 800px;
-            max-height: 800px;
-            width: 70vw;
-            height: 80vh;
-            background: ${ props => props.theme.mainLGray };
-            border: 3px solid ${ props => props.theme.mainBlack };
-            box-sizing:border-box;
-            border-radius: 10px;
+            border-radius: 1px;
+            width: 2px;
+            height: 20px;
+            background: ${ props => props.theme.mainBlack };
 
-            .browser__top{
+        }
+        &:before{
 
-                display:block;
-                overflow: hidden;
-                position: relative;
-                border: 3px solid ${props => props.theme.mainBlack};
-                border-width: 0 0 3px 0;
-                padding: 1rem 0;
-                text-align: center;
+            transform:translate(-50%, -50%) rotate(45deg);
 
-            }
+        }
+        &:after{
 
-            .browser__contents{
+            transform:translate(-50%, -50%) rotate(-45deg);
 
-                display: block;
-                overflow: hidden;
-                position: relative;
-                overflow-y: scroll;
-
-            }
         }
 
     `;
 
+    const TopLocationWrap = styled.div`
+    
+        position: relative;
+        display: inline-block;
+        height: 40px;
+
+    `;
+
+    const LocationBar = styled.input`
+    
+        display:block;
+        height: 100%;
+        border-radius: 20px;
+        border: 2px solid ${ props => props.theme.mainBlack };
+        width: 60vw;
+        max-width: 400px;
+        background: ${ props => props.theme.mainWhite };
+
+    `;
+
+    const BrowserSection = styled.div`
+
+        position: relative;
+        width: 100%;
+        height: calc(100% - (40px + 2rem));
+        background: ${props => props.theme.mainWhite};
+    
+    `;
+
+    ;
+
     return(
         <>
             <Browser>
-                <div id="browserModal" className="browser">
-                    <div class="browser__top">
-                        <div class="browser__top--button">
-                            <ul>
-                                <li>
-                                    <i>
-                                        닫기
-                                    </i>
-                                </li>
-                                <li>
-                                    <i>
-                                        최소화
-                                    </i>
-                                </li>
-                                <li>
-                                    <i>
-                                        확대
-                                    </i>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="browser__contents">
+                <BrowserTop>
+                    <TopBtnWrap>
+                        <CloseButton type="button" title="팝업 닫기" onClick={ () => { props.setClose(false) } }>
+                            닫기
+                        </CloseButton>
+                    </TopBtnWrap>
+                    <TopLocationWrap>
+                        <label>
+                            <LocationBar type="text" title="주소창 입력" />
+                        </label>
+                    </TopLocationWrap>
+                </BrowserTop>
+                <BrowserSection>
 
-                    </div>
-                </div>
+                </BrowserSection>
             </Browser>
         </>
     )

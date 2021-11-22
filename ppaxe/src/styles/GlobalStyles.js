@@ -10,8 +10,24 @@ const GlobalStyles = createGlobalStyle`
         padding:0;
     }
 
-    body{
-        background: #BFBFBF
+    html, body{
+        width:100%;
+        height:100%;
+        overflow:hidden;
+        background: #2C8693;
+        
+    }
+    *::webkit-scrollbar{
+
+
+    }
+    *::webkit-scrollbar-thumb{
+
+
+    }
+    *::webkit-scrollbar-track{
+        
+        
     }
 `;
 

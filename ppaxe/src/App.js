@@ -17,7 +17,6 @@ function App() {
       <div id="container">
         
         <ThemeProvider theme={Theme} >
-          <Header />
           <Screens />
         </ThemeProvider>
       

@@ -10,7 +10,7 @@ function BgmControler(props){
         right: 0;
         width: 20vw;
         height: 200px;
-        z-index: 99;
+        z-index: 99999;
         background: #111;
     `;
 
