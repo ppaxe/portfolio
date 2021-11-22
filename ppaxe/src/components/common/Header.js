@@ -21,18 +21,18 @@ function Header(props){
         position:relative;
         display:block;
         width: 80vw;
-        max-width: 1000px;
+        max-width: 1080px;
         ${ props => props.theme.isVh(20) };
+        max-height: 170px;
         background: ${props => props.theme.mainLGray};
         margin: 0 auto;
         border-radius: 2rem;
         box-sizing: border-box;
         border: 3px solid ${ props=> props.theme.mainBlack };
-        padding: 2rem 4rem;
+        padding: 1rem 4rem 1.5rem;
 
         ul{
             display: flex;
-            overflow: hidden;
 
             li{
                 width: 100%;
@@ -42,13 +42,50 @@ function Header(props){
         }
     `;
 
-    const NavButton = styled.button`
+    const NavButton = styled.button.attrs({type:'button'})`
     
         border: none;
-        display: inline-block;
+        display: block;
         width: 100%;
-        max-width: 100px;
         height: 100%;
+        cursor: pointer;
+        text-align: center;
+        background: transparent;
+        position: relative;
+
+        ${
+            props => props.active &&
+            `&:after{
+                position: absolute;
+                display:block;
+                content:'';
+                top: 100%;
+                left:50%;
+                width:5px;
+                height:5px;
+                border-radius:50%;
+                background: #CBD72C;
+                border: 2px solid #404040;
+                transform: translate(-50%, 5px);
+            }`
+        }
+
+        i{
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
+            background-size: auto 80px;
+            background-position: -${ props => props.position * 80}px 0;
+        }
+
+        p{
+            font-size: 1.4rem;
+            ${
+                props => props.active &&
+                `color : ${props.theme.mainBlue} `
+            }
+        }
 
     `;
 
@@ -63,9 +100,9 @@ function Header(props){
 
                                     return(
                                         <li key={index}>
-                                            <NavButton type="button" title={`${element} 팝업 열림`} onClick={ () => { props.setOpen(element) } }>
+                                            <NavButton position={index} active={ props.view === element.title && true } title={`${element.title} 팝업 열림`} onClick={ () => { props.setOpen(element.title) } } >
                                                 <i aria-hidden="true"></i>
-                                                <p>{ element }</p>
+                                                <p>{ element.title }</p>
                                             </NavButton>
                                         </li>
                                     )

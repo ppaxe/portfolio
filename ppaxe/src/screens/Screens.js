@@ -11,13 +11,29 @@ function Screens(){
 
     // variables useStates
 
-    const [viewModal, setViewModal] = useState(false);
+    const [viewModal, setViewModal] = useState(false),
+          [clickSound, setClickSound] = useState(false);
 
     // variables useRefs
 
     // function
 
+
     // function - window Click
+    const debounceClick = debounce(() => {
+
+        setClickSound(false);
+
+    },200);
+
+    const winClick = () => {
+
+        setClickSound(true);
+
+        debounceClick();
+
+    }
+
 
     useEffect(() => {
 
@@ -34,10 +50,14 @@ function Screens(){
 
     return(
         <>
-        <Header setOpen={setViewModal} />
-        <ScreenWrapper id="contents">
+        <ScreenWrapper id="contents" onClick={ () => { winClick() } }>
+        <Header view={viewModal} setOpen={setViewModal} />
                 {/* contents */}
                 <section id="section">
+                    {
+                        clickSound && 
+                        <audio autoPlay={ clickSound } src="http://ppaxe.kr/profile/contents/sound/sound_click.mp3" />
+                    }
 
                     { viewModal &&
                         <BrowserModal view={viewModal} setClose={setViewModal} />

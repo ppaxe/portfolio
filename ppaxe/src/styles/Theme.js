@@ -10,7 +10,9 @@ const Theme = {
     mainDGray : '#A6A6A6',
     mainBlue : '#105187',
     mainPoint : '#15A0A2',
-    mainRed : '#f00',
+    mainRed : '#C33325',
+    mainGreen : '#CBD72C',
+    mainYellow : '#F19722',
     mainWhite : '#F2F2F2',
     mainBlack : '#404040',
     
