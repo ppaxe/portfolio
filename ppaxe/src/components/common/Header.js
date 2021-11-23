@@ -33,6 +33,7 @@ function Header(props){
         max-width: 960px;
         ${ props => props.theme.isVh(20) };
         max-height: 170px;
+        min-height: 140px;
         background: ${props => props.theme.mainLGray};
         margin: 0 auto;
         border-radius: 2rem;
@@ -46,8 +47,9 @@ function Header(props){
             overflow: hidden;
             width: 100vw;
             ${props => props.theme.isVh(100)};
-            max-width: none;
-            max-height: none;
+            max-width: inherit;
+            max-height: inherit;
+            min-height: inherit;
             background:transparent;
             border:none;
             padding: 4rem 1rem;
@@ -136,7 +138,7 @@ function Header(props){
 
                                     return(
                                         <li key={index}>
-                                            <NavButton position={index} active={ props.view === element.title && true } title={`${element.title} 팝업 열림`} onClick={ () => { props.setOpen(element.title) } } >
+                                            <NavButton aria-haspopup="dialog" position={index} active={ props.view === element.title && true } aria-selected={ props.view === element.title ? 'true' : 'false' } title={`${element.title} 팝업 열림`} onClick={ () => { props.setOpen(element.title) } } >
                                                 <i aria-hidden="true"></i>
                                                 <p>
                                                     { element.title }

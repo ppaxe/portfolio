@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Data from './../../utils/Data';
+import Profile from './../../components/contents/Profile';
+import Web from './../../components/contents/Web';
+import Mobile from './../../components/contents/Mobile';
+import Responsive from './../../components/contents/Responsive';
+import Contact from './../../components/contents/Contact';
+import Resume from './../../components/contents/Resume';
 
 function BrowserModal(props){
 
@@ -75,7 +81,8 @@ function BrowserModal(props){
         width: 40px;
         height: 40px;
         margin-right: 10px;
-        background: ${ 
+        background:
+        ${ 
         
         props => props.action === 'close' ?
             props.theme.mainRed : 
@@ -87,11 +94,18 @@ function BrowserModal(props){
         overflow: hidden;
         text-indent : -9999rem;
         color: transparent;
+        font-size: 0px;
         border-radius: 50%;
         box-sizing:border-box;
         border: 2px solid ${ props => props.theme.mainBlack };
         cursor: pointer;
 
+        
+        @media ${props => props.theme.deviceQuery.mobile}{
+
+            ${ props => props.action !== 'close' && 'display : none'}
+
+        }
         &:last-of-type{
             margin: none;
         }
@@ -142,12 +156,20 @@ function BrowserModal(props){
         width: calc(100% - 160px);
         text-align: right;
 
+        ${
+            viewSizing === 'mini' && 'display:none'
+        }
+
     `;
 
-    const LocationBar = styled.input`
+    const LocationBar = styled.p`
     
         display:inline-block;
         height: 100%;
+        text-align: left;
+        text-indent: 1.5rem;
+        font-size: 1.6rem;
+        line-height: 40px;
         border-radius: 20px;
         border: 2px solid ${ props => props.theme.mainBlack };
         width: 100%;
@@ -169,7 +191,7 @@ function BrowserModal(props){
 
     return(
         <>
-            <Browser>
+            <Browser role="dialog" aria-modal="true" aria-hidden={ viewSizing !== 'mini' ? 'false' : 'true' } aria-expanded={ viewSizing !== 'mini' ? 'true' : 'false' } aria-labelledby="modalTitle" aria-describedby="modalDescription" >
                 <BrowserTop>
                     <TopBtnWrap>
                         <BrowserButton type="button" title="팝업 닫기" onClick={() => { props.setClose(false); }} action="close" >
@@ -183,13 +205,15 @@ function BrowserModal(props){
                         </BrowserButton>
                     </TopBtnWrap> 
                     <TopLocationWrap>
-                        <label>
-                            <LocationBar type="text" title="주소창 입력" value="" />
-                        </label>
+                        <LocationBar id="modalTitle">
+
+                        </LocationBar>
                     </TopLocationWrap>
                 </BrowserTop>
-                <BrowserSection>
-                
+                <BrowserSection id="modalDescription"
+                    {/* {
+                        props.view === 'profile' ?
+                    } */}
                 </BrowserSection>
             </Browser>
         </>
