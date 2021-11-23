@@ -161,7 +161,8 @@ function BrowserModal(props){
         width: 100%;
         height: calc(100% - (40px + 2rem));
         background: ${props => props.theme.mainWhite};
-    
+        overflow-y: scroll;
+
     `;
 
     ;
@@ -188,7 +189,7 @@ function BrowserModal(props){
                     </TopLocationWrap>
                 </BrowserTop>
                 <BrowserSection>
-
+                
                 </BrowserSection>
             </Browser>
         </>

@@ -23,18 +23,19 @@ const GlobalStyles = createGlobalStyle`
     body{
         font-size: 1.4rem/1.5;
     }
-    *::webkit-scrollbar{
-
-
+    ::-webkit-scrollbar { 
+        width: 10px;
+    } 
+    ::-webkit-scrollbar-thumb { 
+        background-color: #BFBFBF; 
+        border:2px solid #404040; 
+        box-sizing:border-box;
+        border-radius: 5px;
+    } 
+    ::-webkit-scrollbar-track{
+        background-color: transparent;
     }
-    *::webkit-scrollbar-thumb{
 
-
-    }
-    *::webkit-scrollbar-track{
-        
-        
-    }
 `;
 
 export default GlobalStyles;
