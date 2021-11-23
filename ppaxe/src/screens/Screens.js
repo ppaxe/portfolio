@@ -29,7 +29,12 @@ function Screens(){
     
         width: 100vw;
         ${props => props.theme.isVh()};
+        background: url('http://ppaxe.kr/profile/contents/images/common/app_laptop_background.png') center center;
+        background-size:cover;
 
+        @media ${props => props.theme.deviceQuery.tablet}{
+        background: url('http://ppaxe.kr/profile/contents/images/common/app_tablet_background.png') center center;
+        }
     `;
 
     return(

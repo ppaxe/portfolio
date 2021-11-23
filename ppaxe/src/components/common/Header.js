@@ -5,6 +5,19 @@ import Data from './../../utils/Data';
 function Header(props){
 
     const HeaderWrap = styled.header`
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:40px;
+        background: ${ props => props.theme.mainBlack };
+
+        @media ${props => props.theme.deviceQuery.tablet}{
+            height:30px;
+        }
+    `
+
+    const GlobalNavWrap = styled.div`
     
         position: fixed;
         display: block;
@@ -29,11 +42,9 @@ function Header(props){
 
         position:relative;
         display:block;
-        width: 80vw;
+        width: 90vw;
         max-width: 960px;
-        ${ props => props.theme.isVh(20) };
-        max-height: 170px;
-        min-height: 140px;
+        height: 180px;
         background: ${props => props.theme.mainLGray};
         margin: 0 auto;
         border-radius: 2rem;
@@ -52,7 +63,7 @@ function Header(props){
             min-height: inherit;
             background:transparent;
             border:none;
-            padding: 4rem 1rem;
+            padding: 6rem 1rem;
 
         }
 
@@ -81,6 +92,7 @@ function Header(props){
         text-align: center;
         background: transparent;
         position: relative;
+        margin: 5px;
 
         ${
             props => props.active &&
@@ -125,6 +137,10 @@ function Header(props){
                 props => props.active &&
                 `color : ${props.theme.mainBlue}; font-weight: bold;`
             }
+
+            @media ${ props => props.theme.deviceQuery.tablet}{
+                color: ${ props => props.theme.mainWhite };
+            }
         }
 
     `;
@@ -132,6 +148,13 @@ function Header(props){
     return(
         <>
             <HeaderWrap>
+                <div>
+                    <h1>
+                        logo
+                    </h1>
+                </div>
+            </HeaderWrap>
+            <GlobalNavWrap>
                 <div>
                     <NavWrap>
                         <ul>
@@ -153,7 +176,7 @@ function Header(props){
                         </ul>
                     </NavWrap>
                 </div>
-            </HeaderWrap>
+            </GlobalNavWrap>
         </>
     )
 }
