@@ -15,7 +15,13 @@ const GlobalStyles = createGlobalStyle`
         height:100%;
         overflow:hidden;
         background: #2C8693;
-        
+        min-height: 320px;
+    }
+    html{
+        font-size: 62.5%;
+    }
+    body{
+        font-size: 1.4rem/1.5;
     }
     *::webkit-scrollbar{
 

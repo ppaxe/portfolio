@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import Data from './../../utils/Data';
 
@@ -14,6 +13,16 @@ function Header(props){
         left: 0;
         width: 100%;
 
+        @media ${ props => props.theme.deviceQuery.tablet }{
+
+            position: relative;
+            display: flex;
+            overflow: hidden;
+            width: 100vw;
+            ${props => props.theme.isVh(100)};
+
+        }
+
     `;
 
     const NavWrap = styled.nav`
@@ -21,7 +30,7 @@ function Header(props){
         position:relative;
         display:block;
         width: 80vw;
-        max-width: 1080px;
+        max-width: 960px;
         ${ props => props.theme.isVh(20) };
         max-height: 170px;
         background: ${props => props.theme.mainLGray};
@@ -29,13 +38,31 @@ function Header(props){
         border-radius: 2rem;
         box-sizing: border-box;
         border: 3px solid ${ props=> props.theme.mainBlack };
-        padding: 1rem 4rem 1.5rem;
+        padding: 1rem 2rem 1.5rem;
+
+        @media ${ props => props.theme.deviceQuery.tablet }{
+
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            ${props => props.theme.isVh(100)};
+            max-width: none;
+            max-height: none;
+            background:transparent;
+            border:none;
+            padding: 4rem 1rem;
+
+        }
 
         ul{
             display: flex;
+            justify-content: space-between;
+            
+            @media ${props => props.theme.deviceQuery.tablet}{
+                flex-flow : wrap;
+            }
 
             li{
-                width: 100%;
                 display: block;
                 text-align: center;
             }
@@ -61,29 +88,38 @@ function Header(props){
                 content:'';
                 top: 100%;
                 left:50%;
-                width:5px;
-                height:5px;
+                width:10px;
+                height:10px;
                 border-radius:50%;
+                box-sizing:border-box;
                 background: #CBD72C;
                 border: 2px solid #404040;
-                transform: translate(-50%, 5px);
+                transform: translateX(-50%);
             }`
         }
 
         i{
             display: inline-block;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
-            background-size: auto 80px;
-            background-position: -${ props => props.position * 80}px 0;
+            background-size: auto 100px;
+            background-position: -${ props => props.position * 100}px 0;
+
+            @media ${ props => props.theme.deviceQuery.tablet }{
+
+                width: 80px;
+                height: 80px;
+                background-size: auto 80px;
+                background-position: -${ props => props.position * 80}px 0;
+            }
         }
 
         p{
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             ${
                 props => props.active &&
-                `color : ${props.theme.mainBlue} `
+                `color : ${props.theme.mainBlue}; `
             }
         }
 
@@ -102,7 +138,9 @@ function Header(props){
                                         <li key={index}>
                                             <NavButton position={index} active={ props.view === element.title && true } title={`${element.title} 팝업 열림`} onClick={ () => { props.setOpen(element.title) } } >
                                                 <i aria-hidden="true"></i>
-                                                <p>{ element.title }</p>
+                                                <p>
+                                                    { element.title }
+                                                </p>
                                             </NavButton>
                                         </li>
                                     )

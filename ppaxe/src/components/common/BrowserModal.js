@@ -1,25 +1,48 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Data from './../../utils/Data';
 
 function BrowserModal(props){
+
+
+    const [ viewSizing, setViewSizing ] = useState(false);
 
     // variables styled-components
 
     const Browser = styled.div`
     
         position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        max-width: 980px;
+        max-width: 980px; 
+        width: 90%; 
+        max-height: 760px; 
         ${ props => props.theme.isVh(80) };
-        max-height: 760px;
         background: ${ props => props.theme.mainLGray };
         border-radius: 1rem;
         border: 2px solid ${ props => props.theme.mainBlack };
         overflow: hidden;
+        box-sizing : border-box;
+
+        ${
+            props => viewSizing === 'max' ?
+            `width: 100%; height: 100%; max-width: inherit; max-height: inherit;` :
+            viewSizing === 'mini' ?
+            `max-width: 480px; max-height: 60px; transform: inherit; right: 2rem; bottom: 25%;` :
+            `top: 50%; left: 50%; transform: translate(-50%, -50%);`
+        }
+
+        @media ${ props => props.theme.deviceQuery.mobile }{
+
+            width: 100%;
+            height: 100%;
+            max-width: inherit;
+            max-height: inherit;
+            border-radius: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
 
     `;
 
@@ -27,7 +50,6 @@ function BrowserModal(props){
     
         position:relative;
         overflow:hidden;
-        /* display: flex; */
         display: block;
         clear: both;
         height: auto;
@@ -54,10 +76,12 @@ function BrowserModal(props){
         height: 40px;
         margin-right: 10px;
         background: ${ 
+        
         props => props.action === 'close' ?
             props.theme.mainRed : 
             props.action === 'minim' ? props.theme.mainYellow :
             props.theme.mainGreen
+
         };
         display: block;
         overflow: hidden;
@@ -93,7 +117,7 @@ function BrowserModal(props){
                 'transform:translate(-50%, -50%) rotate(45deg)' :
                 props.action === 'minim' ?
                 'transform:translate(-50%, -50%) rotate(90deg)' :
-                'transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040'
+                'transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;'
             }
         }
         &:after{
@@ -103,7 +127,7 @@ function BrowserModal(props){
                 'transform:translate(-50%, -50%) rotate(-45deg)' :
                 props.action === 'minim' ?
                 'transform:translate(-50%, -50%) rotate(90deg)' :
-                'transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040'
+                'transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;'
             }
 
         }
@@ -115,19 +139,20 @@ function BrowserModal(props){
         position: relative;
         float: right;
         height: 40px;
+        width: calc(100% - 160px);
+        text-align: right;
 
     `;
 
     const LocationBar = styled.input`
     
-        display:block;
+        display:inline-block;
         height: 100%;
         border-radius: 20px;
         border: 2px solid ${ props => props.theme.mainBlack };
-        width: 60vw;
+        width: 100%;
         max-width: 400px;
         background: ${ props => props.theme.mainWhite };
-
     `;
 
     const BrowserSection = styled.div`
@@ -146,19 +171,19 @@ function BrowserModal(props){
             <Browser>
                 <BrowserTop>
                     <TopBtnWrap>
-                        <BrowserButton type="button" title="팝업 닫기" onClick={() => { props.setClose(false) }} action="close" >
+                        <BrowserButton type="button" title="팝업 닫기" onClick={() => { props.setClose(false); }} action="close" >
                             팝업 닫기
                         </BrowserButton>
-                        <BrowserButton type="button" title="팝업 최소화" onClick={() => { }} action="minim">
+                        <BrowserButton type="button" title="팝업 최소화" onClick={() => { viewSizing !== 'mini' ? setViewSizing('mini') : setViewSizing(false); }} action="minim">
                            팝업 최소화
                         </BrowserButton>
-                        <BrowserButton type="button" title="팝업 최대화" onClick={() => { }} action="maxim">
+                        <BrowserButton type="button" title="팝업 최대화" onClick={() => { viewSizing !== 'max' ? setViewSizing('max') : setViewSizing(false); }} action="maxim">
                             팝업 최대화
                         </BrowserButton>
                     </TopBtnWrap> 
                     <TopLocationWrap>
                         <label>
-                            <LocationBar type="text" title="주소창 입력" />
+                            <LocationBar type="text" title="주소창 입력" value="" />
                         </label>
                     </TopLocationWrap>
                 </BrowserTop>

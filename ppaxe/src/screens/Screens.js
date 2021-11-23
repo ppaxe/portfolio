@@ -50,7 +50,7 @@ function Screens(){
 
     return(
         <>
-        <ScreenWrapper id="contents" onClick={ () => { winClick() } }>
+        <ScreenWrapper id="contents">
         <Header view={viewModal} setOpen={setViewModal} />
                 {/* contents */}
                 <section id="section">
@@ -59,7 +59,8 @@ function Screens(){
                         <audio autoPlay={ clickSound } src="http://ppaxe.kr/profile/contents/sound/sound_click.mp3" />
                     }
 
-                    { viewModal &&
+                    { 
+                        viewModal &&
                         <BrowserModal view={viewModal} setClose={setViewModal} />
                     }
                 </section>
