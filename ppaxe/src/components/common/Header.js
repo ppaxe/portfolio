@@ -118,10 +118,12 @@ function Header(props){
         }
 
         p{
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+
+            font-weight : 500;
             ${
                 props => props.active &&
-                `color : ${props.theme.mainBlue}; `
+                `color : ${props.theme.mainBlue}; font-weight: bold;`
             }
         }
 

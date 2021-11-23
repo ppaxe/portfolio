@@ -28,10 +28,14 @@ function BrowserModal(props){
         border: 2px solid ${ props => props.theme.mainBlack };
         overflow: hidden;
         box-sizing : border-box;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
 
         ${
             props => viewSizing === 'max' ?
-            `width: 100%; height: 100%; max-width: inherit; max-height: inherit;` :
+            `width: 100%; height: 100%; max-width: 1920px; max-height: 1080px;` :
             viewSizing === 'mini' ?
             `max-width: 480px; max-height: 60px; transform: inherit; right: 2rem; bottom: 25%;` :
             `top: 50%; left: 50%; transform: translate(-50%, -50%);`
@@ -185,6 +189,14 @@ function BrowserModal(props){
         background: ${props => props.theme.mainWhite};
         overflow-y: scroll;
 
+        .dummy{
+            display: block;
+            overflow: hidden;
+            width: 100%;
+            height: 1000px;
+            background: #f0f0f0;
+        }
+
     `;
 
     ;
@@ -210,10 +222,8 @@ function BrowserModal(props){
                         </LocationBar>
                     </TopLocationWrap>
                 </BrowserTop>
-                <BrowserSection id="modalDescription"
-                    {/* {
-                        props.view === 'profile' ?
-                    } */}
+                <BrowserSection id="modalDescription">
+                    <div className="dummy"></div>
                 </BrowserSection>
             </Browser>
         </>
