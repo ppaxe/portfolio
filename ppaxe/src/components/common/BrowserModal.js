@@ -34,8 +34,7 @@ function BrowserModal(props){
 
 
         ${
-            props => viewSizing === 'max' ?
-            `width: 100%; height: 100%; max-width: 1920px; max-height: 1080px;` :
+            props => 
             viewSizing === 'mini' ?
             `max-width: 480px; max-height: 60px; transform: inherit; right: 2rem; bottom: 25%;` :
             `top: 50%; left: 50%; transform: translate(-50%, -50%);`
@@ -184,18 +183,10 @@ function BrowserModal(props){
     const BrowserSection = styled.div`
 
         position: relative;
-        width: 100%;
-        height: calc(100% - (40px + 2rem));
+        height: calc(100% - (40px + 6rem));
         background: ${props => props.theme.mainWhite};
         overflow-y: scroll;
-
-        .dummy{
-            display: block;
-            overflow: hidden;
-            width: 100%;
-            height: 1000px;
-            background: #f0f0f0;
-        }
+        padding: 2rem;
 
     `;
 
@@ -212,8 +203,8 @@ function BrowserModal(props){
                         <BrowserButton type="button" title="팝업 최소화" onClick={() => { viewSizing !== 'mini' ? setViewSizing('mini') : setViewSizing(false); }} action="minim">
                            팝업 최소화
                         </BrowserButton>
-                        <BrowserButton type="button" title="팝업 최대화" onClick={() => { viewSizing !== 'max' ? setViewSizing('max') : setViewSizing(false); }} action="maxim">
-                            팝업 최대화
+                        <BrowserButton type="button" title="팝업 최대화" onClick={() => { window.open(`http://ppaxe.kr/${props.view}`) }} action="maxim">
+                            { props.view } 페이지 새 창 열림
                         </BrowserButton>
                     </TopBtnWrap> 
                     <TopLocationWrap>
@@ -223,7 +214,13 @@ function BrowserModal(props){
                     </TopLocationWrap>
                 </BrowserTop>
                 <BrowserSection id="modalDescription">
-                    <div className="dummy"></div>
+                        {
+                            props.view === 'profile' ?
+                            <Profile /> :
+                            // props.view === 'profile' ?
+                            // <Profile /> :
+                            false
+                        }
                 </BrowserSection>
             </Browser>
         </>

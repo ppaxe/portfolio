@@ -1,8 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 import Data from './../../utils/Data';
+import Moment from 'react-moment';
+import 'moment/locale/ko';
+
 
 function Header(props){
+
+
+    const LogoWrap = styled.div`
+
+        position: absolute;
+        left: 0;
+    
+    `;
+
+    const StatusBar = styled.div`
+    
+        position:absolute;
+        right: 2rem;
+        color: ${props => props.theme.mainWhite};
+        line-height: 40px;
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+        font-weight: 600;
+
+        @media ${props => props.theme.deviceQuery.tablet}{
+            line-height:30px;
+        }
+
+    `;
 
     const HeaderWrap = styled.header`
         position:fixed;
@@ -148,11 +175,14 @@ function Header(props){
     return(
         <>
             <HeaderWrap>
-                <div>
+                <LogoWrap>
                     <h1>
                         logo
                     </h1>
-                </div>
+                </LogoWrap>
+                <StatusBar>
+                    <Moment format="HH : mm"></Moment>
+                </StatusBar>
             </HeaderWrap>
             <GlobalNavWrap>
                 <div>
