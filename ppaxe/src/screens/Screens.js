@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import { debounce } from 'lodash';
+import Data from './../utils/Data';
 import Header from './../components/common/Header';
 import BrowserModal from './../components/common/BrowserModal';
 
@@ -11,7 +12,7 @@ function Screens(){
 
     // variables useStates
 
-    const [viewModal, setViewModal] = useState(false);
+    const [viewModal, setViewModal] = useState(Data.siteMaps);
 
     // variables useRefs
 
@@ -40,12 +41,17 @@ function Screens(){
     return(
         <>
         <ScreenWrapper id="contents">
-        <Header view={viewModal} setOpen={setViewModal} />
+        <Header view={ viewModal } setView={ setViewModal } />
                 {/* contents */}
                 <section id="section">
                     { 
-                        viewModal &&
-                        <BrowserModal view={viewModal} setClose={setViewModal} />
+                        viewModal.map((element, index) => {
+
+                            return (
+                                element.active &&  <BrowserModal />
+                            );
+
+                        })
                     }
                 </section>
                 {/* //contents */}

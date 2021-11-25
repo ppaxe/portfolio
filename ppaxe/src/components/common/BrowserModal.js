@@ -197,14 +197,14 @@ function BrowserModal(props){
             <Browser role="dialog" aria-modal="true" aria-hidden={ viewSizing !== 'mini' ? 'false' : 'true' } aria-expanded={ viewSizing !== 'mini' ? 'true' : 'false' } aria-labelledby="modalTitle" aria-describedby="modalDescription" >
                 <BrowserTop>
                     <TopBtnWrap>
-                        <BrowserButton type="button" title="팝업 닫기" onClick={() => { props.setClose(false); }} action="close" >
+                        <BrowserButton type="button" title="팝업 닫기" action="close" >
                             팝업 닫기
                         </BrowserButton>
                         <BrowserButton type="button" title="팝업 최소화" onClick={() => { viewSizing !== 'mini' ? setViewSizing('mini') : setViewSizing(false); }} action="minim">
                            팝업 최소화
                         </BrowserButton>
-                        <BrowserButton type="button" title="팝업 최대화" onClick={() => { window.open(`http://ppaxe.kr/${props.view}`) }} action="maxim">
-                            { props.view } 페이지 새 창 열림
+                        <BrowserButton type="button" title="팝업 최대화" action="maxim">
+
                         </BrowserButton>
                     </TopBtnWrap> 
                     <TopLocationWrap>
@@ -214,13 +214,7 @@ function BrowserModal(props){
                     </TopLocationWrap>
                 </BrowserTop>
                 <BrowserSection id="modalDescription">
-                        {
-                            props.view === 'profile' ?
-                            <Profile /> :
-                            // props.view === 'profile' ?
-                            // <Profile /> :
-                            false
-                        }
+                    
                 </BrowserSection>
             </Browser>
         </>

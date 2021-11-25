@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Data from './../../utils/Data';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 
@@ -189,15 +188,23 @@ function Header(props){
                     <NavWrap>
                         <ul>
                             {
-                                Data.siteMaps.map((element, index) => {
+                                props.view.map((element, index) => {
 
                                     return(
                                         <li key={index}>
-                                            <NavButton aria-haspopup="dialog" position={index} active={ props.view === element.title && true } aria-selected={ props.view === element.title ? 'true' : 'false' } title={`${element.title} 팝업 열림`} onClick={ () => { props.setOpen(element.title) } } >
+                                            <NavButton aria-haspopup="dialog" 
+                                                       position={index}
+                                                       active={ props.view[index].active && true }
+                                                       aria-selected={ props.view[index].active ? 'true' : 'false' }
+                                                       title={`${element.title} 팝업 열림`}
+                                                       onClick={ () => {
+                                                           let setArr = [...props.view];
+                                                           setArr[index].active = !setArr[index].active;
+                                                           props.setView(setArr);
+                                                        } } 
+                                            >
                                                 <i aria-hidden="true"></i>
-                                                <p>
-                                                    { element.title }
-                                                </p>
+                                                <p>{ element.title }</p>
                                             </NavButton>
                                         </li>
                                     )
