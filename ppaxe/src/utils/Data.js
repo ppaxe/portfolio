@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 
 const Data = {
 
@@ -9,6 +10,7 @@ const Data = {
             kor : '이것은 나의 프로필',
             redirect : 'http://ppaxe.kr/web/',
             active : false,
+            viewSizing : false,
         },
         {
             id : 1,
@@ -16,6 +18,7 @@ const Data = {
             kor : 'PC 홈페이지 :: 바닐라 자바스크립트(es6)',
             redirect : 'http://ppaxe.kr/web/',
             active : false,
+            viewSizing : false,
         },
         {
             id : 2,
@@ -23,6 +26,7 @@ const Data = {
             kor : '모바일 :: 리액트',
             redirect : 'http://ppaxe.kr/web/',
             active : false,
+            viewSizing : false,
         },
         {
             id : 3,
@@ -30,6 +34,7 @@ const Data = {
             kor : '반응형 :: 제이쿼리',
             redirect : 'http://ppaxe.kr/web/',
             active : false,
+            viewSizing : false,
         },
         {
             id : 4,
@@ -37,6 +42,7 @@ const Data = {
             kor : '당신의 연락을 기다려요',
             redirect : 'http://ppaxe.kr/web/',
             active : false,
+            viewSizing : false,
         },
         {
             id : 5,
@@ -44,6 +50,7 @@ const Data = {
             kor : '나의 명필 이력서',
             redirect : 'http://ppaxe.kr/web/',
             active : false,
+            viewSizing : false,
         }
         ]
 

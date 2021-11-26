@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+
 import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
@@ -142,7 +144,7 @@ function Header(props){
             display: inline-block;
             width: 100px;
             height: 100px;
-            background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
+            /* background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat; */
             background-size: auto 100px;
             background-position: -${ props => props.position * 100}px 0;
 
@@ -204,7 +206,10 @@ function Header(props){
                                                         } } 
                                             >
                                                 <i aria-hidden="true"></i>
-                                                <p>{ element.title }</p>
+                                                <p>{ 
+                                                // element.title
+                                                index
+                                                }</p>
                                             </NavButton>
                                         </li>
                                     )

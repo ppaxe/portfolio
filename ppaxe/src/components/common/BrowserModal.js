@@ -1,43 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+// eslint-disable-next-line
 import styled from 'styled-components';
-import Data from './../../utils/Data';
-import Profile from './../../components/contents/Profile';
-import Web from './../../components/contents/Web';
-import Mobile from './../../components/contents/Mobile';
-import Responsive from './../../components/contents/Responsive';
-import Contact from './../../components/contents/Contact';
-import Resume from './../../components/contents/Resume';
 
 function BrowserModal(props){
-
-
-    const [ viewSizing, setViewSizing ] = useState(false);
 
     // variables styled-components
 
     const Browser = styled.div`
     
         position: fixed;
-        max-width: 980px; 
         width: 90%; 
-        max-height: 760px; 
         ${ props => props.theme.isVh(80) };
         background: ${ props => props.theme.mainLGray };
         border-radius: 1rem;
         border: 2px solid ${ props => props.theme.mainBlack };
         overflow: hidden;
         box-sizing : border-box;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-
+        
         ${
-            props => 
-            viewSizing === 'mini' ?
-            `max-width: 480px; max-height: 60px; transform: inherit; right: 2rem; bottom: 25%;` :
-            `top: 50%; left: 50%; transform: translate(-50%, -50%);`
+            props.view[props.index].viewSizing ?
+            `max-width: 480px; max-height: 60px; transform: inherit; right: 2rem; bottom: calc(25% + ${ ( props.viewType -1 ) * 60}px); z-index : ${ 9999 - (props.viewType + 1) }; ` :
+            `max-width: 980px; max-height: 760px; transform: translate(-50%, -50%); top: calc(50% + ${ ( props.viewType -1 ) * 60 }px); left: calc(50% + ${ ( props.viewType -1 ) * 60 }px); z-index : ${ 9999 + (props.viewType + 1) };`
         }
 
         @media ${ props => props.theme.deviceQuery.mobile }{
@@ -160,7 +142,7 @@ function BrowserModal(props){
         text-align: right;
 
         ${
-            viewSizing === 'mini' && 'display:none'
+            props.view[props.index].viewSizing && 'display:none'
         }
 
     `;
@@ -194,22 +176,34 @@ function BrowserModal(props){
 
     return(
         <>
-            <Browser role="dialog" aria-modal="true" aria-hidden={ viewSizing !== 'mini' ? 'false' : 'true' } aria-expanded={ viewSizing !== 'mini' ? 'true' : 'false' } aria-labelledby="modalTitle" aria-describedby="modalDescription" >
+            <Browser role="dialog" aria-modal="true" aria-hidden={ props.view[props.index].viewSizing ? 'true' : 'false' } aria-expanded={ props.view[props.index].viewSizing ? 'false' : 'true' } aria-labelledby="modalTitle" aria-describedby="modalDescription" >
                 <BrowserTop>
                     <TopBtnWrap>
-                        <BrowserButton type="button" title="팝업 닫기" action="close" >
+                        <BrowserButton type="button" title="팝업 닫기" action="close" onClick={() => {
+                            let popModal = [...props.view];
+
+                            popModal[props.index].active = false;
+
+                            props.setView(popModal);
+                        }}>
                             팝업 닫기
                         </BrowserButton>
-                        <BrowserButton type="button" title="팝업 최소화" onClick={() => { viewSizing !== 'mini' ? setViewSizing('mini') : setViewSizing(false); }} action="minim">
+                        <BrowserButton type="button" title="팝업 최소화" onClick={() => { 
+                            let sizeModal = [...props.view];
+
+                            sizeModal[props.index].viewSizing = !sizeModal[props.index].viewSizing;
+
+                            props.setView(sizeModal);
+                         }} action="minim">
                            팝업 최소화
                         </BrowserButton>
-                        <BrowserButton type="button" title="팝업 최대화" action="maxim">
-
+                        <BrowserButton type="button" title="새 창 열림" action="maxim" onClick={() => props.view[props.index].redirect}>
+                            { props.view[props.index].title } 새 창 열기
                         </BrowserButton>
                     </TopBtnWrap> 
                     <TopLocationWrap>
                         <LocationBar id="modalTitle">
-
+                         { props.view[props.index].kor }
                         </LocationBar>
                     </TopLocationWrap>
                 </BrowserTop>

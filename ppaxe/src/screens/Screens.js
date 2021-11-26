@@ -1,7 +1,7 @@
-import React, {useEffect, useState, useRef} from 'react';
+// eslint-disable-next-line
+
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Routes, Route } from 'react-router-dom';
-import { debounce } from 'lodash';
 import Data from './../utils/Data';
 import Header from './../components/common/Header';
 import BrowserModal from './../components/common/BrowserModal';
@@ -14,7 +14,11 @@ function Screens(){
 
     const [viewModal, setViewModal] = useState(Data.siteMaps);
 
-    // variables useRefs
+    let popSetting = {
+        index : 0,
+        view : 0,
+        minimum : 0,
+    }
 
     // function
 
@@ -30,11 +34,11 @@ function Screens(){
     
         width: 100vw;
         ${props => props.theme.isVh()};
-        background: url('http://ppaxe.kr/profile/contents/images/common/app_laptop_background.png') center center;
+        /* background: url('http://ppaxe.kr/profile/contents/images/common/app_laptop_background.png') center center; */
         background-size:cover;
 
         @media ${props => props.theme.deviceQuery.tablet}{
-        background: url('http://ppaxe.kr/profile/contents/images/common/app_tablet_background.png') center center;
+        /* background: url('http://ppaxe.kr/profile/contents/images/common/app_tablet_background.png') center center; */
         }
     `;
 
@@ -47,8 +51,16 @@ function Screens(){
                     { 
                         viewModal.map((element, index) => {
 
+                            // 팝업 개수
+                            element.active && popSetting.index++;
+                            
+                            // 오픈 팝업
+                            element.active && !element.viewSizing ? popSetting.view++ : popSetting.minimum++ ;
+
+                            // 숨김 팝업
+
                             return (
-                                element.active &&  <BrowserModal />
+                                element.active &&  <BrowserModal key={ index } viewType={ !element.viewSizing ? popSetting.view : popSetting.minimum } index={ index } view={ viewModal } setView={ setViewModal } />
                             );
 
                         })

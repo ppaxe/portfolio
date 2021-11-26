@@ -1,5 +1,7 @@
 
 
+// eslint-disable-next-line
+
 const Utils = {
 
     checkUser : () => {
