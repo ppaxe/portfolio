@@ -18,7 +18,7 @@ const Data = {
         {
             id : 1,
             title : 'web',
-            kor : 'PC 홈페이지 :: 바닐라 자바스크립트(es6)',
+            kor : 'PC 홈페이지',
             redirect : () => window.open('http://ppaxe.kr/web/'),
             active : false,
             viewSizing : false,
@@ -26,7 +26,7 @@ const Data = {
         {
             id : 2,
             title : 'mobile',
-            kor : '모바일 :: 리액트',
+            kor : '모바일',
             redirect : () => { return user.device === 'pc' ? window.open('http://ppaxe.kr/mobile/','_blank','width=414, height=736') : window.open('http://ppaxe.kr/mobile/') },
             active : false,
             viewSizing : false,
@@ -34,7 +34,7 @@ const Data = {
         {
             id : 3,
             title : 'responsive',
-            kor : '반응형 :: 제이쿼리',
+            kor : '반응형',
             redirect : () => window.open('http://ppaxe.kr/web/'),
             active : false,
             viewSizing : false,

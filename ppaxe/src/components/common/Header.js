@@ -22,6 +22,10 @@ const LogoWrap = styled.div`
         letter-spacing: -1px;
         font-weight: 600;
 
+        time{
+            color : ${props => props. theme.mainWhite};
+        }
+
         @media ${props => props.theme.deviceQuery.tablet}{
             line-height:30px;
         }
@@ -189,20 +193,20 @@ const Header = memo(function(props){
                     <NavWrap>
                         <ul>
                             {
-                                props.view.map((element, index) => {
+                                props.viewModal.map((element, index) => {
 
                                     return(
                                         <li key={index}>
                                             <NavButton aria-haspopup="dialog" 
                                                        position={index}
-                                                       active={ props.view[index].active && true }
-                                                       aria-selected={ props.view[index].active ? 'true' : 'false' }
+                                                       active={ props.viewModal[index].active && true }
+                                                       aria-selected={ props.viewModal[index].active ? 'true' : 'false' }
                                                        title={`${element.title} 팝업 열림`}
                                                        onClick={ () => {
-                                                           let setArr = [...props.view];
+                                                           let setArr = [...props.viewModal];
                                                            setArr[index].viewSizing = false;
                                                            setArr[index].active = !setArr[index].active;
-                                                           props.setView(setArr);
+                                                           props.setViewModal(setArr);
                                                         } } 
                                             >
                                                 <i aria-hidden="true"></i>

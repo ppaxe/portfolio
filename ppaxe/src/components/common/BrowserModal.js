@@ -25,7 +25,7 @@ let BrowserModal = memo(function(props){
         box-sizing : border-box;
         
         ${
-            props.view[props.index].viewSizing ?
+            props.viewModal[props.index].viewSizing ?
             `max-width: 480px; max-height: 60px; transform: inherit; right: 2rem; bottom: calc(25% + ${ ( props.viewType -1 ) * 60}px); z-index : ${ 9999 - (props.viewType + 1) }; ` :
             `max-width: 980px; max-height: 760px; transform: translate(-50%, -50%); top: calc(50% + ${ ( props.viewType -1 ) * 60 }px); left: calc(50% + ${ ( props.viewType -1 ) * 60 }px); z-index : ${ 9999 + (props.viewType + 1) };`
         }
@@ -151,7 +151,7 @@ let BrowserModal = memo(function(props){
         text-align: right;
 
         ${
-            props.view[props.index].viewSizing && 'display:none'
+            props.viewModal[props.index].viewSizing && 'display:none'
         } 
         @media ${props => props.theme.deviceQuery.mobile}{
 
@@ -175,7 +175,7 @@ let BrowserModal = memo(function(props){
         max-width: 400px;
         background: ${ props => props.theme.mainWhite };
         ${
-            props.view[props.index].viewSizing && `background : transparent; border: none;`
+            props.viewModal[props.index].viewSizing && `background : transparent; border: none;`
         } 
 
     `;
@@ -194,49 +194,49 @@ let BrowserModal = memo(function(props){
 
     return(
         <>
-            <Browser role="dialog" aria-modal="true" aria-hidden={ props.view[props.index].viewSizing ? 'true' : 'false' } aria-expanded={ props.view[props.index].viewSizing ? 'false' : 'true' } aria-labelledby="modalTitle" aria-describedby="modalDescription" >
+            <Browser role="dialog" aria-modal="true" aria-hidden={ props.viewModal[props.index].viewSizing ? 'true' : 'false' } aria-expanded={ props.viewModal[props.index].viewSizing ? 'false' : 'true' } aria-labelledby="modalTitle" aria-describedby="modalDescription" >
                 <BrowserTop>
                     <TopBtnWrap>
                         <BrowserButton type="button" title="팝업 닫기" action="close" onClick={() => {
-                            let popModal = [...props.view];
+                            let popModal = [...props.viewModal];
 
                             popModal[props.index].viewSizing = false;
                             popModal[props.index].active = false;
 
-                            props.setView(popModal);
+                            props.setViewModal(popModal);
                         }}>
                             팝업 닫기
                         </BrowserButton>
                         <BrowserButton type="button" title="팝업 최소화" onClick={() => { 
-                            let sizeModal = [...props.view];
+                            let sizeModal = [...props.viewModal];
 
                             sizeModal[props.index].viewSizing = !sizeModal[props.index].viewSizing;
 
-                            props.setView(sizeModal);
+                            props.setViewModal(sizeModal);
                          }} action="minim">
                            팝업 최소화
                         </BrowserButton>
-                        <BrowserButton type="button" title="새 창 열림" action="maxim" onClick={ props.view[props.index].redirect }>
-                            { props.view[props.index].title } 새 창 열기
+                        <BrowserButton type="button" title="새 창 열림" action="maxim" onClick={ props.viewModal[props.index].redirect }>
+                            { props.viewModal[props.index].title } 새 창 열기
                         </BrowserButton>
                     </TopBtnWrap> 
                     <TopLocationWrap>
                         <LocationBar id="modalTitle">
-                         { props.view[props.index].kor }
+                         { props.viewModal[props.index].kor }
                         </LocationBar>
                     </TopLocationWrap>
                 </BrowserTop>
                 <BrowserSection id="modalDescription">
                     {
-                        props.view[props.index].title === 'profile' ?
+                        props.viewModal[props.index].title === 'profile' ?
                         <Profile /> :
-                        props.view[props.index].title === 'web' ?
+                        props.viewModal[props.index].title === 'web' ?
                         <Web /> :
-                        props.view[props.index].title === 'mobile' ?
+                        props.viewModal[props.index].title === 'mobile' ?
                         <Mobile /> :
-                        props.view[props.index].title === 'responsive' ?
+                        props.viewModal[props.index].title === 'responsive' ?
                         <Responsive /> :
-                        props.view[props.index].title === 'contact' ?
+                        props.viewModal[props.index].title === 'contact' ?
                         <Contact /> :
                         <Resume />
 

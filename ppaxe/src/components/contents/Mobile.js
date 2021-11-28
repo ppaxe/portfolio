@@ -6,23 +6,48 @@ const Mobile = memo(function(){
     const MainImg = styled.div`
     
         display:block;
-        overflow: hidden;
         border: 2px solid ${props => props.theme.mainBlack};
         box-sizing:border-box;
+        background: url('http://ppaxe.kr/profile/contents/images/contents/profile_mobile_background.png') center center no-repeat;
+        background-size: cover;
+        padding: 6rem 0;
 
     `
 
-    const MainContents = styled.div`
-
+    const MainContent = styled.div`
+    
+        position: relative;
+        z-index:1;
         display:block;
-        overflow: hidden;
+        width: 300px;
+        height: 580px;
+        margin: 0 auto;
+
+        &:after{
+
+            content: '';
+            display:block;
+            width: 100%;
+            height:100%;
+            position: absolute;
+            background: url('http://ppaxe.kr/profile/contents/images/contents/profile_mobile_contents.png') center center no-repeat;
+            background-size: cover;
+            
+        }
 
         img{
-            max-width:100%;
+            width:245px;
+            display:block;
+            margin: 0 auto;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            border-radius: 3rem;
         }
-        
-    `;
 
+    `
+    
     const ButtonWrap = styled.div`
     
         text-align: center;
@@ -30,7 +55,7 @@ const Mobile = memo(function(){
 
     `;
 
-    const ToLinkButton = styled.button`
+    const ToLinkButton = styled.a`
          
         cursor : pointer;
         display: inline-block;
@@ -48,12 +73,12 @@ const Mobile = memo(function(){
     return(
         <>
         <MainImg>
-            <MainContents>
-                <img src="http://ppaxe.kr/profile/contents/images/contents/profile_mobile_gif.gif" alt="mobile 포트폴리오 이미지" />
-            </MainContents>
+            <MainContent>
+                <img src="http://ppaxe.kr/profile/contents/images/contents/profile_mobile_gif.gif" alt="모바일 포트폴리오 미리보기" />
+            </MainContent>
         </MainImg>
         <ButtonWrap>
-            <ToLinkButton type="button" onClick={ () => window.open('http://ppaxe.kr/mobile/','_blank','width=414, height=736') } title="mobile 포트폴리오 새 창 열림">
+            <ToLinkButton role="button" href="http://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
                 보기
             </ToLinkButton>
         </ButtonWrap>

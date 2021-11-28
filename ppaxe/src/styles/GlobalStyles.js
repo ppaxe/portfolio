@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
         padding:0;
         font-family: 'Noto Sans KR', sans-serif;
         font-weight: 400;
+        color: #404040;
     }
 
     html, body{

@@ -52,7 +52,7 @@ function Screens(){
             <LoadProgressBar complete={ setLoader } />
         } */}
         <ScreenWrapper id="contents">
-        <Header view={ viewModal } setView={ setViewModal } />
+        <Header viewModal={ viewModal } setViewModal={ setViewModal } />
                 {/* contents */}
                 <section id="section">
                     { 
@@ -70,8 +70,8 @@ function Screens(){
                                 key={ index } 
                                 viewType={ !element.viewSizing ? popSetting.view : popSetting.minimum } 
                                 index={ index }
-                                view={ viewModal }
-                                setView={ setViewModal } />
+                                viewModal={ viewModal }
+                                setViewModal={ setViewModal } />
                             );
 
                         })

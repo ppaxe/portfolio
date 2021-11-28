@@ -10,19 +10,14 @@ const Web = memo(function(){
         border: 2px solid ${props => props.theme.mainBlack};
         box-sizing:border-box;
 
-    `
-
-    const MainContents = styled.div`
-
-        display:block;
-        overflow: hidden;
-
         img{
-            max-width:100%;
+            max-width: 100%;
+            width: 100%;
+            display: block;
         }
-        
-    `;
 
+    `
+    
     const ButtonWrap = styled.div`
     
         text-align: center;
@@ -48,9 +43,7 @@ const Web = memo(function(){
     return(
         <>
         <MainImg>
-            <MainContents>
-                
-            </MainContents>
+            <img src="http://ppaxe.kr/profile/contents/images/contents/profile_web_gif.gif" />
         </MainImg>
         <ButtonWrap>
             <ToLinkButton role="button" href="http://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
