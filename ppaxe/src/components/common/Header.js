@@ -1,15 +1,11 @@
 // eslint-disable-next-line
 
-import React from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 
-
-function Header(props){
-
-
-    const LogoWrap = styled.div`
+const LogoWrap = styled.div`
 
         position: absolute;
         left: 0;
@@ -172,6 +168,9 @@ function Header(props){
         }
 
     `;
+    
+
+const Header = memo(function(props){
 
     return(
         <>
@@ -201,6 +200,7 @@ function Header(props){
                                                        title={`${element.title} 팝업 열림`}
                                                        onClick={ () => {
                                                            let setArr = [...props.view];
+                                                           setArr[index].viewSizing = false;
                                                            setArr[index].active = !setArr[index].active;
                                                            props.setView(setArr);
                                                         } } 
@@ -220,6 +220,6 @@ function Header(props){
             </GlobalNavWrap>
         </>
     )
-}
+});
 
 export default Header;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
-function Profile(){
+const Profile = memo(function(){
 
     const ProfileWrap = styled.div`
     
@@ -50,7 +50,7 @@ function Profile(){
         }
         p{
             margin-top: 2rem;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             line-height: 160%;
 
             strong{
@@ -73,7 +73,7 @@ function Profile(){
 
         const DownLoadButton = styled.a`
         
-            margin-top: 2rem;
+            margin-top: 4rem;
             display: block;
             line-height: 58px;
             font-size: 2.4rem;
@@ -97,7 +97,7 @@ function Profile(){
                         박세연 <em>@ppaxe</em>< br/>
                     </h2>
                     <p>
-                        <strong>소통하는 프론트엔드 개발자 박세연입니다.</strong><br />
+                        <strong>소통하는 프론트엔드 개발자 박세연입니다.</strong><br /><br />
                         소통(疏通) &#123;뜻이서로 통하여 오해가 없음. &#125;
                     </p>
                     <p>
@@ -107,19 +107,19 @@ function Profile(){
                         기획, 디자인, 개발 등 각 위치에서의 역할이 나뉘어 있는 만큼, 서로간의 소통이 매우 중요합니다. 
                     </p>
                     <p>
-                        이러한 징검다리 역할을 하는 프론트엔드 개발자의 입장에선, 한 번의 의사 소통은 한 개의 코드보다 중요한 역할을 합니다. 
+                        기획과 디자인, 백엔드 사이의 징검다리 역할을 하는 프론트엔드 개발자의 입장에선, 한 번의 의사 소통은 한 개의 코드보다 중요한 역할을 합니다. 
                     </p>
                     <p>
                         저는 사소한 소통도 놓치지 않는 프론트엔드 개발자가 되고 싶습니다.
                     </p>
-                    <DownLoadButton href="" role="button" rel="noopener noreferrer" target="_blank">
-                        포트폴리오 스토리보드
+                    <DownLoadButton href="https://file2.jobkorea.co.kr/Net/Mng/UserDown/ResumeAttach?idx=5675285" role="button" rel="noopener noreferrer" target="_blank">
+                        스토리보드 보기
                     </DownLoadButton>
                 </ProfileText>
             </ProfileWrap>
         </>
     );
 
-}
+});
 
 export default Profile;

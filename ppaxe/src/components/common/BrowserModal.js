@@ -1,7 +1,15 @@
 // eslint-disable-next-line
+import React, {memo} from 'react';
 import styled from 'styled-components';
+import Profile from './../contents/Profile';
+import Web from './../contents/Web';
+import Mobile from './../contents/Mobile';
+import Responsive from './../contents/Responsive';
+import Contact from './../contents/Contact';
+import Resume from './../contents/Resume';
 
-function BrowserModal(props){
+let BrowserModal = memo(function(props){
+
 
     // variables styled-components
 
@@ -75,6 +83,7 @@ function BrowserModal(props){
             props.theme.mainGreen
 
         };
+        
         display: block;
         overflow: hidden;
         text-indent : -9999rem;
@@ -131,7 +140,7 @@ function BrowserModal(props){
 
         }
 
-    `;
+    `; 
 
     const TopLocationWrap = styled.div`
     
@@ -143,6 +152,11 @@ function BrowserModal(props){
 
         ${
             props.view[props.index].viewSizing && 'display:none'
+        } 
+        @media ${props => props.theme.deviceQuery.mobile}{
+
+            width: calc(100% - 60px);
+
         }
 
     `;
@@ -160,6 +174,10 @@ function BrowserModal(props){
         width: 100%;
         max-width: 400px;
         background: ${ props => props.theme.mainWhite };
+        ${
+            props.view[props.index].viewSizing && `background : transparent; border: none;`
+        } 
+
     `;
 
     const BrowserSection = styled.div`
@@ -182,6 +200,7 @@ function BrowserModal(props){
                         <BrowserButton type="button" title="팝업 닫기" action="close" onClick={() => {
                             let popModal = [...props.view];
 
+                            popModal[props.index].viewSizing = false;
                             popModal[props.index].active = false;
 
                             props.setView(popModal);
@@ -197,7 +216,7 @@ function BrowserModal(props){
                          }} action="minim">
                            팝업 최소화
                         </BrowserButton>
-                        <BrowserButton type="button" title="새 창 열림" action="maxim" onClick={() => props.view[props.index].redirect}>
+                        <BrowserButton type="button" title="새 창 열림" action="maxim" onClick={ props.view[props.index].redirect }>
                             { props.view[props.index].title } 새 창 열기
                         </BrowserButton>
                     </TopBtnWrap> 
@@ -208,12 +227,25 @@ function BrowserModal(props){
                     </TopLocationWrap>
                 </BrowserTop>
                 <BrowserSection id="modalDescription">
-                    
+                    {
+                        props.view[props.index].title === 'profile' ?
+                        <Profile /> :
+                        props.view[props.index].title === 'web' ?
+                        <Web /> :
+                        props.view[props.index].title === 'mobile' ?
+                        <Mobile /> :
+                        props.view[props.index].title === 'responsive' ?
+                        <Responsive /> :
+                        props.view[props.index].title === 'contact' ?
+                        <Contact /> :
+                        <Resume />
+
+                    }
                 </BrowserSection>
             </Browser>
         </>
     )
 
-}
+});
 
 export default BrowserModal;
