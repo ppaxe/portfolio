@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import styled from 'styled-components';
 import Profile from './../contents/Profile';
 import Web from './../contents/Web';
@@ -10,6 +10,13 @@ import Resume from './../contents/Resume';
 
 let BrowserModal = memo(function(props){
 
+    const modalSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_error.mp3');
+
+    useEffect(() => {
+
+        modalSound.play();
+    
+    })
 
     // variables styled-components
 
@@ -75,6 +82,7 @@ let BrowserModal = memo(function(props){
         height: 40px;
         margin-right: 10px;
         background:
+        
         ${ 
         
         props => props.action === 'close' ?

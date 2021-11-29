@@ -4,11 +4,30 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Utils from './utils/Utils';
 import Modal from './components/contents/Modal';
+import styled from 'styled-components';
 
 function App() {
   
   const [bgmModal, setBgmModal] = useState(false),
         [bgm, setBgm] = useState(false);
+
+  const clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3')
+
+  const winClickHandler = () => {
+
+    clickSound.play();
+
+  }
+
+  const Testing = styled.div`
+  
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+
+  `;
 
   useEffect(() => {
 
@@ -26,7 +45,7 @@ function App() {
 
   return (
     <>
-
+      <Testing  onClick={ winClickHandler }>
       <div id="container">
         {
 
@@ -52,7 +71,7 @@ function App() {
 
         </div>
         <Footer />
-      </div>
+      </div></Testing>
     </>
   );
 }

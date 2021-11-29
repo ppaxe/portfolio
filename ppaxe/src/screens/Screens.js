@@ -3,7 +3,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Data from './../utils/Data';
-import LoadProgressBar from './../components/common/LoadProgressBar';
 import Header from './../components/common/Header';
 import BrowserModal from './../components/common/BrowserModal';
 
@@ -13,8 +12,8 @@ function Screens(){
 
     // variables useStates
 
-    const   [loader, setLoader] = useState(false),
-            [viewModal, setViewModal] = useState(Data.siteMaps);
+    const   [viewModal, setViewModal] = useState(Data.siteMaps),
+            clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3');
 
     let popSetting = {
         index : 0,
@@ -22,11 +21,15 @@ function Screens(){
         minimum : 0,
     }
 
+    const clickSoundHandler = (e) => {
+
+        clickSound.play();
+
+    }
+
     // function
 
     useEffect(() => {
-
-        // ! localStorage.getItem('USER_LOADER') && setLoader(true); 
 
     },[]);
 
@@ -51,7 +54,7 @@ function Screens(){
             loader && 
             <LoadProgressBar complete={ setLoader } />
         } */}
-        <ScreenWrapper id="contents">
+        <ScreenWrapper id="contents" onClick={ clickSoundHandler } >
         <Header viewModal={ viewModal } setViewModal={ setViewModal } />
                 {/* contents */}
                 <section id="section">
