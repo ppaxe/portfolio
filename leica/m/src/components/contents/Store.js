@@ -33,7 +33,7 @@ function Store(props) {
         display:block;
         overflow:hidden;
         ${props => props.theme.isVh()};
-        background : url(http://ppaxe.kr/pc/contents/images/contents/store_${ props.store[id].name.toLowerCase() }_img.jpg) center center no-repeat;
+        background : url(http://ppaxe.kr/web/contents/images/contents/store_${ props.store[id].name.toLowerCase() }_img.jpg) center center no-repeat;
         background-size: cover;
 
         &:before{

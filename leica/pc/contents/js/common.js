@@ -1,7 +1,7 @@
 
 const common = window.addEventListener,
-      PCDomain = 'http://ppaxe.kr/pc/',
-      MDomain = 'http://ppaxe.kr/m/';
+      PCDomain = 'http://ppaxe.kr/web/',
+      MDomain = 'http://ppaxe.kr/mobile/';
 
 
 common('DOMContentLoaded',() => {

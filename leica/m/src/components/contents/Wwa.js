@@ -80,25 +80,25 @@ function Wwa(props) {
                 <div className="article__inner">
                     <p>LEICA is a global manufacturer of premium cam and optics.</p>
                     <div>
-                        <img src="http://ppaxe.kr/pc/contents/images/contents/wwa_content_img1.jpg" alt="leica 회사 전경" />
+                        <img src="http://ppaxe.kr/web/contents/images/contents/wwa_content_img1.jpg" alt="leica 회사 전경" />
                     </div>
                     <p>LEICA stands for the best German engineering technology.</p>
                     <div className="article__flex">
                         <div>
-                            <img src="http://ppaxe.kr/pc/contents/images/contents/wwa_content_img2.jpg" alt="leica 회사 ceo matthias Harsch" />
+                            <img src="http://ppaxe.kr/web/contents/images/contents/wwa_content_img2.jpg" alt="leica 회사 ceo matthias Harsch" />
                         </div>
                         <p>"LEICA ideal is to incorporate technology into culture."<br />
                             <span>- LEICA CEO Matthias Harsch</span>
                         </p>
                     </div>
                     <div>
-                        <img src="http://ppaxe.kr/pc/contents/images/contents/wwa_content_img3.jpg" alt="leica 회사 연구원" />
+                        <img src="http://ppaxe.kr/web/contents/images/contents/wwa_content_img3.jpg" alt="leica 회사 연구원" />
                     </div>
                     <p>LEICA reputation can be found in years of tradition, lens and the excellence of optical instruments.</p>
                     <div className="article__flex">
                         <p>All Leica products are made for the user's unique visual experience. </p>
                         <div>
-                            <img src="http://ppaxe.kr/pc/contents/images/contents/wwa_content_img4.jpg" alt="leica 회사 전경" />
+                            <img src="http://ppaxe.kr/web/contents/images/contents/wwa_content_img4.jpg" alt="leica 회사 전경" />
                         </div>
                     </div>
                 </div>
