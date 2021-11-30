@@ -10,13 +10,10 @@ import Resume from './../contents/Resume';
 
 let BrowserModal = memo(function(props){
 
-    const modalSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_error.mp3');
-
     useEffect(() => {
 
-        modalSound.play();
     
-    })
+    }, [])
 
     // variables styled-components
 

@@ -4,7 +4,9 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Data from './../utils/Data';
 import Header from './../components/common/Header';
+import Loader from './../components/common/Loader';
 import BrowserModal from './../components/common/BrowserModal';
+import SubApps from './../components/common/SubApps';
 
 function Screens(){
 
@@ -13,25 +15,30 @@ function Screens(){
     // variables useStates
 
     const   [viewModal, setViewModal] = useState(Data.siteMaps),
-            clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3');
+            [loaderStorage, setLoaderStorage] = useState(false),
+            backgroundSound = new Audio('http://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'),
+            clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3'),
+            modalSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_error.mp3');
 
     let popSetting = {
         index : 0,
         view : 0,
         minimum : 0,
     }
-
-    const clickSoundHandler = (e) => {
-
-        clickSound.play();
-
-    }
-
-    // function
+    
 
     useEffect(() => {
 
+        localStorage.getItem('USER_READY') && setLoaderStorage(true);
+
     },[]);
+
+    useEffect(() => {
+
+        modalSound.volume = 0.3;
+        modalSound.play();
+
+    },[viewModal]);
 
     // variabels styled-components
 
@@ -49,16 +56,18 @@ function Screens(){
 
     return(
         <>
-        {/* {
-            // Loader
-            loader && 
-            <LoadProgressBar complete={ setLoader } />
-        } */}
-        <ScreenWrapper id="contents" onClick={ clickSoundHandler } >
+        {
+
+            ! loaderStorage && 
+            <Loader loaderStorage={loaderStorage} setLoaderStorage={setLoaderStorage} />
+        
+        }
+        <ScreenWrapper id="contents" onClick={ () => clickSound.play() } >
         <Header viewModal={ viewModal } setViewModal={ setViewModal } />
                 {/* contents */}
                 <section id="section">
                     { 
+
                         viewModal.map((element, index) => {
 
                             // 팝업 개수
@@ -78,7 +87,10 @@ function Screens(){
                             );
 
                         })
+
                     }
+
+                    <SubApps />
                 </section>
                 {/* //contents */}
         </ScreenWrapper>
