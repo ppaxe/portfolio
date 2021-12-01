@@ -16,7 +16,6 @@ function Screens(){
 
     const   [viewModal, setViewModal] = useState(Data.siteMaps),
             [loaderStorage, setLoaderStorage] = useState(false),
-            backgroundSound = new Audio('http://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'),
             clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3'),
             modalSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_error.mp3');
 

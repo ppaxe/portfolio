@@ -1,8 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
+import styled, { keyframes, css } from 'styled-components';
 
 
-function SubApps(){
+let SubApps = memo(function(props){
+
+    const [isPlay, setIsPlay] = useState(false),
+          [backgroundSound] = useState(new Audio('http://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
+
+
+    useEffect(() => {
+
+        isPlay ? backgroundSound.play() : backgroundSound.pause();
+
+    });
 
     const SubAppsWrap = styled.div`
     
@@ -16,7 +26,7 @@ function SubApps(){
         width: 100%;
         max-width:1200px;
 
-    `
+    `;
 
     const SubAppsFlex = styled.ul`
     
@@ -28,6 +38,17 @@ function SubApps(){
         display:flex;
         justify-content: right;
     
+    `;
+
+    const PlayRecord = keyframes`
+    
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+
     `;
 
     const AppsButton = styled.button.attrs({
@@ -45,7 +66,7 @@ function SubApps(){
         margin: 5px;
 
         i{
-            
+            position:relative;
             display: inline-block;
             width: 100px;
             height: 100px;
@@ -59,6 +80,21 @@ function SubApps(){
                 height: 80px;
                 background-size: auto 80px;
                 background-position: -${ props => props.position * 80}px 0;
+            }
+
+            &:before{
+
+                content:'';
+                display:block;
+                width:100%;
+                height:100%;
+                background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon_active.png') center center no-repeat;
+                background-size: contain;
+                position:absolute;
+                top:0;
+                left: 0;
+                ${ props => css`animation : ${ PlayRecord } 2s linear infinite forwards ${ props => props.active ? `running` : `paused`}; `};
+
             }
         }
         
@@ -88,7 +124,7 @@ function SubApps(){
                 <SubAppsFlex>
 
                     <li>
-                        <AppsButton position={6}>
+                        <AppsButton position={6} active={isPlay} onClick={ () => setIsPlay(!isPlay) }>
                             <i aria-hidden="true"></i>
                             <p>Music</p>
                         </AppsButton>
@@ -101,6 +137,6 @@ function SubApps(){
         </>
     )
 
-}
+});
 
 export default SubApps;
