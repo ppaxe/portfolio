@@ -15,7 +15,7 @@ const StatusWrap = styled.header`
         z-index: 9999;
         background: rgba(64, 64, 64, 0.4);
 
-        @media ${props => props.theme.deviceQuery.mobile}{
+        @media ${({theme}) => theme.deviceQuery.mobile}{
 
             height: 30px;
             background: transparent;
@@ -36,7 +36,7 @@ const StatusWrap = styled.header`
             position: relative;
             padding: 5px 2rem;
             
-            @media ${props => props.theme.deviceQuery.mobile}{
+            @media ${ ({theme}) => theme.deviceQuery.mobile}{
                 padding: 10px 2rem 0;
             }
         }
@@ -58,7 +58,7 @@ const StatusWrap = styled.header`
         border: none;
         cursor: pointer;
 
-        @media ${props => props.theme.deviceQuery.mobile}{
+        @media ${ ({theme}) => theme.deviceQuery.mobile}{
             width: 69px;
             height: 20px;
         }
@@ -75,13 +75,13 @@ const StatusWrap = styled.header`
         letter-spacing: -1px;
         font-weight: 500;
 
-        @media ${props => props.theme.deviceQuery.mobile}{
+        @media ${ ({theme}) => theme.deviceQuery.mobile}{
             line-height: 30px;
             padding-top: 5px;
         }
 
         time{
-            color : ${props => props. theme.mainWhite};
+            color : ${ ({theme}) => theme.mainWhite};
         }
 
     `;

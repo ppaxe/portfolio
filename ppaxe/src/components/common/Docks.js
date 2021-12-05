@@ -1,6 +1,6 @@
-import React, {memo, useContext} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
-import { Data, User } from './../../utils/Data';
+import { Data } from './../../utils/Data';
 import ActiveApp from './ActiveApp';
 
 const DocksWrap = styled.nav`
@@ -15,8 +15,8 @@ max-width: 920px;
 height: 160px;
 z-index: 9999;
 border-radius: 3rem;
-border: 2px solid ${props => props.theme.mainBlack};
-background: ${ props => props.theme.mainLGray };
+border: 2px solid ${({theme}) => theme.mainBlack};
+background: ${ ({theme}) => theme.mainLGray };
 box-sizing: border-box;
 padding: 1rem 2rem 2rem;
 
@@ -30,7 +30,7 @@ ul{
     }
 }
 
-@media ${props => props.theme.deviceQuery.mobile}{
+@media ${({theme}) => theme.deviceQuery.mobile}{
 
     width: 90vw;
     height: 100px;
@@ -40,7 +40,7 @@ ul{
 `;
 
 
-const Docks = memo(function(props){
+const Docks = memo(function(){
 
     return(
         <>

@@ -16,26 +16,20 @@ const WallPaperWrap = styled.section`
 
 const WallPaper = memo(function(){
 
-    const backgroundAudio = new Audio('http://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'),
-          [isPlay, setIsPlay] = useState(false);
-
+    const [isPlay, setIsPlay] = useState(false),
+          [backgroundSound, setBackgroundSound] = useState(new Audio('http://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
 
     useEffect(() => {
-       
-        isPlay ? backgroundAudio.play() : backgroundAudio.pause();
+
+        if(isPlay){
+            backgroundSound.loop = true;
+            backgroundSound.volume = .5;
+            backgroundSound.play();   
+        }else{
+            backgroundSound.pause();
+        }
 
     },[isPlay]);
-
-    useEffect(() => {
-        backgroundAudio.addEventListener('ended', () => {
-            setIsPlay(false);
-        })
-        return () => {
-            backgroundAudio.removeEventListener('ended', () => 
-            setIsPlay(false));
-        };
-    },[]);
-
 
     return(
 
@@ -44,7 +38,10 @@ const WallPaper = memo(function(){
                     <article>
 
                         <div>
-                            <ActiveApp index={ 6 } title={ 'Music' } setParam={ setIsPlay } />
+                            <ActiveApp index={ 6 }
+                            title={ 'Music' }
+                            setParam={ setIsPlay }
+                            />
                         </div>
 
                     </article>

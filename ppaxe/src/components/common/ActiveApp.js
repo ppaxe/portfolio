@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const AppWrap = styled.button`
@@ -12,7 +12,7 @@ const AppWrap = styled.button`
         cursor: pointer;
 
         ${
-            props => props.on &&
+            ({$on}) => $on &&
             `&:after{
                 position: absolute;
                 display:block;
@@ -40,15 +40,15 @@ const AppWrap = styled.button`
         height: 100px;
         background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
         background-size: auto 100px;
-        background-position: -${ props => props.index * 100}px 0;
+        background-position: -${ ({index}) => index * 100}px 0;
         margin : 0 auto;
 
-        @media ${ props => props.theme.deviceQuery.tablet }{
+        @media ${ ({theme}) => theme.deviceQuery.tablet }{
 
             width: 80px;
             height: 80px;
             background-size: auto 80px;
-            background-position: -${ props => props.index * 80}px 0;
+            background-position: -${ ({index}) => index * 80}px 0;
 
         }
 
@@ -59,27 +59,34 @@ const AppWrap = styled.button`
         font-size: 1.8rem;
         margin-top: .5rem;
 
-        @media ${props => props.theme.deviceQuery.mobile }{
-
+        @media ${({theme}) => theme.deviceQuery.mobile }{
+            
             display:none;
 
         }
     
     `;
 
-const ActiveApp = memo(function( props ){
+const ActiveApp = ({title, index, setParam}) => {
 
     const [active, setActive] = useState(false);
 
     return(
         <>
-            <AppWrap type="button" title={`${props.title}`} key={ props.index } onClick={() => { setActive( !active ); props.setParam?.( !active )}} on={ active }>
-                <AppIcon index={ props.index } />
-                <AppName>{ props.title }</AppName>
+            <AppWrap type="button"
+            title={`${title}`}
+            key={ index }
+            onClick={() => { 
+                setActive( !active );
+                setParam?.( !active );
+            }}
+            $on={ active }>
+                <AppIcon index={ index } />
+                <AppName>{ title }</AppName>
             </AppWrap>
         </>
     )
 
-})
+}
 
 export default ActiveApp;
