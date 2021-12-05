@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import Utils from './Utils';
 
-const user = Utils.checkUser();
+const User = Utils.checkUser();
 
 const Data = {
 
@@ -27,7 +27,7 @@ const Data = {
             id : 2,
             title : 'mobile',
             kor : '모바일',
-            redirect : () => { return user.device === 'pc' ? window.open('http://ppaxe.kr/mobile/','_blank','width=414, height=736') : window.open('http://ppaxe.kr/mobile/') },
+            redirect : () => { return User.device === 'pc' ? window.open('http://ppaxe.kr/mobile/','_blank','width=414, height=736') : window.open('http://ppaxe.kr/mobile/') },
             active : false,
             viewSizing : false,
         },
@@ -59,4 +59,4 @@ const Data = {
 
 }
 
-export default Data;
+export { Data, User };

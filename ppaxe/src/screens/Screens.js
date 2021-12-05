@@ -3,10 +3,9 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Data from './../utils/Data';
-import Header from './../components/common/Header';
-import Loader from './../components/common/Loader';
-import BrowserModal from './../components/common/BrowserModal';
-import SubApps from './../components/common/SubApps';
+import StatusBar from './../components/common/StatusBar';
+import Docks from './../components/common/Docks';
+import WallPaper from './../components/common/WallPaper';
 
 function Screens(){
 
@@ -14,32 +13,16 @@ function Screens(){
 
     // variables useStates
 
-    const   [viewModal, setViewModal] = useState(Data.siteMaps),
-            [loaderStorage, setLoaderStorage] = useState(false),
-            clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3'),
-            modalSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_error.mp3');
-
-    let popSetting = {
-        index : 0,
-        view : 0,
-        minimum : 0,
-    }
+    // const   [viewModal, setViewModal] = useState(Data.siteMaps),
+            // [loaderStorage, setLoaderStorage] = useState(false),
+    const clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3');
+            // modalSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_error.mp3');
     
 
     useEffect(() => {
 
-        localStorage.getItem('USER_READY') && setLoaderStorage(true);
 
     },[]);
-
-    useEffect(() => {
-
-        modalSound.volume = 0.3;
-        modalSound.play();
-
-    },[viewModal]);
-
-    // variabels styled-components
 
     const ScreenWrapper = styled.div`
     
@@ -55,43 +38,10 @@ function Screens(){
 
     return(
         <>
-        {
-
-            ! loaderStorage && 
-            <Loader loaderStorage={loaderStorage} setLoaderStorage={setLoaderStorage} />
-        
-        }
-        <ScreenWrapper id="contents" onClick={ () => clickSound.play() } >
-        <Header viewModal={ viewModal } setViewModal={ setViewModal } />
-                {/* contents */}
-                <section id="section">
-                    { 
-
-                        viewModal.map((element, index) => {
-
-                            // 팝업 개수
-                            element.active && popSetting.index++;
-                            
-                            // 오픈 팝업
-                            element.active && !element.viewSizing ? popSetting.view++ : popSetting.minimum++ ;
-
-                            return (
-                                element.active &&  
-                                <BrowserModal 
-                                key={ index } 
-                                viewType={ !element.viewSizing ? popSetting.view : popSetting.minimum } 
-                                index={ index }
-                                viewModal={ viewModal }
-                                setViewModal={ setViewModal } />
-                            );
-
-                        })
-
-                    }
-
-                    <SubApps />
-                </section>
-                {/* //contents */}
+        <ScreenWrapper id="contents" onClick={ () => clickSound.play() }>
+            <StatusBar />
+            <Docks />
+            <WallPaper />
         </ScreenWrapper>
         </>
     )
