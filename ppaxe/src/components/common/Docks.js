@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useState} from 'react';
 import styled from 'styled-components';
 import { Data } from './../../utils/Data';
 import ActiveApp from './ActiveApp';
@@ -42,6 +42,14 @@ ul{
 
 const Docks = memo(function(){
 
+    const [profileModal, setProfileModal] = useState(false),
+          [webModal, setWebModal] = useState(false),
+          [mobileModal, setMobileModal] = useState(false),
+          [responsiveModal, setResponsiveModal] = useState(false),
+          [contactModal, setContactModal] = useState(false),
+          [resumeModal, setResumeModal] = useState(false),
+          setModals = [setProfileModal, setWebModal, setMobileModal, setResponsiveModal, setContactModal, setResumeModal];
+
     return(
         <>
             <DocksWrap>
@@ -51,13 +59,35 @@ const Docks = memo(function(){
                             
                             return(
                             <li key={ index }>
-                                    <ActiveApp index={ index } title={ element.title } />
+                                    <ActiveApp index={ index } title={ element.title } setParam={ setModals[index] } />
                             </li>
                             )
                         })
                     }
                 </ul>
+                
             </DocksWrap>
+            {
+                profileModal &&
+                <div>Profile</div>
+            }
+            {
+                webModal &&
+                <div>Web</div>
+            }
+            {
+                mobileModal &&
+                <div>Mobile</div>
+            }
+            {
+                responsiveModal &&
+                <div>Responsive</div>
+            }
+            {
+                resumeModal &&
+                <div>Resume</div>
+            }
+
         </>
     )
 

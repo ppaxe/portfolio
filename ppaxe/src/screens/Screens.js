@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import StatusBar from './../components/common/StatusBar';
 import Docks from './../components/common/Docks';
 import WallPaper from './../components/common/WallPaper';
+import { Data } from './../utils/Data';
+
 
 const ScreenWrapper = styled.div`
     
@@ -21,7 +23,6 @@ const ScreenWrapper = styled.div`
 
 const Screens = () => {
 
-    
 
     // variables useStates
 
@@ -36,9 +37,9 @@ const Screens = () => {
     return(
         <>
         <ScreenWrapper id="contents" onClick={ () => clickSound.play() }>
-            <StatusBar />
-            <Docks />
-            <WallPaper />
+                <StatusBar />
+                <Docks />
+                <WallPaper />
         </ScreenWrapper>
         </>
     )

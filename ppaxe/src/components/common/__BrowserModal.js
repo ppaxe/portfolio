@@ -58,7 +58,7 @@ let BrowserModal = memo(function(props){
         height: auto;
         padding: 1rem;
         justify-content: space-between;
-        border-bottom: 2px solid ${ props => props.theme.mainBlack };
+        border-bottom: 2px solid ${ ({theme}) => theme.mainBlack };
         box-sizing: border-box;
 
     `;
@@ -80,14 +80,14 @@ let BrowserModal = memo(function(props){
         margin-right: 10px;
         background:
         
-        ${ 
+        /* ${ 
         
         props => props.action === 'close' ?
             props.theme.mainRed : 
             props.action === 'minim' ? props.theme.mainYellow :
             props.theme.mainGreen
 
-        };
+        }; */
         
         display: block;
         overflow: hidden;
@@ -96,13 +96,13 @@ let BrowserModal = memo(function(props){
         font-size: 0px;
         border-radius: 50%;
         box-sizing:border-box;
-        border: 2px solid ${ props => props.theme.mainBlack };
+        border: 2px solid ${ ({theme}) => theme.mainBlack };
         cursor: pointer;
 
         
-        @media ${props => props.theme.deviceQuery.mobile}{
+        @media ${({theme}) => theme.deviceQuery.mobile}{
 
-            ${ props => props.action !== 'close' && 'display : none'}
+            /* ${ props => props.action !== 'close' && 'display : none'} */
 
         }
         &:last-of-type{
@@ -120,28 +120,28 @@ let BrowserModal = memo(function(props){
             border-radius: 1px;
             width: 2px;
             height: 20px;
-            background: ${ props => props.theme.mainBlack };
+            background: ${ ({theme}) => theme.mainBlack };
             box-sizing: border-box;
         }
         &:before{
-            
+/*             
             ${
                 props => props.action === 'close' ?
                 'transform:translate(-50%, -50%) rotate(45deg)' :
                 props.action === 'minim' ?
                 'transform:translate(-50%, -50%) rotate(90deg)' :
                 'transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;'
-            }
+            } */
         }
         &:after{
-
+/* 
             ${
                 props => props.action === 'close' ?
                 'transform:translate(-50%, -50%) rotate(-45deg)' :
                 props.action === 'minim' ?
                 'transform:translate(-50%, -50%) rotate(90deg)' :
                 'transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;'
-            }
+            } */
 
         }
 
@@ -155,10 +155,7 @@ let BrowserModal = memo(function(props){
         width: calc(100% - 160px);
         text-align: right;
 
-        ${
-            props.viewModal[props.index].viewSizing && 'display:none'
-        } 
-        @media ${props => props.theme.deviceQuery.mobile}{
+        @media ${ ({theme}) => theme.deviceQuery.mobile}{
 
             width: calc(100% - 60px);
 
@@ -175,13 +172,10 @@ let BrowserModal = memo(function(props){
         font-size: 1.6rem;
         line-height: 40px;
         border-radius: 20px;
-        border: 2px solid ${ props => props.theme.mainBlack };
+        border: 2px solid ${ ({theme}) => theme.mainBlack };
         width: 100%;
         max-width: 400px;
-        background: ${ props => props.theme.mainWhite };
-        ${
-            props.viewModal[props.index].viewSizing && `background : transparent; border: none;`
-        } 
+        background: ${ ({theme}) => theme.mainWhite };
 
     `;
 
@@ -189,7 +183,7 @@ let BrowserModal = memo(function(props){
 
         position: relative;
         height: calc(100% - (40px + 6rem));
-        background: ${props => props.theme.mainWhite};
+        background: ${({theme}) => theme.mainWhite};
         overflow-y: scroll;
         padding: 2rem;
 
@@ -199,53 +193,26 @@ let BrowserModal = memo(function(props){
 
     return(
         <>
-            <Browser role="dialog" aria-modal="true" aria-hidden={ props.viewModal[props.index].viewSizing ? 'true' : 'false' } aria-expanded={ props.viewModal[props.index].viewSizing ? 'false' : 'true' } aria-labelledby="modalTitle" aria-describedby="modalDescription" >
+            <Browser role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" >
                 <BrowserTop>
                     <TopBtnWrap>
-                        <BrowserButton type="button" title="팝업 닫기" action="close" onClick={() => {
-                            let popModal = [...props.viewModal];
-
-                            popModal[props.index].viewSizing = false;
-                            popModal[props.index].active = false;
-
-                            props.setViewModal(popModal);
-                        }}>
+                        <BrowserButton type="button" title="팝업 닫기" action="close">
                             팝업 닫기
                         </BrowserButton>
-                        <BrowserButton type="button" title="팝업 최소화" onClick={() => { 
-                            let sizeModal = [...props.viewModal];
-
-                            sizeModal[props.index].viewSizing = !sizeModal[props.index].viewSizing;
-
-                            props.setViewModal(sizeModal);
-                         }} action="minim">
+                        <BrowserButton type="button" title="팝업 최소화"action="minim">
                            팝업 최소화
                         </BrowserButton>
-                        <BrowserButton type="button" title="새 창 열림" action="maxim" onClick={ props.viewModal[props.index].redirect }>
-                            { props.viewModal[props.index].title } 새 창 열기
+                        <BrowserButton type="button" title="새 창 열림" action="maxim">
                         </BrowserButton>
                     </TopBtnWrap> 
                     <TopLocationWrap>
                         <LocationBar id="modalTitle">
-                         { props.viewModal[props.index].kor }
+
                         </LocationBar>
                     </TopLocationWrap>
                 </BrowserTop>
                 <BrowserSection id="modalDescription">
-                    {
-                        props.viewModal[props.index].title === 'profile' ?
-                        <Profile /> :
-                        props.viewModal[props.index].title === 'web' ?
-                        <Web /> :
-                        props.viewModal[props.index].title === 'mobile' ?
-                        <Mobile /> :
-                        props.viewModal[props.index].title === 'responsive' ?
-                        <Responsive /> :
-                        props.viewModal[props.index].title === 'contact' ?
-                        <Contact /> :
-                        <Resume />
 
-                    }
                 </BrowserSection>
             </Browser>
         </>

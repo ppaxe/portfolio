@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import styled from 'styled-components';
 
 const AppWrap = styled.button`
@@ -60,33 +60,26 @@ const AppWrap = styled.button`
         margin-top: .5rem;
 
         @media ${({theme}) => theme.deviceQuery.mobile }{
-            
+
             display:none;
 
         }
     
     `;
 
-const ActiveApp = ({title, index, setParam}) => {
+const ActiveApp = memo(function( { title, index, setParam} ){
 
     const [active, setActive] = useState(false);
 
     return(
         <>
-            <AppWrap type="button"
-            title={`${title}`}
-            key={ index }
-            onClick={() => { 
-                setActive( !active );
-                setParam?.( !active );
-            }}
-            $on={ active }>
+            <AppWrap type="button" title={`${title}`} key={ index } onClick={() => { setActive( !active ); setParam?.( !active )}} $on={ active }>
                 <AppIcon index={ index } />
                 <AppName>{ title }</AppName>
             </AppWrap>
         </>
     )
 
-}
+})
 
 export default ActiveApp;
