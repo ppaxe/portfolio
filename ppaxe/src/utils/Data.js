@@ -5,51 +5,65 @@ const User = Utils.checkUser();
 
 const Data = {
 
-    siteMaps:
-        [
+    Apps:
+    [
         {
             id : 0,
-            title : 'profile',
+            title : 'Profile',
             kor : '이것은 나의 프로필',
             redirect : () => window.open('https://file2.jobkorea.co.kr/Net/Mng/UserDown/ResumeAttach?idx=5675285'),
-            active : false
+            active : false,
+            zIndex : 0,
         },
         {
             id : 1,
-            title : 'web',
+            title : 'Web',
             kor : 'PC 홈페이지',
             redirect : () => window.open('https://ppaxe.kr/web/'),
-            active : false
+            active : false,
+            zIndex : 0,
         },
         {
             id : 2,
-            title : 'mobile',
+            title : 'Mobile',
             kor : '모바일',
             redirect : () => { return User.device === 'pc' ? window.open('https://ppaxe.kr/mobile/','_blank','width=414, height=736') : window.open('https://ppaxe.kr/mobile/') },
-            active : false
+            active : false,
+            zIndex : 0,
         },
         {
             id : 3,
-            title : 'responsive',
+            title : 'Responsive',
             kor : '반응형',
             redirect : () => window.open('https://ppaxe.kr/web/'),
-            active : false
+            active : false,
+            zIndex : 0,
         },
         {
             id : 4,
-            title : 'contact',
+            title : 'Contact',
             kor : '당신의 연락을 기다려요',
             redirect : () => window.open('https://ppaxe.kr/web/'),
-            active : false
+            active : false,
+            zIndex : 0,
         },
         {
             id : 5,
-            title : 'resume',
+            title : 'Resume',
             kor : '나의 명필 이력서',
             redirect : () => window.open('https://ppaxe.kr/web/'),
-            active : false
+            active : false,
+            zIndex : 0,
+        },
+        {
+            id : 6,
+            title : 'Music',
+            kor : '나와 함께 들어요',
+            redirect : () => window.open('https://ppaxe.kr/web/'),
+            active : false,
+            zIndex : 0,
         }
-        ]
+    ]
 
 }
 

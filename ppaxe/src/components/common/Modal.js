@@ -20,8 +20,9 @@ const ModalWrap = styled.div`
         max-width: 980px; 
         max-height: 760px; 
         transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
+        top: calc(50% + ${ ({zIndexer}) => zIndexer * 60}px);
+        left: calc(50% + ${ ({zIndexer}) => zIndexer * 60}px);
+        z-index: ${ ({zIndexer}) => 9999 + zIndexer};
 
         @media ${ ({theme}) => theme.deviceQuery.mobile }{
             width: 100%;
@@ -168,45 +169,52 @@ const ModalSection = styled.div`
 `;
 
 
-const Modal = memo(({content, param, setParam}) => {
+const Modal = memo(({index, param}) => {
 
-    const [active, setActive] = useState(false);
+    const modalClose = () => {
+
+        let returnState = [...param.apps];
+        returnState[index].active = !returnState[index].active;
+        param.setZIndexer(( param.zIndexer - 1 ));
+        param.setApps(returnState);
+
+    }
 
     return(
         <>
-            <ModalWrap>
+            <ModalWrap zIndexer={ param.apps[index].zIndex }>
                 <ModalTop>
                     <TopBtnWrap>
-                        <ModalButton onClick={() => { setParam(!param) }}>
+                        <ModalButton onClick={() => modalClose() }>
                             팝업 닫기
                         </ModalButton>
                         <ModalButton>
                         </ModalButton>
-                        <ModalButton onClick={() => { content.redirect() }}>
+                        <ModalButton onClick={() => param.apps[index].redirect()}>
                         </ModalButton>
                     </TopBtnWrap>
                     <TopLocationWrap>
                         <LocationBar>
-                            {content.kor}
+                           { param.apps[index].kor }
                         </LocationBar>
                     </TopLocationWrap>
                 </ModalTop>
                 <ModalSection>
-                        {
-                            content.title === 'profile' ?
-                                <Profile />
-                            : content.title === 'web' ?
-                                <Web />
-                            : content.title === 'mobile' ? 
-                                <Mobile />
-                            : content.title === 'responsive' ? 
-                                <Responsive />
-                            : content.title === 'contact' ? 
-                                <Contact />
-                            : content.title === 'resume' ?
-                                <Resume />
-                            : false
-                        }
+                    {
+                        index === 0 ?
+                        <Profile /> :
+                        index === 1 ?
+                        <Web /> :
+                        index === 2 ?
+                        <Mobile /> :
+                        index === 3 ?
+                        <Responsive /> :
+                        index === 4 ?
+                        <Contact /> :
+                        index === 5 ?
+                        <Resume /> :
+                        false
+                    }
                 </ModalSection>
             </ModalWrap>
         </>

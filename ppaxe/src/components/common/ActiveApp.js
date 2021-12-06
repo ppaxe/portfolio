@@ -1,5 +1,6 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useContext } from 'react';
 import styled from 'styled-components';
+import {AppsContext} from './../../screens/Screens';
 
 const AppWrap = styled.button`
     
@@ -67,13 +68,34 @@ const AppWrap = styled.button`
     
     `;
 
-const ActiveApp = memo(function( { title, index, param, setParam} ){
+const ActiveApp = memo(function( { index } ){
+
+    const activeContext = useContext(AppsContext);
+
+    const toggleActive = () => {
+
+        let returnState = [...activeContext.apps];
+
+        returnState[index].active = !returnState[index].active;
+
+        ( returnState[index].active ) ? activeContext.setZIndexer((activeContext.zIndexer + 1)) :  activeContext.setZIndexer((activeContext.zIndexer - 1));
+
+        returnState[index].zIndex = activeContext.zIndexer;
+
+        activeContext.setApps(returnState);
+    }
 
     return(
         <>
-            <AppWrap type="button" title={`${title}`} key={ index } onClick={() => { setParam?.( !param )}} $on={ param }>
+            <AppWrap type="button"
+            
+            title={ activeContext.apps[index].title }
+
+            onClick={() => toggleActive() }
+            
+            $on={ activeContext.apps[index].active }>
                 <AppIcon index={ index } />
-                <AppName>{ title }</AppName>
+                <AppName>{ activeContext.apps[index].title }</AppName>
             </AppWrap>
         </>
     )

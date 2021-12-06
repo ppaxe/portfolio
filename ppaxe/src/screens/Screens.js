@@ -1,11 +1,13 @@
 // eslint-disable-next-line
 
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import StatusBar from './../components/common/StatusBar';
 import Docks from './../components/common/Docks';
 import WallPaper from './../components/common/WallPaper';
 import { Data } from './../utils/Data';
+
+export const AppsContext = React.createContext();
 
 
 const ScreenWrapper = styled.div`
@@ -26,20 +28,35 @@ const Screens = () => {
 
     // variables useStates
 
-    const clickSound = new Audio('https://ppaxe.kr/profile/contents/sound/sound_click.mp3');
+    const [apps, setApps] = useState(Data.Apps),
+          [bgm, setBgm] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3')),
+          [zIndexer, setZIndexer] = useState(0),
+          clickSound = new Audio('https://ppaxe.kr/profile/contents/sound/sound_click.mp3');
+
+    //  bgm
 
     useEffect(() => {
 
+        if(apps[6].active){
+            bgm.volume = .3;
+            bgm.loop = true;
+            bgm.play();
+        }else{
+            bgm.pause();
+        } 
 
-    },[]);
+    },[apps[6].active])
 
+    // bgm
 
     return(
         <>
         <ScreenWrapper id="contents" onClick={ () => clickSound.play() }>
+            <AppsContext.Provider value={ { apps : apps, setApps : setApps, zIndexer : zIndexer, setZIndexer : setZIndexer } }>
                 <StatusBar />
                 <Docks />
                 <WallPaper />
+            </AppsContext.Provider>
         </ScreenWrapper>
         </>
     )

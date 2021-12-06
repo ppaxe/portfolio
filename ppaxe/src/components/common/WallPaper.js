@@ -1,7 +1,7 @@
-import React, {memo, useState, useEffect} from 'react';
+import React, { memo, useContext } from 'react';
 import styled from 'styled-components';
-import ActiveApp from './ActiveApp';
-
+import { AppsContext } from './../../screens/Screens';
+import Modal from './Modal';
 
 const WallPaperWrap = styled.section`
     
@@ -12,24 +12,13 @@ const WallPaperWrap = styled.section`
     max-width: 1200px;
     margin: 0 auto;
     padding: 6rem 2rem;
+
 `;
 
 const WallPaper = memo(function(){
 
-    const [isPlay, setIsPlay] = useState(false),
-          [backgroundSound, setBackgroundSound] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
 
-    useEffect(() => {
-
-        if(isPlay){
-            backgroundSound.loop = true;
-            backgroundSound.volume = .5;
-            backgroundSound.play();   
-        }else{
-            backgroundSound.pause();
-        }
-
-    },[isPlay]);
+    const activeContext = useContext(AppsContext);
 
     return(
 
@@ -37,13 +26,18 @@ const WallPaper = memo(function(){
                 <WallPaperWrap>
                     <article>
 
-                        <div>
-                            <ActiveApp index={ 6 }
-                            title={ 'Music' }
-                            param={isPlay}
-                            setParam={ setIsPlay }
-                            />
-                        </div>
+                        {
+                            activeContext.apps.map((element, index) => {
+
+                                return(
+                                    index < 6 && element.active && 
+                                    <Modal key={ index } 
+                                           index={ index }
+                                           param={ activeContext }
+                                    />
+                                )
+                            })
+                        }
 
                     </article>
                 </WallPaperWrap>
