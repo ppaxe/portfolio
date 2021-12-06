@@ -1,5 +1,6 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
+import { Data } from './../../utils/Data';
 
 const Mobile = memo(function(){
 
@@ -55,7 +56,7 @@ const Mobile = memo(function(){
 
     `;
 
-    const ToLinkButton = styled.a`
+    const ToLinkButton = styled.button`
          
         cursor : pointer;
         display: inline-block;
@@ -78,7 +79,7 @@ const Mobile = memo(function(){
             </MainContent>
         </MainImg>
         <ButtonWrap>
-            <ToLinkButton role="button" href="https://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
+            <ToLinkButton type="button" onClick={() => { Data.siteMaps[2].redirect() }} target="_blank" title="web 포트폴리오 새 창 열림">
                 보기
             </ToLinkButton>
         </ButtonWrap>

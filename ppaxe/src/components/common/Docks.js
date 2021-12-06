@@ -2,6 +2,7 @@ import React, {memo, useState} from 'react';
 import styled from 'styled-components';
 import { Data } from './../../utils/Data';
 import ActiveApp from './ActiveApp';
+import Modal from './Modal';
 
 const DocksWrap = styled.nav`
     
@@ -48,6 +49,7 @@ const Docks = memo(function(){
           [responsiveModal, setResponsiveModal] = useState(false),
           [contactModal, setContactModal] = useState(false),
           [resumeModal, setResumeModal] = useState(false),
+          Modals = [profileModal, webModal, mobileModal, responsiveModal, contactModal, resumeModal],
           setModals = [setProfileModal, setWebModal, setMobileModal, setResponsiveModal, setContactModal, setResumeModal];
 
     return(
@@ -59,7 +61,7 @@ const Docks = memo(function(){
                             
                             return(
                             <li key={ index }>
-                                    <ActiveApp index={ index } title={ element.title } setParam={ setModals[index] } />
+                                    <ActiveApp index={ index } title={ element.title } param={ Modals[index] } setParam={ setModals[index] } />
                             </li>
                             )
                         })
@@ -69,23 +71,27 @@ const Docks = memo(function(){
             </DocksWrap>
             {
                 profileModal &&
-                <div>Profile</div>
+                <Modal content={Data.siteMaps[0]} param={ profileModal } setParam={ setProfileModal } />
             }
             {
                 webModal &&
-                <div>Web</div>
+                <Modal content={Data.siteMaps[1]} param={ webModal } setParam={ setWebModal } />
             }
             {
                 mobileModal &&
-                <div>Mobile</div>
+                <Modal content={Data.siteMaps[2]} param={ mobileModal } setParam={ setMobileModal } />
             }
             {
                 responsiveModal &&
-                <div>Responsive</div>
+                <Modal content={Data.siteMaps[3]} param={ responsiveModal } setParam={ setResponsiveModal } />
+            }
+            {
+                contactModal &&
+                <Modal content={Data.siteMaps[4]} param={ contactModal } setParam={ setContactModal } />
             }
             {
                 resumeModal &&
-                <div>Resume</div>
+                <Modal content={Data.siteMaps[5]} param={ resumeModal } setParam={ setResumeModal } />
             }
 
         </>

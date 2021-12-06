@@ -40,6 +40,7 @@ const WallPaper = memo(function(){
                         <div>
                             <ActiveApp index={ 6 }
                             title={ 'Music' }
+                            param={isPlay}
                             setParam={ setIsPlay }
                             />
                         </div>

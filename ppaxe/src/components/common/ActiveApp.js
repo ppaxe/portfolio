@@ -67,13 +67,11 @@ const AppWrap = styled.button`
     
     `;
 
-const ActiveApp = memo(function( { title, index, setParam} ){
-
-    const [active, setActive] = useState(false);
+const ActiveApp = memo(function( { title, index, param, setParam} ){
 
     return(
         <>
-            <AppWrap type="button" title={`${title}`} key={ index } onClick={() => { setActive( !active ); setParam?.( !active )}} $on={ active }>
+            <AppWrap type="button" title={`${title}`} key={ index } onClick={() => { setParam?.( !param )}} $on={ param }>
                 <AppIcon index={ index } />
                 <AppName>{ title }</AppName>
             </AppWrap>
