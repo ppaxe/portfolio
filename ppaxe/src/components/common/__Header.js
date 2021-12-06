@@ -144,7 +144,7 @@ const LogoWrap = styled.div`
             display: inline-block;
             width: 100px;
             height: 100px;
-            background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
+            background: url('https://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
             background-size: auto 100px;
             background-position: -${ props => props.position * 100}px 0;
 

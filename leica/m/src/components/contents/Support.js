@@ -22,7 +22,7 @@ function Support(props) {
 
         .main__banner_cont{
             margin: 0 -2rem;
-            background : url(http://ppaxe.kr/web/contents/images/contents/support_main_bn.jpg) left center no-repeat;
+            background : url(https://ppaxe.kr/web/contents/images/contents/support_main_bn.jpg) left center no-repeat;
             background-size:cover;
             width: 100vw;
             height: 250px;

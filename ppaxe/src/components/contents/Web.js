@@ -43,10 +43,10 @@ const Web = memo(function(){
     return(
         <>
         <MainImg>
-            <img src="http://ppaxe.kr/profile/contents/images/contents/profile_web_gif.gif" />
+            <img src="https://ppaxe.kr/profile/contents/images/contents/profile_web_gif.gif" />
         </MainImg>
         <ButtonWrap>
-            <ToLinkButton role="button" href="http://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
+            <ToLinkButton role="button" href="https://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
                 보기
             </ToLinkButton>
         </ButtonWrap>

@@ -264,7 +264,7 @@ function Product(props) {
         text-align:center;
         flex-direction: column;
         justify-content:center;
-        background:url('http://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_pic1.jpg') center center no-repeat;
+        background:url('https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_pic1.jpg') center center no-repeat;
         background-size:cover;
 
         h3{
@@ -352,13 +352,13 @@ function Product(props) {
             <StyledMain>
                 <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} className="mainSwiper">
                     <SwiperSlide>
-                        <img src={ `http://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view1.png` } alt={ `${props.product[id].title} 제품 이미지` } />
+                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view1.png` } alt={ `${props.product[id].title} 제품 이미지` } />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={ `http://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view2.png` } alt={ `${props.product[id].title} 제품 측면 이미지` } />
+                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view2.png` } alt={ `${props.product[id].title} 제품 측면 이미지` } />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={ `http://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view3.png` } alt={ `${props.product[id].title} 제품 후면 이미지` } />
+                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view3.png` } alt={ `${props.product[id].title} 제품 후면 이미지` } />
                     </SwiperSlide>
                 </Swiper>
                 <div className="product__info">
@@ -378,7 +378,7 @@ function Product(props) {
                 </div>
                 <h4>{props.product[id].tag}</h4>
                 <div className="article__img">
-                    <img src={`http://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_pic2.png`} alt="제품으로 찍은 사진 예시" />
+                    <img src={`https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_pic2.png`} alt="제품으로 찍은 사진 예시" />
                 </div>
             </StyledInfo>
             <StyledPicture ref={pictureSelector} active={pictureActive}>

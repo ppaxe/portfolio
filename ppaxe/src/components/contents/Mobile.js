@@ -8,7 +8,7 @@ const Mobile = memo(function(){
         display:block;
         border: 2px solid ${props => props.theme.mainBlack};
         box-sizing:border-box;
-        background: url('http://ppaxe.kr/profile/contents/images/contents/profile_mobile_background.png') center center no-repeat;
+        background: url('https://ppaxe.kr/profile/contents/images/contents/profile_mobile_background.png') center center no-repeat;
         background-size: cover;
         padding: 6rem 0;
 
@@ -30,7 +30,7 @@ const Mobile = memo(function(){
             width: 100%;
             height:100%;
             position: absolute;
-            background: url('http://ppaxe.kr/profile/contents/images/contents/profile_mobile_contents.png') center center no-repeat;
+            background: url('https://ppaxe.kr/profile/contents/images/contents/profile_mobile_contents.png') center center no-repeat;
             background-size: cover;
             
         }
@@ -74,11 +74,11 @@ const Mobile = memo(function(){
         <>
         <MainImg>
             <MainContent>
-                <img src="http://ppaxe.kr/profile/contents/images/contents/profile_mobile_gif.gif" alt="모바일 포트폴리오 미리보기" />
+                <img src="https://ppaxe.kr/profile/contents/images/contents/profile_mobile_gif.gif" alt="모바일 포트폴리오 미리보기" />
             </MainContent>
         </MainImg>
         <ButtonWrap>
-            <ToLinkButton role="button" href="http://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
+            <ToLinkButton role="button" href="https://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
                 보기
             </ToLinkButton>
         </ButtonWrap>

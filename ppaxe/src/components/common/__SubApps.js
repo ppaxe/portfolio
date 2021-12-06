@@ -59,7 +59,7 @@ i{
     display: inline-block;
     width: 100px;
     height: 100px;
-    background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
+    background: url('https://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
     background-size: auto 100px;
     background-position: -${ props => props.position * 100}px 0;
 
@@ -77,7 +77,7 @@ i{
         display:block;
         width:100%;
         height:100%;
-        background: url('http://ppaxe.kr/profile/contents/images/common/nav_icon_active.png') center center no-repeat;
+        background: url('https://ppaxe.kr/profile/contents/images/common/nav_icon_active.png') center center no-repeat;
         background-size: contain;
         position:absolute;
         top:0;
@@ -107,7 +107,7 @@ p{
 const SubApps = memo(function(props){
 
     const [isPlay, setIsPlay] = useState(false),
-          [backgroundSound] = useState(new Audio('http://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
+          [backgroundSound] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
 
 
     useEffect(() => {

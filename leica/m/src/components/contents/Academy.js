@@ -61,7 +61,7 @@ function Academy(props) {
             ${props => props.theme.isVh()};
 
             .bg{
-                background-image: url(http://ppaxe.kr/web/contents/images/contents/academy_main_banner.jpg);
+                background-image: url(https://ppaxe.kr/web/contents/images/contents/academy_main_banner.jpg);
             }
         }
 
@@ -69,7 +69,7 @@ function Academy(props) {
             height: 200px;
 
             .bg{
-                background-image: url(http://ppaxe.kr/web/contents/images/contents/academy_sub_banner.jpg);
+                background-image: url(https://ppaxe.kr/web/contents/images/contents/academy_sub_banner.jpg);
             }
 
             &:before{
@@ -80,7 +80,7 @@ function Academy(props) {
                 height:300px;
                 margin-left:-160px;
                 z-index:1;
-                background-image: url(http://ppaxe.kr/web/contents/images/contents/academy_sub_banner_man.png);
+                background-image: url(https://ppaxe.kr/web/contents/images/contents/academy_sub_banner_man.png);
                 background-position: center center;
                 background-size: cover;
             }
@@ -262,12 +262,12 @@ function Academy(props) {
                             <StyledSlideWrap id={`academyBtn${index}`} aria-controls={`academyPanel${index}`} aria-expanded={index === academyActive ? 'true' : 'false'} role="button" tabindex="1" key={index} onClick={() => {index === academyActive ? setAcademyActive(false) : setAcademyActive(index)}} active={index === academyActive && true}>
                                 <div className="academy__title">
                                     <div>
-                                        <img src={`http://ppaxe.kr/web/contents/images/contents/academy_profile_${props.academy[index].profile.image}.jpg`} alt="아카데미 강사 이미지" />
+                                        <img src={`https://ppaxe.kr/web/contents/images/contents/academy_profile_${props.academy[index].profile.image}.jpg`} alt="아카데미 강사 이미지" />
                                     </div>
                                     <h4>{ props.academy[index].name }</h4>
                                 </div>
                                 <div className="academy__img">
-                                    <img src={`http://ppaxe.kr/web/contents/images/contents/academy_picture_${props.academy[index].profile.image}.jpg`} alt="아카데미 사진 대표 이미지" />
+                                    <img src={`https://ppaxe.kr/web/contents/images/contents/academy_picture_${props.academy[index].profile.image}.jpg`} alt="아카데미 사진 대표 이미지" />
                                 </div>
                                 <div className="academy__info">
                                     <h4>"{ props.academy[index].title }"</h4>

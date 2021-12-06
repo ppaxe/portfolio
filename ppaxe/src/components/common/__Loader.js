@@ -11,7 +11,7 @@ function Loader(props){
         width:100%;
         height:100%;
         z-index: 9999;
-        background: url('http://ppaxe.kr/profile/contents/images/common/loader_noise.gif') center center no-repeat;
+        background: url('https://ppaxe.kr/profile/contents/images/common/loader_noise.gif') center center no-repeat;
         background-size: cover;
         overflow:hidden;
 

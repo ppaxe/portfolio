@@ -92,7 +92,7 @@ function Main(props) {
           position:relative;
           dispaly:block;
           overflow:hidden;
-          background: url(http://ppaxe.kr/web/contents/images/contents/main_slide_bg_${ props => props.active }.jpg) center center no-repeat;
+          background: url(https://ppaxe.kr/web/contents/images/contents/main_slide_bg_${ props => props.active }.jpg) center center no-repeat;
           background-size:cover;
 
           .mainSwiper{
@@ -175,7 +175,7 @@ function Main(props) {
           position:relative;
           dispaly:block;
           overflow:hidden;
-          background:url(http://ppaxe.kr/web/contents/images/contents/main_prod_bg.jpg) center center no-repeat;
+          background:url(https://ppaxe.kr/web/contents/images/contents/main_prod_bg.jpg) center center no-repeat;
           background-size:cover;
 
           div:nth-of-type(1){
@@ -414,8 +414,8 @@ function Main(props) {
       {/* article 1 */}
       <StyledArticle>
         <h3 className="blind">라이카 제품군 보기</h3>
-        <StyledMain style={ { backgroundImage : 'url("http://ppaxe.kr/web/contents/images/contents/main_slide_bg_m10.jpg")' } }>
-          <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(http://ppaxe.kr/web/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center'; }} className="mainSwiper">
+        <StyledMain style={ { backgroundImage : 'url("https://ppaxe.kr/web/contents/images/contents/main_slide_bg_m10.jpg")' } }>
+          <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(https://ppaxe.kr/web/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center'; }} className="mainSwiper">
             {
                 props.product?.map((elements,index) => {
 
@@ -424,7 +424,7 @@ function Main(props) {
                   <SwiperSlide key={index}>
                     
                     <div>
-                      <img  src={ `http://ppaxe.kr/web/contents/images/product/prod_${props.product[index].name}.png` } alt={`${props.product[index].title} 제품 이미지`} />
+                      <img  src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[index].name}.png` } alt={`${props.product[index].title} 제품 이미지`} />
                       <span>{ props.product[index].title.toUpperCase() }</span>
                     </div>
                   
@@ -443,7 +443,7 @@ function Main(props) {
       <StyledArticle>
         <StyledProduct ref={ productSelector } active={ productActive }>
             <div>
-              <img src="http://ppaxe.kr/web/contents/images/product/prod_m10.png" alt="M10 제품 이미지" />
+              <img src="https://ppaxe.kr/web/contents/images/product/prod_m10.png" alt="M10 제품 이미지" />
             </div>
             <div>
               <h3>M10</h3>
@@ -473,12 +473,12 @@ function Main(props) {
                       <StyledSlideWrap>
                         <div>
                           <div>
-                            <img src={`http://ppaxe.kr/web/contents/images/contents/academy_profile_${ props.academy[index].profile.image }.jpg`} alt={` ${ props.academy[index].name } 프로필 이미지 `} />
+                            <img src={`https://ppaxe.kr/web/contents/images/contents/academy_profile_${ props.academy[index].profile.image }.jpg`} alt={` ${ props.academy[index].name } 프로필 이미지 `} />
                           </div>
                           <p>{ props.academy[index].name }</p>
                         </div>
                         <div>
-                          <img src={ `http://ppaxe.kr/web/contents/images/contents/academy_picture_${ props.academy[index].profile.image }.jpg` } alt={` ${ props.academy[index].name } 작품 이미지 `} />
+                          <img src={ `https://ppaxe.kr/web/contents/images/contents/academy_picture_${ props.academy[index].profile.image }.jpg` } alt={` ${ props.academy[index].name } 작품 이미지 `} />
                         </div>
                         <div>
                           " { props.academy[index].title } "

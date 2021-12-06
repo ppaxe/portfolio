@@ -36,7 +36,7 @@ function Header() {
                 display: inline-block;
                 width: 60px;
                 height: 60px;
-                background: url(http://ppaxe.kr/web/contents/images/common/logo.png) center center no-repeat;
+                background: url(https://ppaxe.kr/web/contents/images/common/logo.png) center center no-repeat;
                 background-size: auto 60px;
                 ${ props => props.theme.isIR };
 
@@ -60,7 +60,7 @@ function Header() {
                 display: inline-block;
                 width: 60px;
                 height: 60px;
-                background: url(http://ppaxe.kr/web/contents/images/common/gnb_icon.png) center center no-repeat;
+                background: url(https://ppaxe.kr/web/contents/images/common/gnb_icon.png) center center no-repeat;
                 background-size: auto 60px;
                 ${ props => props.theme.isIR };
 

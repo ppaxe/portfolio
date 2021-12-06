@@ -17,7 +17,7 @@ const WallPaperWrap = styled.section`
 const WallPaper = memo(function(){
 
     const [isPlay, setIsPlay] = useState(false),
-          [backgroundSound, setBackgroundSound] = useState(new Audio('http://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
+          [backgroundSound, setBackgroundSound] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
 
     useEffect(() => {
 

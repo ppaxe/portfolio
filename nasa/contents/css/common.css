@@ -315,7 +315,7 @@ Common css
 
 /* common */
 #container{
-  background: url(http://ppaxe.kr/nasa/contents/images/common/background_galaxy.jpg) center center no-repeat;
+  background: url(https://ppaxe.kr/nasa/contents/images/common/background_galaxy.jpg) center center no-repeat;
   background-size: cover;
   position: fixed;
   z-index: 9999;
@@ -330,7 +330,7 @@ Common css
 #container:before{
   content: '';
   display: block;
-  background: url(http://ppaxe.kr/nasa/contents/images/common/splash_stars.png) top left repeat;
+  background: url(https://ppaxe.kr/nasa/contents/images/common/splash_stars.png) top left repeat;
   position: fixed;
   top: 0;
   left: 0;
@@ -380,7 +380,7 @@ Common css
     display: inline-block;
     width: 85px;
     height: 70px;
-    background: url(http://ppaxe.kr/nasa/contents/images/common/header_logo.png) center center no-repeat;
+    background: url(https://ppaxe.kr/nasa/contents/images/common/header_logo.png) center center no-repeat;
     background-size: 85px auto;
     text-indent: -9999rem;;
     color: transparent;
@@ -424,7 +424,7 @@ Common css
 /* common - splash (loader) */
 
 .splash{
-  background: url(http://ppaxe.kr/nasa/contents/images/common/background_galaxy.jpg) center center no-repeat;
+  background: url(https://ppaxe.kr/nasa/contents/images/common/background_galaxy.jpg) center center no-repeat;
   background-size: cover;
   position: fixed;
   z-index: 9999;
@@ -439,7 +439,7 @@ Common css
 .splash:before{
   content: '';
   display: block;
-  background: url(http://ppaxe.kr/nasa/contents/images/common/splash_stars.png) top left repeat;
+  background: url(https://ppaxe.kr/nasa/contents/images/common/splash_stars.png) top left repeat;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -454,7 +454,7 @@ Common css
   position: absolute;
   width: 20vw;
   height: 20vw;
-  background: url(http://ppaxe.kr/nasa/contents/images/common/splash_earth.png) center center no-repeat;
+  background: url(https://ppaxe.kr/nasa/contents/images/common/splash_earth.png) center center no-repeat;
   background-size: cover;
   top: 50%;
   left: 50%;
@@ -469,7 +469,7 @@ Common css
   position: fixed;
   width: 100vw;
   height: 100vw;
-  background: url(http://ppaxe.kr/nasa/contents/images/common/splash_planet_move.png) center center no-repeat;
+  background: url(https://ppaxe.kr/nasa/contents/images/common/splash_planet_move.png) center center no-repeat;
   background-size: cover;
   top: 50%;
   left: 50%;
@@ -486,7 +486,7 @@ Common css
   position: fixed;
   width: 50vw;
   height: 50vw;
-  background: url(http://ppaxe.kr/nasa/contents/images/common/splash_planet_move.png) center center no-repeat;
+  background: url(https://ppaxe.kr/nasa/contents/images/common/splash_planet_move.png) center center no-repeat;
   background-size: cover;
   top: 50%;
   left: 50%;

@@ -53,7 +53,7 @@ const StatusWrap = styled.header`
         overflow: hidden;
         color: transparent;
         text-indent: -9999rem;
-        background: url('http://ppaxe.kr/profile/contents/images/common/logo.png') center center no-repeat;
+        background: url('https://ppaxe.kr/profile/contents/images/common/logo.png') center center no-repeat;
         background-size: cover;
         border: none;
         cursor: pointer;

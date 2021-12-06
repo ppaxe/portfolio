@@ -91,7 +91,7 @@ function Resume(){
                 </LabelText>
             </div>
             <ButtonWrap>
-                <ToLinkButton role="button" href="http://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
+                <ToLinkButton role="button" href="https://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
                     이력서 받아보기
                 </ToLinkButton>
             </ButtonWrap>

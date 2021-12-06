@@ -11,7 +11,7 @@ function App() {
   const [bgmModal, setBgmModal] = useState(false),
         [bgm, setBgm] = useState(false);
 
-  const clickSound = new Audio('http://ppaxe.kr/profile/contents/sound/sound_click.mp3')
+  const clickSound = new Audio('https://ppaxe.kr/profile/contents/sound/sound_click.mp3')
 
   const winClickHandler = () => {
 

@@ -18,35 +18,35 @@ const Data = {
             id : 1,
             title : 'web',
             kor : 'PC 홈페이지',
-            redirect : () => window.open('http://ppaxe.kr/web/'),
+            redirect : () => window.open('https://ppaxe.kr/web/'),
             active : false
         },
         {
             id : 2,
             title : 'mobile',
             kor : '모바일',
-            redirect : () => { return User.device === 'pc' ? window.open('http://ppaxe.kr/mobile/','_blank','width=414, height=736') : window.open('http://ppaxe.kr/mobile/') },
+            redirect : () => { return User.device === 'pc' ? window.open('https://ppaxe.kr/mobile/','_blank','width=414, height=736') : window.open('https://ppaxe.kr/mobile/') },
             active : false
         },
         {
             id : 3,
             title : 'responsive',
             kor : '반응형',
-            redirect : () => window.open('http://ppaxe.kr/web/'),
+            redirect : () => window.open('https://ppaxe.kr/web/'),
             active : false
         },
         {
             id : 4,
             title : 'contact',
             kor : '당신의 연락을 기다려요',
-            redirect : () => window.open('http://ppaxe.kr/web/'),
+            redirect : () => window.open('https://ppaxe.kr/web/'),
             active : false
         },
         {
             id : 5,
             title : 'resume',
             kor : '나의 명필 이력서',
-            redirect : () => window.open('http://ppaxe.kr/web/'),
+            redirect : () => window.open('https://ppaxe.kr/web/'),
             active : false
         }
         ]
