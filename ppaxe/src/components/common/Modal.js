@@ -232,25 +232,25 @@ const Modal = memo(({index, param}) => {
                     </TopBtnWrap>
                     <TopLocationWrap>
                         <LocationBar>
-                           {/* { param.apps[index].kor } */}
+                           { param.apps[index].kor }
                         </LocationBar>
                     </TopLocationWrap>
                 </ModalTop>
                 <ModalSection>
                     {
-                        // index === 0 ?
-                        // <Profile /> :
-                        // index === 1 ?
-                        // <Web /> :
-                        // index === 2 ?
-                        // <Mobile /> :
-                        // index === 3 ?
-                        // <Responsive /> :
-                        // index === 4 ?
-                        // <Contact /> :
-                        // index === 5 ?
-                        // <Resume /> :
-                        // false
+                        index === 0 ?
+                        <Profile /> :
+                        index === 1 ?
+                        <Web /> :
+                        index === 2 ?
+                        <Mobile /> :
+                        index === 3 ?
+                        <Responsive /> :
+                        index === 4 ?
+                        <Contact /> :
+                        index === 5 ?
+                        <Resume /> :
+                        false
                     }
                 </ModalSection>
             </ModalWrap>
