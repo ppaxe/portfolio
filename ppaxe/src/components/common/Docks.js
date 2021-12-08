@@ -1,8 +1,6 @@
-import React, {memo, useState, useContext, useEffect} from 'react';
+import React, {memo, useContext} from 'react';
 import styled from 'styled-components';
-import { Data } from './../../utils/Data';
 import ActiveApp from './ActiveApp';
-import Modal from './Modal';
 import {AppsContext} from './../../screens/Screens';
 
 const DocksWrap = styled.nav`
@@ -40,7 +38,6 @@ ul{
 }
 
 `;
-
 
 const Docks = memo(function(){
 

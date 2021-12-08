@@ -1,11 +1,13 @@
-import React, {memo, useState} from 'react';
+import React, {memo, useState, useRef} from 'react';
 import styled from 'styled-components';
+import Draggable from 'react-draggable';
 import Profile from './../contents/Profile';
 import Web from './../contents/Web';
 import Mobile from './../contents/Mobile';
 import Responsive from './../contents/Responsive';
 import Contact from './../contents/Contact';
 import Resume from './../contents/Resume';
+
 
 const ModalWrap = styled.div`
 
@@ -19,7 +21,7 @@ const ModalWrap = styled.div`
         box-sizing : border-box;
         max-width: 980px; 
         max-height: 760px; 
-        transform: translate(-50%, -50%);
+        transform: translate(calc(-50% + ${({dragPosition}) => dragPosition.x}px), calc(-50% + ${({dragPosition}) => dragPosition.y}px)) !important;
         top: calc(50% + ${ ({zIndexer}) => zIndexer * 60}px);
         left: calc(50% + ${ ({zIndexer}) => zIndexer * 60}px);
         z-index: ${ ({zIndexer}) => 9999 + zIndexer};
@@ -171,6 +173,7 @@ const ModalSection = styled.div`
 
 const Modal = memo(({index, param}) => {
 
+    // modal - close Fn
     const modalClose = () => {
 
         let returnState = [...param.apps];
@@ -180,43 +183,78 @@ const Modal = memo(({index, param}) => {
 
     }
 
+    // modal - drag Fn
+    const [position, setPosition] = useState({ x: 0, y: 0 }),
+          dragModal = useRef(null),
+          [isDrag,  setIsDrag] = useState( 9999 + param.zIndexer );
+
+    const trackPos = (e, data, param) => {
+        
+        setPosition({ x: data.x, y: data.y }) ;
+
+    };
+
+    const setDragZIndex = () => {
+
+        setIsDrag(isDrag + 1);
+        
+        dragModal.current.style.zIndex = (isDrag + 2);
+
+    }
+
+
     return(
         <>
-            <ModalWrap zIndexer={ param.apps[index].zIndex }>
-                <ModalTop>
+        <Draggable
+            onDrag={ (e, data) => 
+                trackPos(e, data, param)
+            }
+            onStart={ () => 
+                setDragZIndex()
+            }
+            handle="#dragHandler"
+        > 
+            <ModalWrap 
+                zIndexer={ param.apps[index].zIndex }
+                test={ (isDrag + 1) }
+                dragPosition={ position }
+                ref={ dragModal }
+            >
+                <ModalTop id="dragHandler">
                     <TopBtnWrap>
-                        <ModalButton onClick={() => modalClose() }>
+                        <ModalButton onMouseDown={(e) => { e.stopPropagation(); modalClose(); } }>
                             팝업 닫기
                         </ModalButton>
                         <ModalButton>
                         </ModalButton>
-                        <ModalButton onClick={() => param.apps[index].redirect()}>
+                        <ModalButton onMouseDown={(e) => { e.stopPropagation(); param.apps[index].redirect() }}>
                         </ModalButton>
                     </TopBtnWrap>
                     <TopLocationWrap>
                         <LocationBar>
-                           { param.apps[index].kor }
+                           {/* { param.apps[index].kor } */}
                         </LocationBar>
                     </TopLocationWrap>
                 </ModalTop>
                 <ModalSection>
                     {
-                        index === 0 ?
-                        <Profile /> :
-                        index === 1 ?
-                        <Web /> :
-                        index === 2 ?
-                        <Mobile /> :
-                        index === 3 ?
-                        <Responsive /> :
-                        index === 4 ?
-                        <Contact /> :
-                        index === 5 ?
-                        <Resume /> :
-                        false
+                        // index === 0 ?
+                        // <Profile /> :
+                        // index === 1 ?
+                        // <Web /> :
+                        // index === 2 ?
+                        // <Mobile /> :
+                        // index === 3 ?
+                        // <Responsive /> :
+                        // index === 4 ?
+                        // <Contact /> :
+                        // index === 5 ?
+                        // <Resume /> :
+                        // false
                     }
                 </ModalSection>
             </ModalWrap>
+        </Draggable>
         </>
     )
 
