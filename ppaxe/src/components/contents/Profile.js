@@ -1,9 +1,7 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
 
-const Profile = memo(function(){
-
-    const ProfileWrap = styled.div`
+const ProfileWrap = styled.div`
     
         display: block;
         overflow: hidden;
@@ -85,6 +83,8 @@ const Profile = memo(function(){
             text-decoration : none;
 
         `;
+
+const Profile = memo(function(){
 
     return(
         <>

@@ -94,9 +94,11 @@ cursor: pointer;
     background-color: ${({theme}) => theme.mainYellow};
     &:before{
         transform:translate(-50%, -50%) rotate(90deg);
+        display: none;
     }
     &:after{
         transform:translate(-50%, -50%) rotate(90deg);
+        display: none;
     }
 }
 &:nth-of-type(3){
@@ -188,7 +190,7 @@ const Modal = memo(({index, param}) => {
           dragModal = useRef(null),
           [isDrag,  setIsDrag] = useState( 9999 + param.zIndexer );
 
-    const trackPos = (e, data, param) => {
+    const trackPos = (e, data) => {
         
         setPosition({ x: data.x, y: data.y }) ;
 
@@ -207,7 +209,7 @@ const Modal = memo(({index, param}) => {
         <>
         <Draggable
             onDrag={ (e, data) => 
-                trackPos(e, data, param)
+                trackPos(e, data)
             }
             onStart={ () => 
                 setDragZIndex()
@@ -216,18 +218,17 @@ const Modal = memo(({index, param}) => {
         > 
             <ModalWrap 
                 zIndexer={ param.apps[index].zIndex }
-                test={ (isDrag + 1) }
                 dragPosition={ position }
                 ref={ dragModal }
             >
                 <ModalTop id="dragHandler">
                     <TopBtnWrap>
-                        <ModalButton onMouseDown={(e) => { e.stopPropagation(); modalClose(); } }>
+                        <ModalButton onClick={(e) => {  modalClose(); } }>
                             팝업 닫기
                         </ModalButton>
                         <ModalButton>
                         </ModalButton>
-                        <ModalButton onMouseDown={(e) => { e.stopPropagation(); param.apps[index].redirect() }}>
+                        <ModalButton onClick={(e) => { param.apps[index].redirect() }}>
                         </ModalButton>
                     </TopBtnWrap>
                     <TopLocationWrap>

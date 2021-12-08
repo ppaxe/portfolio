@@ -1,9 +1,7 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
 
-const Web = memo(function(){
-
-    const MainImg = styled.div`
+const MainImg = styled.div`
     
         display:block;
         overflow: hidden;
@@ -39,6 +37,8 @@ const Web = memo(function(){
         text-decoration : none;
 
     `;
+    
+const Web = memo(function(){
 
     return(
         <>

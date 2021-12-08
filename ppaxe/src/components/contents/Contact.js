@@ -1,50 +1,51 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const MainTitle = styled.h2`
+    
+font-size: 3.6rem;
+font-weight: 600;
+display:block;
+text-align: center; 
+padding: 6rem 0 2rem;
+line-height:160%;
+
+`;
+
+const SubTitle = styled.p`
+
+font-size: 2.4rem;
+text-align: center;
+line-height: 160%;
+margin-bottom: 4rem;
+
+`;
+
+const ContactList = styled.dl`
+
+display:block;
+overflow:hidden;
+font-size: 2rem;
+
+dt{
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+dd{
+    a{
+        text-decoration: none;
+        color: ${props => props.theme.mainBlack};
+    }
+ 
+    &+dt{
+        margin-top: 4rem;
+    }
+}
+
+`;
+
+
 function Contact(){
-
-    const MainTitle = styled.h2`
-    
-        font-size: 3.6rem;
-        font-weight: 600;
-        display:block;
-        text-align: center; 
-        padding: 6rem 0 2rem;
-        line-height:160%;
-
-    `;
-
-    const SubTitle = styled.p`
-    
-        font-size: 2.4rem;
-        text-align: center;
-        line-height: 160%;
-        margin-bottom: 4rem;
-
-    `;
-
-    const ContactList = styled.dl`
-    
-        display:block;
-        overflow:hidden;
-        font-size: 2rem;
-
-        dt{
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-        dd{
-            a{
-                text-decoration: none;
-                color: ${props => props.theme.mainBlack};
-            }
-         
-            &+dt{
-                margin-top: 4rem;
-            }
-        }
-
-    `;
 
     return(
         <>
@@ -53,7 +54,7 @@ function Contact(){
             <ContactList>
                 <dt>이-메일</dt>
                 <dd>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parkart9911@gmail.com" target="_blank">parkart9911@gmail.com</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=parkart9911@gmail.com" target="_blank" rel="noreferrer">parkart9911@gmail.com</a>
                 </dd>
                 <dt>핸-드폰</dt>
                 <dd>
