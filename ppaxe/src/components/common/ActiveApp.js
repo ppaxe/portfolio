@@ -11,8 +11,6 @@ const AppWrap = styled.button`
         border: none;
         background: transparent;
         cursor: pointer;
-        border: 2px solid ${({theme}) => theme.mainBlack};
-        box-sizing : border-box;
 
         ${
             ({$on}) => $on &&

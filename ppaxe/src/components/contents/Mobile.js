@@ -76,7 +76,7 @@ const Mobile = memo(function(){
         <>
         <MainImg>
             <MainContent>
-                {/* <img src="https://ppaxe.kr/profile/contents/images/contents/profile_mobile_gif.gif" alt="모바일 포트폴리오 미리보기" /> */}
+                <img src="https://ppaxe.kr/profile/contents/images/contents/profile_mobile_gif.gif" alt="모바일 포트폴리오 미리보기" />
             </MainContent>
         </MainImg>
         <ButtonWrap>

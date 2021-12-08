@@ -90,7 +90,7 @@ const Profile = memo(function(){
         <>
             <ProfileWrap>
                 <ProfileImg>
-                    {/* <img src="https://ppaxe.kr/profile/contents/images/contents/profile_img.png" alt="내 사진" /> */}
+                    <img src="https://ppaxe.kr/profile/contents/images/contents/profile_img.png" alt="내 사진" />
                 </ProfileImg>
                 <ProfileText>
                     <h2>
