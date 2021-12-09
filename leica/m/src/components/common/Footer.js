@@ -58,7 +58,7 @@ const StyledSnsLink = styled.a.attrs({
     display: block;
     background: url('https://ppaxe.kr/web/contents/images/common/footer_sns.png') center center no-repeat;
     background-size: auto 40px;
-    background-position:${props => props.position};
+    background-position:${({position}) => position};
 
 `;
 

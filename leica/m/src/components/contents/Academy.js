@@ -4,19 +4,16 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-function Academy(props) {
 
-    const [academyActive, setAcademyActive] = useState(false);
-
-    const StyledMain = styled.article`
+const StyledMain = styled.article`
 
         position: relative;
         width:100vw;
-        ${props => props.theme.isVh()};
+        ${({theme}) => theme.isVh()};
         overflow:hidden;
         
         &:before{
-            ${props => props.theme.isImagin };
+            ${ ({theme}) => theme.isImagin };
             width: 100%;
             height: 150px;
             left: 0;
@@ -38,15 +35,15 @@ function Academy(props) {
                 margin-bottom: 2rem;
                 padding-right: 2rem;
                 font-size:2.4rem;
-                ${ props => props.theme.isColor('white') }
+                ${ ({theme}) => theme.isColor('white') }
             }
 
             p{
-                background : ${ props => props.theme.mainGray };
+                background : ${ ({theme}) => theme.mainGray };
                 padding:4rem 2rem;
                 font-size: 1.6rem;
                 line-height: 160%;
-                color: ${props => props.theme.mainWhite}
+                color: ${ ({theme}) => theme.mainWhite}
             }
         }
     `;
@@ -58,7 +55,7 @@ function Academy(props) {
 
         &.main_banner{
 
-            ${props => props.theme.isVh()};
+            ${ ({theme}) => theme.isVh()};
 
             .bg{
                 background-image: url(https://ppaxe.kr/web/contents/images/contents/academy_main_banner.jpg);
@@ -69,18 +66,18 @@ function Academy(props) {
             height: 200px;
 
             .bg{
-                background-image: url(https://ppaxe.kr/web/contents/images/contents/academy_sub_banner.jpg);
+                background-image: url('https://ppaxe.kr/web/contents/images/contents/academy_sub_banner.jpg');
             }
 
             &:before{
-                ${ props => props.theme.isImagin};
+                ${ ({theme}) => theme.isImagin};
                 left:50%;
                 bottom:0;
                 width:320px;
                 height:300px;
                 margin-left:-160px;
                 z-index:1;
-                background-image: url(https://ppaxe.kr/web/contents/images/contents/academy_sub_banner_man.png);
+                background-image: url('https://ppaxe.kr/web/contents/images/contents/academy_sub_banner_man.png');
                 background-position: center center;
                 background-size: cover;
             }
@@ -116,7 +113,7 @@ function Academy(props) {
             display:block;
 
             h3{
-                ${ props => props.theme.isColor('white')};
+                ${ ({theme}) => theme.isColor('white')};
                 font-weight:bold;
                 text-align:center;
                 font-size:2.4rem;
@@ -128,7 +125,7 @@ function Academy(props) {
                 padding:4rem 2rem;
                 font-size: 1.6rem;
                 line-height: 160%;
-                color: ${props => props.theme.mainWhite}
+                color: ${ ({theme}) => theme.mainWhite}
             }
 
     `;
@@ -140,11 +137,11 @@ function Academy(props) {
             padding: 2rem;
 
             h3{
-                ${props => props.theme.isColor('red')};
+                ${ ({theme}) => theme.isColor('red')};
                 font-size:3.6rem;
                 font-weight:bold;
                 padding-left:2rem;
-                border-left:2px solid ${props => props.theme.mainRed};
+                border-left:2px solid ${ ({theme}) => theme.mainRed};
                 margin-bottom:4rem;
             }
     `;
@@ -158,8 +155,8 @@ function Academy(props) {
             box-shadow:0px 0px 20px rgba(0,0,0,0.25);
             overflow:hidden;
             position:relative;
-            background:${ props => props.theme.mainBlack };
-            color: ${props => props.theme.mainWhite}
+            background:${ ({theme}) => theme.mainBlack };
+            color: ${ ({theme}) => theme.mainWhite}
 
             img{
                 max-width:100%;
@@ -182,7 +179,7 @@ function Academy(props) {
                     margin-left: 1rem;
                     font-weight:bold;
                     font-size:1.6rem;
-                    color : ${props => props.active ? props.theme.mainRed : props.theme.mainWhite }
+                    color : ${ ({active, theme}) => active ? theme.mainRed : theme.mainWhite }
                 }
             }
 
@@ -195,7 +192,7 @@ function Academy(props) {
                 }
 
                 dl{
-                    display : ${props => props.active ? 'block' : 'none'};
+                    display : ${ ({active}) => active ? 'block' : 'none'};
                     margin: 1rem 0;
                     clear:both;
                     overflow:hidden;
@@ -209,23 +206,28 @@ function Academy(props) {
                     }
 
                     dt{
-                        color: ${props => props.theme.mainRed};
+                        color: ${ ({theme}) => theme.mainRed};
                         float: left;
                         clear: both;
-                        border-right: 2px solid ${ props => props.theme.mainRed };
+                        border-right: 2px solid ${ ({theme}) => theme.mainRed };
                         -webkit-box-sizing: border-box;
                         box-sizing: border-box;
                         font-weight : bold;
                     }
 
                     dd{
-                        color : ${props => props.theme.mainWhite};
+                        color : ${ ({theme}) => theme.mainWhite};
                         float : right;
                     }
                 }
             }
 
     `;
+
+
+function Academy({academy}) {
+
+    const [academyActive, setAcademyActive] = useState(false);
     
 
     return(
@@ -255,34 +257,34 @@ function Academy(props) {
 
                 {
 
-                    props.academy?.map((element, index) => {
+                    academy?.map((element, index) => {
 
                         return(
 
                             <StyledSlideWrap id={`academyBtn${index}`} aria-controls={`academyPanel${index}`} aria-expanded={index === academyActive ? 'true' : 'false'} role="button" tabindex="1" key={index} onClick={() => {index === academyActive ? setAcademyActive(false) : setAcademyActive(index)}} active={index === academyActive && true}>
                                 <div className="academy__title">
                                     <div>
-                                        <img src={`https://ppaxe.kr/web/contents/images/contents/academy_profile_${props.academy[index].profile.image}.jpg`} alt="아카데미 강사 이미지" />
+                                        <img src={`https://ppaxe.kr/web/contents/images/contents/academy_profile_${academy[index].profile.image}.jpg`} alt="아카데미 강사 이미지" />
                                     </div>
-                                    <h4>{ props.academy[index].name }</h4>
+                                    <h4>{ academy[index].name }</h4>
                                 </div>
                                 <div className="academy__img">
-                                    <img src={`https://ppaxe.kr/web/contents/images/contents/academy_picture_${props.academy[index].profile.image}.jpg`} alt="아카데미 사진 대표 이미지" />
+                                    <img src={`https://ppaxe.kr/web/contents/images/contents/academy_picture_${academy[index].profile.image}.jpg`} alt="아카데미 사진 대표 이미지" />
                                 </div>
                                 <div className="academy__info">
-                                    <h4>"{ props.academy[index].title }"</h4>
+                                    <h4>"{ academy[index].title }"</h4>
                                     <dl id={`academyPanel${index}`} aira-labelledby={`academyBtn${index}`}>
                                         <dt>SCHEDULE</dt>
                                         <dd>
-                                            {props.academy[index].profile.schedule}
+                                            {academy[index].profile.schedule}
                                         </dd>
                                         <dt>PLACE</dt>
                                         <dd>
-                                            {props.academy[index].profile.place}
+                                            {academy[index].profile.place}
                                         </dd>
                                         <dt>TOOLS</dt>
                                         <dd>
-                                            {props.academy[index].profile.tools}
+                                            {academy[index].profile.tools}
                                         </dd>
                                     </dl>
                                 </div>

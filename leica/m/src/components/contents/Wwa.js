@@ -3,18 +3,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Wwa(props) {
 
-    const StyledMain = styled.article`
+const StyledMain = styled.article`
 
         display:block;
         overflow:hidden;
         position:relative;
-        ${props => props.theme.isColor('white')};
+        ${ ({theme}) => theme.isColor('white')};
         text-align:center;
 
         &:before{
-            ${props => props.theme.isImagin };
+            ${ ({theme}) => theme.isImagin };
             width: 100%;
             height: 150px;
             left: 0;
@@ -34,7 +33,7 @@ function Wwa(props) {
             z-index:111;
 
         &:after{
-            ${props => props.theme.isImagin };
+            ${ ({theme}) => theme.isImagin };
             width: 100%;
             height: 150px;
             left: 0;
@@ -72,6 +71,9 @@ function Wwa(props) {
         }
 
     `;
+
+
+function Wwa(props) {
 
     return(
         <>

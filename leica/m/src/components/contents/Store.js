@@ -6,38 +6,18 @@ import { useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-function Store(props) {
 
-    const { id } = useParams();
-
-
-    useEffect(() => {
-
-        const kakaoMaps = document.getElementById('map'),
-              options = {
-                  center : new kakao.maps.LatLng(props.store[id].map['x'], props.store[id].map['y']),
-                  level : 3
-              },
-              map = new kakao.maps.Map(kakaoMaps, options),
-              markerPosition = new kakao.maps.LatLng(props.store[id].map['x'], props.store[id].map['y']),
-              marker = new kakao.maps.Marker({
-                  position: markerPosition
-              });
-              marker.setMap(map);
-
-    }, []);
-    
-    const StyledMain = styled.article`
+const StyledMain = styled.article`
 
         position:relative;
         display:block;
         overflow:hidden;
-        ${props => props.theme.isVh()};
-        background : url(https://ppaxe.kr/web/contents/images/contents/store_${ props.store[id].name.toLowerCase() }_img.jpg) center center no-repeat;
+        ${ ({theme}) => theme.isVh()};
+        background : url('https://ppaxe.kr/web/contents/images/contents/store_${ ({store}) => store[id].name.toLowerCase() }_img.jpg') center center no-repeat;
         background-size: cover;
 
         &:before{
-            ${props => props.theme.isImagin };
+            ${ ({theme}) => theme.isImagin };
             width: 100%;
             height: 150px;
             left: 0;
@@ -52,7 +32,7 @@ function Store(props) {
             left:0;
             width:100%;
             height:auto;
-            background: ${props => props.theme.mainGray}
+            background: ${ ({theme}) => theme.mainGray};
 
             ul{
                 display:flex;
@@ -72,7 +52,7 @@ function Store(props) {
                         height:100%;
                             
                         strong{
-                            color : ${ props => props.theme.mainRed };
+                            color : ${ ({theme}) => theme.mainRed };
                             font-size:1.8rem;
                             font-weight:bold;
                             line-height:160%;
@@ -81,7 +61,7 @@ function Store(props) {
 
                         span, a{
                             font-size: 1.6rem;
-                            color : ${ props => props.theme.mainWhite };
+                            color : ${ ({theme}) => theme.mainWhite };
                             font-weight: 500;
                         }
                     }
@@ -97,13 +77,13 @@ function Store(props) {
 
         h3{
             padding: 2rem 0;
-            ${props => props.theme.isColor('black')}
+            ${ ({theme}) => theme.isColor('black')}
             font-size:2.4rem;
         }
 
         p{
 
-            color: ${props => props.theme.mainWhite}
+            color: ${ ({theme}) => theme.mainWhite};
             font-size:1.6rem;
             word-break: keep-all;
             line-height:160%;
@@ -118,37 +98,58 @@ function Store(props) {
 
         h3{
             padding: 2rem 0;
-            ${props => props.theme.isColor('black')}
+            ${ ({theme}) => theme.isColor('black')}
             font-size:2.4rem;
         }
 
     `;
 
-    console.log(props.store);
+function Store({store}) {
+
+    const { id } = useParams();
+
+
+    useEffect(() => {
+
+        const kakaoMaps = document.getElementById('map'),
+              options = {
+                  center : new kakao.maps.LatLng(store[id].map['x'], store[id].map['y']),
+                  level : 3
+              },
+              map = new kakao.maps.Map(kakaoMaps, options),
+              markerPosition = new kakao.maps.LatLng(store[id].map['x'], store[id].map['y']),
+              marker = new kakao.maps.Marker({
+                  position: markerPosition
+              });
+              marker.setMap(map);
+
+    }, []);
+    
+    
 
     return(
         <>
 
             <StyledMain bg={ id }>
-                <h3 className="blind">{ `${props.store[id].name} 매장 정보` }</h3>
+                <h3 className="blind">{ `${store[id].name} 매장 정보` }</h3>
                 <div className="article__info">
                     <ul>
                         <li>
                             <div>
                                 <strong>TEL</strong>
-                                <span><a href={`tel:${props.store[id].tel}`} title="매장 전화 걸기" role="button">{ props.store[id].tel }</a></span>
+                                <span><a href={`tel:${store[id].tel}`} title="매장 전화 걸기" role="button">{ store[id].tel }</a></span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>OPENING<br />HOURS</strong>
-                                <span>{ props.store[id].hour }</span>
+                                <span>{ store[id].hour }</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>PARKING</strong>
-                                <span>{ props.store[id].parking }</span>
+                                <span>{ store[id].parking }</span>
                             </div>
                         </li>
                     </ul>
@@ -159,7 +160,7 @@ function Store(props) {
                     About Us
                 </h3>
                 <p>
-                    {props.store[id].info}
+                    {store[id].info}
                 </p>
             </StyledInfo>
             <StyledLocation>

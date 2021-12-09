@@ -15,59 +15,17 @@ import styled, { css, keyframes } from "styled-components";
 SwiperCore.use([Autoplay,Pagination]);
 
 
-function Main(props) {
 
-  const productSelector = useRef(),
-        academySelector = useRef(),
-        [productActive, setProductActive] = useState(false),
-        [academyActive, setAcademyActive] = useState(false);
-
-
-
-
-    const throttling = useMemo(
-      () =>
-        throttle(() => {
-
-          if(! productSelector.current) return
-
-          if(productSelector.current.getBoundingClientRect().top < 200){
-
-              setProductActive(true);
-
-            if(academySelector.current.getBoundingClientRect().top < 200){
-
-              setAcademyActive(true);
-              
-            }
-
-          }
-
-        }, 300),
-        []
-    );
-
-    useEffect(() => {
-
-      window.addEventListener('scroll', throttling);
-
-      return () => {
-
-        window.removeEventListener('scroll', throttling);
-
-      };
-    }, [throttling]);
-
-    const StyledArticle = styled.article`
+const StyledArticle = styled.article`
 
           width:100vw;
           display:block;
           position:relative;
           overflow:hidden;
-          ${props => props.theme.isVh()};
+          ${ ({theme}) => theme.isVh()};
 
           &:before, &:after{
-            ${props => props.theme.isImagin };
+            ${ ({theme}) => theme.isImagin };
             width: 100%;
             height: 150px;
             left: 0;
@@ -90,9 +48,9 @@ function Main(props) {
           width:100%;
           height:100%;
           position:relative;
-          dispaly:block;
+          display:block;
           overflow:hidden;
-          background: url(https://ppaxe.kr/web/contents/images/contents/main_slide_bg_${ props => props.active }.jpg) center center no-repeat;
+          background: url('https://ppaxe.kr/web/contents/images/contents/main_slide_bg_${ ({active}) => active }.jpg') center center no-repeat;
           background-size:cover;
 
           .mainSwiper{
@@ -102,14 +60,14 @@ function Main(props) {
                 height: 100%;
     
                 .swiper-slide{
-                  ${props => props.theme.isVh(100)};
+                  ${ ({theme}) => theme.isVh(100)};
                     text-align:center;
 
                     div{
                       position:relative;
                       display:block;
                       width:100%;
-                      ${props => props.theme.isCenter(50)};
+                      ${ ({theme}) => theme.isCenter(50)};
                       
                       img{
                           display:block;
@@ -137,7 +95,7 @@ function Main(props) {
               left: 50%;
               transform: translateX(-50%);
           }
-      
+
     `;
 
     const KeyframesArticleBefore = keyframes`
@@ -173,45 +131,45 @@ function Main(props) {
           width:100%;
           height:100%;
           position:relative;
-          dispaly:block;
+          display:block;
           overflow:hidden;
-          background:url(https://ppaxe.kr/web/contents/images/contents/main_prod_bg.jpg) center center no-repeat;
+          background:url('https://ppaxe.kr/web/contents/images/contents/main_prod_bg.jpg') center center no-repeat;
           background-size:cover;
 
           div:nth-of-type(1){
-            ${props => props.theme.isCenter(50)};
+            ${ ({theme}) => theme.isCenter(50)};
             display:block;
             width:100%;
             left: -40%;
 
             &:before{
-              ${props => props.theme.isImagin}
+              ${ ({theme}) => theme.isImagin}
               width: 100vw;
               height: 100vw;
               max-width:600px;
               max-height:600px;
-              background: ${props => props.theme.mainRed};
+              background: ${ ({theme}) => theme.mainRed};
               border-radius:50%;
               top:50%;
               transform-origin: 50% 50%;
               left:0;
               transform:translateY(-50%) scale(0, 0);
               ${ 
-                props => props.active && css`
+                ({active}) => active && css`
                 animation : ${ KeyframesArticleBefore } 0.3s linear normal forwards running;
               `}
               z-index: -1;
             }
 
             img{
-              ${props => props.theme.isCenter(50)};
+              ${ ({theme}) => theme.isCenter(50)};
               position:absolute;
               width:100%;
               max-width:600px;
               left:-100%;
               opacity:0;
               ${ 
-                props => props.active && css`
+                ({active}) => active && css`
                 animation : ${ KeyframesProduct } 0.3s linear 0.3s normal forwards running;
               `}
             }
@@ -219,7 +177,7 @@ function Main(props) {
   
           div:nth-of-type(2){
             position:absolute;
-            ${props => props.theme.isCenter(50)}
+            ${ ({theme}) => theme.isCenter(50)}
             right:2rem;
             z-index:1;
             text-align:right;
@@ -228,13 +186,13 @@ function Main(props) {
               display:inline-block;
               padding:1rem;
               background:rgba(0,0,0,0.75);
-              color : ${props => props.theme.mainRed};
+              color : ${ ({theme}) => theme.mainRed};
               font-weight:bold;
               font-size: 3.6rem;
             }
 
             p{
-              ${props => props.theme.isColor('white')};
+              ${ ({theme}) => theme.isColor('white')};
               margin-top: 2rem;
               font-size: 2.4rem;
               font-weight : bold;
@@ -282,8 +240,8 @@ function Main(props) {
 
         &:before{
 
-          ${props => props.active && css`
-            ${ props => props.theme.isImagin }
+          ${ ({active}) => active && css`
+            ${ ({theme}) => theme.isImagin }
             position:fixed;
             z-index:9999;
             top:0;
@@ -300,10 +258,10 @@ function Main(props) {
           position:absolute;
           margin: 10rem 0 2rem 2rem;
           padding: 2rem;
-          border: 1px solid ${props => props.theme.mainRed};
+          border: 1px solid ${ ({theme}) => theme.mainRed};
           border-width: 0 0 4px 4px;
           display:inline-block;
-          ${props=> props.theme.isColor('red')};
+          ${ ({theme}) => theme.isColor('red')};
           font-size: 4.8rem;
           font-weight:bold;
         }
@@ -311,10 +269,10 @@ function Main(props) {
         .academySwiper{
 
           display:block;
-          ${props => props.theme.isCenter(50)};
+          ${ ({theme}) => theme.isCenter(50)};
           position:relative;
           width:100%;
-          ${props=>props.theme.isVh(100)};
+          ${ ({theme}) => theme.isVh(100)};
           overflow:hidden;
     
           .swiper-wrapper{
@@ -340,8 +298,8 @@ function Main(props) {
     const StyledSlideWrap = styled.div`
 
         display:block;
-        background : ${props => props.theme.mainWhite };
-        ${props => props.theme.isCenter(50)};
+        background : ${ ({theme}) => theme.mainWhite };
+        ${ ({theme}) => theme.isCenter(50)};
         border-radius: 2rem;
         font-weight: 600;
         box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
@@ -364,7 +322,7 @@ function Main(props) {
           p{
             padding : 2rem;
             text-align: center;
-            color : ${props => props.theme.mainBlack};
+            color : ${ ({theme}) => theme.mainBlack};
             word-break: keep-all;
             font-size: 1.6rem;
             overflow: hidden;
@@ -383,7 +341,7 @@ function Main(props) {
     z-index:99;
     bottom:0;
     left:0;
-    dispaly:block;
+    display:block;
     overflow:hidden;
     width:100%;
 
@@ -398,15 +356,60 @@ function Main(props) {
             display:block;
             border-radius: .5rem;
             width:100%;
-            background : ${props => props.theme.mainRed};
+            background : ${ ({theme}) => theme.mainRed};
             text-align:center;
-            ${props => props.theme.isColor('white')};
+            ${({theme}) => theme.isColor('white')};
             font-size: 2.4rem;
             line-height:280%;
 
         }
     }
     `;
+
+
+function Main({academy, product}) {
+
+  const productSelector = useRef(),
+        academySelector = useRef(),
+        [productActive, setProductActive] = useState(false),
+        [academyActive, setAcademyActive] = useState(false);
+
+
+
+
+    const throttling = useMemo(
+      () =>
+        throttle(() => {
+
+          if(! productSelector.current) return
+
+          if(productSelector.current.getBoundingClientRect().top < 200){
+
+              setProductActive(true);
+
+            if(academySelector.current.getBoundingClientRect().top < 200){
+
+              setAcademyActive(true);
+              
+            }
+
+          }
+
+        }, 300),
+        []
+    );
+
+    useEffect(() => {
+
+      window.addEventListener('scroll', throttling);
+
+      return () => {
+
+        window.removeEventListener('scroll', throttling);
+
+      };
+    }, [throttling]);
+
   return (
     <>
 
@@ -415,17 +418,17 @@ function Main(props) {
       <StyledArticle>
         <h3 className="blind">라이카 제품군 보기</h3>
         <StyledMain style={ { backgroundImage : 'url("https://ppaxe.kr/web/contents/images/contents/main_slide_bg_m10.jpg")' } }>
-          <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(https://ppaxe.kr/web/contents/images/contents/main_slide_bg_${props.product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center'; }} className="mainSwiper">
+          <Swiper slidesPerView={1} speed={500} loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} onSlideChange={(swiper) => { swiper.el.style.backgroundImage = `url(https://ppaxe.kr/web/contents/images/contents/main_slide_bg_${product[swiper.realIndex].name}.jpg)`; swiper.el.style.backgroundRepeat = 'no-repeat'; swiper.el.style.backgroundSize = 'cover'; swiper.el.style.backgroundPosition = 'center center'; }} className="mainSwiper">
             {
-                props.product?.map((elements,index) => {
+                product?.map((elements,index) => {
 
                   return(
                   
                   <SwiperSlide key={index}>
                     
                     <div>
-                      <img  src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[index].name}.png` } alt={`${props.product[index].title} 제품 이미지`} />
-                      <span>{ props.product[index].title.toUpperCase() }</span>
+                      <img  src={ `https://ppaxe.kr/web/contents/images/product/prod_${product[index].name}.png` } alt={`${product[index].title} 제품 이미지`} />
+                      <span>{ product[index].title.toUpperCase() }</span>
                     </div>
                   
                   </SwiperSlide>
@@ -466,22 +469,22 @@ function Main(props) {
               <Swiper slidesPerView={1.3} speed={1000} spaceBetween={30} centeredSlides={true} autoplay={{ "delay": 5000, "disableOnInteraction": false }} pagination={{ "clickable": true }} className="academySwiper">
                 {
 
-                  props.academy?.map((elements,index) => (
+                  academy?.map((elements,index) => (
 
                     <SwiperSlide key={index}>
 
                       <StyledSlideWrap>
                         <div>
                           <div>
-                            <img src={`https://ppaxe.kr/web/contents/images/contents/academy_profile_${ props.academy[index].profile.image }.jpg`} alt={` ${ props.academy[index].name } 프로필 이미지 `} />
+                            <img src={`https://ppaxe.kr/web/contents/images/contents/academy_profile_${ academy[index].profile.image }.jpg`} alt={` ${ academy[index].name } 프로필 이미지 `} />
                           </div>
-                          <p>{ props.academy[index].name }</p>
+                          <p>{ academy[index].name }</p>
                         </div>
                         <div>
-                          <img src={ `https://ppaxe.kr/web/contents/images/contents/academy_picture_${ props.academy[index].profile.image }.jpg` } alt={` ${ props.academy[index].name } 작품 이미지 `} />
+                          <img src={ `https://ppaxe.kr/web/contents/images/contents/academy_picture_${ academy[index].profile.image }.jpg` } alt={` ${ academy[index].name } 작품 이미지 `} />
                         </div>
                         <div>
-                          " { props.academy[index].title } "
+                          " { academy[index].title } "
                         </div>
                       </StyledSlideWrap>
 

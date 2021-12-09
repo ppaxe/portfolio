@@ -11,39 +11,8 @@ import { SwiperStyles } from './../../styles/CommonStyles';
 
 SwiperCore.use([Pagination]);
 
-function Product(props) {
 
-    const { id } = useParams(),
-          pictureSelector = useRef(null),
-          [pictureActive, setPictureActive] = useState(false);
-
-    const throttling = useMemo(
-        () =>
-            throttle(() => {
-      
-            if(! pictureSelector.current) return
-      
-            if(pictureSelector.current.getBoundingClientRect().top < 200){
-      
-                setPictureActive(true)
-      
-            }
-      
-        }, 300),[]
-    );
-
-    useEffect(() => {
-
-        window.addEventListener('scroll', throttling);
-      
-        return () => {
-      
-            window.removeEventListener('scroll', throttling);
-      
-        };
-    }, [throttling]);
-
-    const KeyframesMain = keyframes`
+const KeyframesMain = keyframes`
 
         0%{
             border-radius:50%;
@@ -77,12 +46,12 @@ function Product(props) {
         display:flex;
         position:relative;
         overflow:hidden;
-        ${props => props.theme.isVh()};
+        ${ ({theme}) => theme.isVh()};
         flex-direction : column;
         justify-content: center;
         
         &:before{
-            ${props => props.theme.isImagin };
+            ${ ({theme}) => theme.isImagin };
             width: 100%;
             height: 150px;
             left: 0;
@@ -98,12 +67,12 @@ function Product(props) {
             position:relative;
 
             &:before{
-                ${props => props.theme.isImagin};
+                ${ ({theme}) => theme.isImagin};
                 width:60vw;
                 height:60vw;
                 max-width:500px;
                 max-height:500px;
-                background:${ props => props.theme.mainRed };
+                background:${ ({theme}) => theme.mainRed };
                 z-index: -1;
                 left:50%;
                 top:50%;
@@ -130,7 +99,7 @@ function Product(props) {
 
             h3{
                 position:relative;
-                ${props=>props.theme.isColor('white')};
+                ${ ({theme}) => theme.isColor('white')};
                 font-size: 3.2rem;
                 font-weight:bold;
                 padding: 1rem 0;
@@ -138,10 +107,10 @@ function Product(props) {
 
                 &:before, &:after{
 
-                    ${props=>props.theme.isImagin};
+                    ${ ({theme}) => theme.isImagin};
                     width:40px;
                     height:2px;
-                    background : ${ props => props.theme.mainRed};
+                    background : ${ ({theme}) => theme.mainRed};
                     left:50%;
                     transform:translateX(-50%);
 
@@ -160,10 +129,10 @@ function Product(props) {
             p{
                 margin-top: 2rem;
                 font-size:2.4rem;
-                color: ${props => props.theme.mainWhite}
+                color: ${ ({theme}) => theme.mainWhite};
 
                 &:nth-of-type(2){
-                    color : ${props => props.theme.mainRed};
+                    color : ${ ({theme}) => theme.mainRed};
                     font-weight:bold;
                 }
             }
@@ -181,13 +150,13 @@ function Product(props) {
 
         .article__info{
             display:block;
-            background : ${ props => props.theme.mainRed }
-            color: ${ props => props.theme.mainWhite }
+            background : ${ ({theme}) => theme.mainRed };
+            color: ${ ({theme}) => theme.mainWhite };
             padding: 2rem;
 
             h3{
                 font-size:2.4rem;
-                ${props => props.theme.isColor('white')}
+                ${ ({theme}) => theme.isColor('white')}
                 font-weight:bold;
             }
             p{
@@ -198,7 +167,7 @@ function Product(props) {
             }
         }
         h4{
-            ${props => props.theme.isColor('white')};
+            ${ ({theme}) => theme.isColor('white')};
             text-align:center;
             margin: 5rem 0;
             font-size: 2.4rem;
@@ -216,7 +185,7 @@ function Product(props) {
         }
 
         &:after{
-            ${props => props.theme.isImagin };
+            ${ ({theme}) => theme.isImagin };
             width: 100%;
             height: 150px;
             left: 0;
@@ -258,13 +227,13 @@ function Product(props) {
 
     const StyledPicture = styled.article`
 
-        ${props => props.theme.isVh()};
+        ${ ({theme}) => theme.isVh()};
         position:relative;
         display:flex;
         text-align:center;
         flex-direction: column;
         justify-content:center;
-        background:url('https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_pic1.jpg') center center no-repeat;
+        background:url('https://ppaxe.kr/web/contents/images/product/prod_${({product}) => product[id].name}_pic1.jpg') center center no-repeat;
         background-size:cover;
 
         h3{
@@ -280,7 +249,7 @@ function Product(props) {
             }
         }
         &:before, &:after{
-          ${props => props.theme.isImagin };
+          ${ ({theme}) => theme.isImagin };
           width: 100%;
           height: 150px;
           left: 0;
@@ -299,7 +268,7 @@ function Product(props) {
         
         &:after{
 
-            ${props => props.active && css`
+            ${ ({active}) => active && css`
               position:fixed;
               z-index:9999;
               top:0;
@@ -322,7 +291,7 @@ function Product(props) {
         z-index:99;
         bottom:0;
         left:0;
-        dispaly:block;
+        display:block;
         overflow:hidden;
         width:100%;
 
@@ -335,15 +304,47 @@ function Product(props) {
 
                 display:block;
                 width:100%;
-                background : ${props => props.theme.mainRed};
+                background : ${ ({theme}) => theme.mainRed};
                 text-align:center;
-                ${props => props.theme.isColor('white')};
+                ${ ({theme}) => theme.isColor('white')};
                 font-size: 2.4rem;
                 line-height:320%;
 
             }
         }
     `;
+
+function Product({props}) {
+
+    const { id } = useParams(),
+          pictureSelector = useRef(null),
+          [pictureActive, setPictureActive] = useState(false);
+
+    const throttling = useMemo(
+        () =>
+            throttle(() => {
+      
+            if(! pictureSelector.current) return
+      
+            if(pictureSelector.current.getBoundingClientRect().top < 200){
+      
+                setPictureActive(true)
+      
+            }
+      
+        }, 300),[]
+    );
+
+    useEffect(() => {
+
+        window.addEventListener('scroll', throttling);
+      
+        return () => {
+      
+            window.removeEventListener('scroll', throttling);
+      
+        };
+    }, [throttling]);
 
     return(
         <>
@@ -352,33 +353,33 @@ function Product(props) {
             <StyledMain>
                 <Swiper slidesPerView={1} speed={500} loop={true} pagination={{ "clickable": true }} className="mainSwiper">
                     <SwiperSlide>
-                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view1.png` } alt={ `${props.product[id].title} 제품 이미지` } />
+                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${product[id].name}_view1.png` } alt={ `${product[id].title} 제품 이미지` } />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view2.png` } alt={ `${props.product[id].title} 제품 측면 이미지` } />
+                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${product[id].name}_view2.png` } alt={ `${product[id].title} 제품 측면 이미지` } />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_view3.png` } alt={ `${props.product[id].title} 제품 후면 이미지` } />
+                        <img src={ `https://ppaxe.kr/web/contents/images/product/prod_${product[id].name}_view3.png` } alt={ `${product[id].title} 제품 후면 이미지` } />
                     </SwiperSlide>
                 </Swiper>
                 <div className="product__info">
-                    <h3>{ props.product[id].title.toUpperCase() }</h3>
-                    <p>{ props.product[id].info }</p>
-                    <p>W { props.product[id].price.toLocaleString() }</p>
+                    <h3>{ product[id].title.toUpperCase() }</h3>
+                    <p>{ product[id].info }</p>
+                    <p>W { product[id].price.toLocaleString() }</p>
                 </div>
             </StyledMain>
             <StyledInfo>
                 <div className="article__info">
-                    <h3>{ props.product[id].sub_title }</h3>
-                    <p>{ props.product[id].sub_info }</p>
+                    <h3>{ product[id].sub_title }</h3>
+                    <p>{ product[id].sub_info }</p>
                 </div>
                 <h4>FREE VIEW</h4>
                 <div className="article__video">
-                    <iframe src={props.product[id].src} style={{width:'100vw', height: '50vw', display: 'block', maxWidth:'700px', maxHeight: '400px', margin: '0 auto'}} allow="autoplay; fullscreen" allowfullscreen="" title="제품 소개 영상"></iframe>
+                    <iframe src={product[id].src} style={{width:'100vw', height: '50vw', display: 'block', maxWidth:'700px', maxHeight: '400px', margin: '0 auto'}} allow="autoplay; fullscreen" allowfullscreen="" title="제품 소개 영상"></iframe>
                 </div>
-                <h4>{props.product[id].tag}</h4>
+                <h4>{product[id].tag}</h4>
                 <div className="article__img">
-                    <img src={`https://ppaxe.kr/web/contents/images/product/prod_${props.product[id].name}_pic2.png`} alt="제품으로 찍은 사진 예시" />
+                    <img src={`https://ppaxe.kr/web/contents/images/product/prod_${product[id].name}_pic2.png`} alt="제품으로 찍은 사진 예시" />
                 </div>
             </StyledInfo>
             <StyledPicture ref={pictureSelector} active={pictureActive}>

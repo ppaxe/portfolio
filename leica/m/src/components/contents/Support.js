@@ -3,11 +3,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function Support(props) {
 
-    const [faqActive, setFaqActive] = useState(false);
-
-    const StyledContents = styled.article`
+const StyledContents = styled.article`
 
         display: block;
         overflow: hidden;
@@ -16,13 +13,13 @@ function Support(props) {
 
         h3{
             margin: 4rem 0;
-            ${ props => props.theme.isColor('white') };
+            ${ ({theme}) => theme.isColor('white') };
             font-size: 2.4rem;
         }
 
         .main__banner_cont{
             margin: 0 -2rem;
-            background : url(https://ppaxe.kr/web/contents/images/contents/support_main_bn.jpg) left center no-repeat;
+            background : url('https://ppaxe.kr/web/contents/images/contents/support_main_bn.jpg') left center no-repeat;
             background-size:cover;
             width: 100vw;
             height: 250px;
@@ -35,7 +32,7 @@ function Support(props) {
 
         display:block;
         overflow:hidden;
-        color : ${ props => props.theme.mainWhite }
+        color : ${ ({theme}) => theme.mainWhite };
         border-bottom: 2px solid #555;
 
 
@@ -55,12 +52,12 @@ function Support(props) {
                 line-height: 160%;
                 display:block;
                 width:100%;
-                color : ${ props => props.active ? props.theme.mainRed : props.theme.mainWhite };
+                color : ${ ({active, theme}) => active ? theme.mainRed : theme.mainWhite };
                 font-weight : bold;
 
                 &:before, &:after{
-                    background: ${props => props.active ? props.theme.mainRed : '#555' };
-                    ${props => props.theme.isImagin};
+                    background: ${({active, theme}) => active ? theme.mainRed : '#555' };
+                    ${ ({theme}) => theme.isImagin};
                     top:50%;
                 }
 
@@ -68,7 +65,7 @@ function Support(props) {
                     right: 20px;
                     width: 2px;
                     height : 24px;
-                    transform : ${props => props.active ? 'translateY(-50%) rotate(90deg)' : 'translateY(-50%)'};
+                    transform : ${ ({active}) => active ? 'translateY(-50%) rotate(90deg)' : 'translateY(-50%)'};
                 }
                 &:after{
                     right: 9px;
@@ -82,7 +79,7 @@ function Support(props) {
 
         .list__faq-panel{
 
-            display : ${ props => props.active ? 'block' : 'none' };
+            display : ${ ({active}) => active ? 'block' : 'none' };
             padding : 2rem;
 
             p{
@@ -94,6 +91,10 @@ function Support(props) {
 
     `;
 
+function Support({support}) {
+
+    const [faqActive, setFaqActive] = useState(false);
+
     return(
         <>
             <StyledContents>
@@ -103,7 +104,7 @@ function Support(props) {
                 <h3>FAQ</h3>
             <ul>
                 {
-                    props.support?.map((element, index) => {
+                    support?.map((element, index) => {
 
                         return(
                             <StyledList key={index} active={index === faqActive ? true : false}>
