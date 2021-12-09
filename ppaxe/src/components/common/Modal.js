@@ -57,81 +57,80 @@ const ModalTop = styled.div`
 
 const TopBtnWrap = styled.div`
 
-overflow: hidden;
-margin-right: 10px;
-float: left;
-display:flex;
+    overflow: hidden;
+    margin-right: 10px;
+    float: left;
+    display:flex;
 
 `;
 
 const ModalButton = styled.button`
     
-position: relative;
-width: 40px;
-height: 40px;
-margin-right: 10px;
-display: block;
-overflow: hidden;
-text-indent : -9999rem;
-color: transparent;
-font-size: 0px;
-border-radius: 50%;
-box-sizing:border-box;
-border: 2px solid ${ ({theme}) => theme.mainBlack };
-cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: block;
+    overflow: hidden;
+    text-indent : -9999rem;
+    color: transparent;
+    font-size: 0px;
+    border-radius: 50%;
+    box-sizing:border-box;
+    border: 2px solid ${ ({theme}) => theme.mainBlack };
+    cursor: pointer;
 
-&:nth-of-type(1){
-    background-color: ${({theme}) => theme.mainRed};
+    &:nth-of-type(1){
+        background-color: ${({theme}) => theme.mainRed};
 
-    &:before{
-        transform:translate(-50%, -50%) rotate(45deg);
+        &:before{
+            transform:translate(-50%, -50%) rotate(45deg);
+        }
+        &:after{
+            transform:translate(-50%, -50%) rotate(-45deg);
+        }
     }
-    &:after{
-        transform:translate(-50%, -50%) rotate(-45deg);
+    &:nth-of-type(2){
+        background-color: ${({theme}) => theme.mainYellow};
+        &:before{
+            transform:translate(-50%, -50%) rotate(90deg);
+            display: none;
+        }
+        &:after{
+            transform:translate(-50%, -50%) rotate(90deg);
+            display: none;
+        }
+        @media ${({theme}) => theme.deviceQuery.mobile}{
+            display: none;
+        }
     }
-}
-&:nth-of-type(2){
-    background-color: ${({theme}) => theme.mainYellow};
-    &:before{
-        transform:translate(-50%, -50%) rotate(90deg);
-        display: none;
+    &:nth-of-type(3){
+        background-color: ${({theme}) => theme.mainGreen};
+        &:before{
+            transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;
+        }
+        &:after{
+            transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;
+        }
+        @media ${({theme}) => theme.deviceQuery.mobile}{
+            display: none;
+        }
     }
-    &:after{
-        transform:translate(-50%, -50%) rotate(90deg);
-        display: none;
-    }
-    @media ${({theme}) => theme.deviceQuery.mobile}{
-        display: none;
-    }
-}
-&:nth-of-type(3){
-    background-color: ${({theme}) => theme.mainGreen};
-    &:before{
-        transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;
-    }
-    &:after{
-        transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;
-    }
-    @media ${({theme}) => theme.deviceQuery.mobile}{
-        display: none;
-    }
-}
 
-&:before, &:after{
+    &:before, &:after{
 
-display:block;
-content: '';
-position: absolute;
-top: 50%;
-left: 50%;
-border-radius: 1px;
-width: 2px;
-height: 20px;
-background: ${ ({theme}) => theme.mainBlack };
-box-sizing: border-box;
+        display:block;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 1px;
+        width: 2px;
+        height: 20px;
+        background: ${ ({theme}) => theme.mainBlack };
+        box-sizing: border-box;
 
-
-}
+    }
 
 `;
 
@@ -246,7 +245,7 @@ const Modal = memo(({index, param}) => {
                 <ModalSection>
                     {
                         index === 0 ?
-                        <Profile /> :
+                        <Profile job={ param.job } /> :
                         index === 1 ?
                         <Web /> :
                         index === 2 ?
@@ -254,9 +253,9 @@ const Modal = memo(({index, param}) => {
                         index === 3 ?
                         <Responsive /> :
                         index === 4 ?
-                        <Contact /> :
+                        <Contact job={ param.job } /> :
                         index === 5 ?
-                        <Resume /> :
+                        <Resume job={ param.job } /> :
                         false
                     }
                 </ModalSection>

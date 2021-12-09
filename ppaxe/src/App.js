@@ -32,10 +32,12 @@ function App() {
       <div id="container">
         
         <ThemeProvider theme={Theme} >
+          {/* loader */}
           {
             loader &&
             <Loader />
           }
+          {/* // loader */}
             <Screens />
         </ThemeProvider>
       

@@ -1,7 +1,7 @@
-import React, {memo, useContext} from 'react';
+import React, { memo, useContext } from 'react';
 import styled from 'styled-components';
 import ActiveApp from './ActiveApp';
-import {AppsContext} from './../../screens/Screens';
+import { AppsContext } from './../../screens/Screens';
 
 const DocksWrap = styled.nav`
     
