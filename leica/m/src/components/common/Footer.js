@@ -25,7 +25,7 @@ const StyledFooterInner = styled.div`
     display: inline-block;
     width: 120px;
     height: 60px;
-    background: url(https://ppaxe.kr/web/contents/images/common/footer_logo.png) center center no-repeat;
+    background: url('https://ppaxe.kr/web/contents/images/common/footer_logo.png') center center no-repeat;
     background-size: auto 60px;
     margin-bottom: 2rem;
   }
@@ -56,9 +56,9 @@ const StyledSnsLink = styled.a.attrs({
     width: 40px;
     height: 40px;
     display: block;
-    background: url(https://ppaxe.kr/web/contents/images/common/footer_sns.png) center center no-repeat;
+    background: url('https://ppaxe.kr/web/contents/images/common/footer_sns.png') center center no-repeat;
     background-size: auto 40px;
-    background-position:${props => props.position}
+    background-position:${props => props.position};
 
 `;
 

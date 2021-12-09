@@ -5,7 +5,7 @@ import {AppsContext} from './../../screens/Screens';
 
 const DocksWrap = styled.nav`
     
-display:flex;
+display:block;
 position: fixed;
 bottom: 2rem;
 left: 50%;
@@ -30,10 +30,28 @@ ul{
     }
 }
 
-@media ${({theme}) => theme.deviceQuery.mobile}{
+@media ${({theme}) => theme.deviceQuery.tablet}{
 
-    width: 90vw;
-    height: 100px;
+    position: relative;
+    padding: 8rem 2rem;
+    left: 0;
+    transform: inherit;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    background: transparent;
+    border: inherit;
+
+    ul{
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        li{
+            display: block;
+            width: auto;
+            padding: 1rem .5rem;
+        }
+    }
 
 }
 

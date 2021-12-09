@@ -5,7 +5,6 @@ import { Link, NavLink } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 import { siteMaps } from './../../Data';
 
-function Gnb(props) {
 
 const KeyframesGnbBefore = keyframes`
 
@@ -70,7 +69,7 @@ const KeyframesGnbBefore = keyframes`
           ` : props.active === 'inactive' && css`
             animation : ${KeyframesGnbBefore} 0.5s linear 1s reverse backwards running
           `
-        }
+        };
   
       }
   
@@ -132,7 +131,7 @@ const KeyframesGnbBefore = keyframes`
         transform: translateX(-50%);
         width: 200px;
         height: 70px;
-        background: url(https://ppaxe.kr/web/contents/images/common/gnb_logo.png) center center no-repeat;
+        background: url('https://ppaxe.kr/web/contents/images/common/gnb_logo.png') center center no-repeat;
         background-size: 200px auto;
 
         a{
@@ -153,7 +152,7 @@ const KeyframesGnbBefore = keyframes`
         right: 20px;
         width: 40px;
         height: 40px;
-        background: url(https://ppaxe.kr/web/contents/images/common/gnb_close.png) center center no-repeat;
+        background: url('https://ppaxe.kr/web/contents/images/common/gnb_close.png') center center no-repeat;
         background-size: 40px auto;
 
       }
@@ -166,6 +165,10 @@ const KeyframesGnbBefore = keyframes`
 
     }
   `;
+
+function Gnb(props) {
+
+
 
   return (
     <>

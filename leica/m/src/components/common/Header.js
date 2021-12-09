@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Gnb from './Gnb';
 
-function Header() {
 
-  const [gnbAct, setGnbAct] = useState('');
+const [gnbAct, setGnbAct] = useState('');
 
 
       const StyledHeader = styled.header`
@@ -19,7 +18,7 @@ function Header() {
         background: #111;
         z-index: 9999;
         transition: 0.3s;
-        opacity: ${ props => props.theme.isActive('0','1') };
+        opacity: ${ ({theme}) => theme.isActive('0','1') };
 
         h1{
             
@@ -36,7 +35,7 @@ function Header() {
                 display: inline-block;
                 width: 60px;
                 height: 60px;
-                background: url(https://ppaxe.kr/web/contents/images/common/logo.png) center center no-repeat;
+                background: url('https://ppaxe.kr/web/contents/images/common/logo.png') center center no-repeat;
                 background-size: auto 60px;
                 ${ props => props.theme.isIR };
 
@@ -60,7 +59,7 @@ function Header() {
                 display: inline-block;
                 width: 60px;
                 height: 60px;
-                background: url(https://ppaxe.kr/web/contents/images/common/gnb_icon.png) center center no-repeat;
+                background: url('https://ppaxe.kr/web/contents/images/common/gnb_icon.png') center center no-repeat;
                 background-size: auto 60px;
                 ${ props => props.theme.isIR };
 
@@ -69,6 +68,8 @@ function Header() {
         }
 
       `;
+
+export const Header = () => {
 
   return (
     <>
@@ -85,5 +86,3 @@ function Header() {
     </>
   );
 }
-
-export default Header;

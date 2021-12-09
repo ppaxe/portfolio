@@ -100,6 +100,9 @@ cursor: pointer;
         transform:translate(-50%, -50%) rotate(90deg);
         display: none;
     }
+    @media ${({theme}) => theme.deviceQuery.mobile}{
+        display: none;
+    }
 }
 &:nth-of-type(3){
     background-color: ${({theme}) => theme.mainGreen};
@@ -108,6 +111,9 @@ cursor: pointer;
     }
     &:after{
         transform:translate(-50%, -50%); width: 20px; background: transparent; border : 2px solid #404040;
+    }
+    @media ${({theme}) => theme.deviceQuery.mobile}{
+        display: none;
     }
 }
 

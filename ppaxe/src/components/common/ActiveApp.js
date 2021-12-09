@@ -39,7 +39,7 @@ const AppWrap = styled.button`
         display: block;
         width: 100px;
         height: 100px;
-        background: url('https://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
+        /* background: url('https://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat; */
         background-size: auto 100px;
         background-position: -${ ({index}) => index * 100}px 0;
         margin : 0 auto;
@@ -62,7 +62,11 @@ const AppWrap = styled.button`
 
         @media ${({theme}) => theme.deviceQuery.mobile }{
 
-            display:none;
+            width: 80px;
+            display: block;
+            overflow: hidden;
+            word-wrap: wrap;
+            text-overflow: ellipsis;
 
         }
     
@@ -88,12 +92,12 @@ const ActiveApp = memo(function( { index } ){
     return(
         <>
             <AppWrap type="button"
-            
             title={ activeContext.apps[index].title }
 
-            onClick={() => toggleActive() }
+            onClick={ () => toggleActive() }
             
-            $on={ activeContext.apps[index].active }>
+            $on={ activeContext.apps[index].active }
+            >
                 <AppIcon index={ index } />
                 <AppName>{ activeContext.apps[index].title }</AppName>
             </AppWrap>
