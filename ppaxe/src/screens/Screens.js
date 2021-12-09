@@ -29,6 +29,7 @@ const Screens = () => {
     // variables useStates
 
     const [apps, setApps] = useState(Data.Apps),
+        [fromSite, setFromSite] = useState('PB'),
         //   [bgm, setBgm] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3')),
         //   clickSound = new Audio('https://ppaxe.kr/profile/contents/sound/sound_click.mp3'),
         [zIndexer, setZIndexer] = useState(0);
@@ -45,16 +46,29 @@ const Screens = () => {
         //     bgm.pause();
         // } 
 
-    },[apps[6].active])
+    },[apps[6].active]);
 
     // bgm
 
+    // GET URLparams Publish or FrontEnd
+
+    useEffect(() => {
+        
+        const $loc = new URL(window.location.href),
+              $params = $loc.searchParams;
+
+        $params.get('job') === 'FE' ? setFromSite('FE') : setFromSite('PB');
+    
+    },[fromSite])
+
+    // GET URLparams Publish or FrontEnd
+    
     return(
         <>
         <ScreenWrapper id="contents" 
         // onClick={ () => clickSound.play() }
         >
-            <AppsContext.Provider value={ { apps : apps, setApps : setApps, zIndexer : zIndexer, setZIndexer : setZIndexer } }>
+            <AppsContext.Provider value={ { apps : apps, setApps : setApps, zIndexer : zIndexer, setZIndexer : setZIndexer, job : fromSite } }>
                 <StatusBar />
                 <Docks />
                 <WallPaper />
