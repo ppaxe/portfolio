@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+
 // ================================================================
 
 // Container js
@@ -13,14 +15,66 @@
 // ================================================================
 
 import React, { useEffect, useState } from 'react';
-import { debounce } from 'lodash';
+import { debounce, set } from 'lodash';
 import Screens from './Screens';
-import Utils from './../utils/Utils';
-import Data from './../utils/Data';
+import { Data } from './../utils/Data';
 
 export const CommonContext = React.createContext();
 
 const Container = () => {
+
+    // common Data Fn Start
+
+    const [common, setCommon] = useState(Data.Apps);
+
+    // common Data Fn End
+
+
+    // GET - Local Storage( BGM ) Fn Start 
+
+    const [acceptSound, setAcceptSound] = useState(false);
+
+    useEffect(() => {
+
+    if( localStorage.getItem('USER_ACCEPT_SOUND') === 'AGREE' ){
+      
+        setAcceptSound(true)
+          
+    }else{
+        
+        setAcceptSound(false)
+
+    }
+
+    },[acceptSound])
+
+    // GET - Local Storage( BGM ) Fn Start 
+
+
+    // GET - Local Storage( LOADER ) Fn Start
+
+    const [loader, setLoader] = useState(true);
+
+    useEffect(() => {
+
+    if( localStorage.getItem('USER_LOADER') ){
+      
+        setLoader(false);
+      
+    }else{
+            
+    setTimeout(() => {
+      
+        localStorage.setItem('USER_LOADER','DONE');
+        setLoader(false);
+      
+    },2000)
+      
+    }
+      
+    },[loader])
+
+    // GET - Local Storage ( LOADER ) Fn End
 
     // GET - URLparams Fn Start
 
@@ -37,33 +91,42 @@ const Container = () => {
 
     // GET - URLparams Fn End
 
+    // Modal - zIndexer Fn Start
+
+    const [ modalIndex, setModalIndex ] = useState(0);
+
+    // Modal - zIndexer Fn End
 
     // Window - Resize Fn Start
 
-    const [resizeState, setResizeState] = useState(
-        {
-            width : window.innerWidth,
-            Height : window.innerHeight
-        }
-    )
+    const [userDevice, setUserDevice] = useState(false);
 
     const winResizeFn = debounce(() => {
 
-        setResizeState({
-            width : window.innerWidth,
-            height : window.innerHeight
-        })
+        return(
+            window.innerWidth > 1081 ? setUserDevice('pc') :
+            window.innerWidth > 769 ? setUserDevice('tablet') :
+            window.innerWidth > 415 ? setUserDevice('mobile') :
+            false
+        )
 
-    }, 1000);
+    }, 100);
+
+    useEffect(() => {
+        
+        winResizeFn();
+
+    },[])
 
     useEffect(() => {
 
         window.addEventListener('resize', winResizeFn);
-        return(
-            window.removeEventListener('resize', winResizeFn)
-        )
 
-    },[])
+        return() => {
+            window.removeEventListener('resize', winResizeFn)
+        }
+
+    },[]);
 
     // Window - Resize Fn End
 
@@ -71,11 +134,24 @@ const Container = () => {
 
         <>
             <CommonContext.Provider value={{
-
+                // common
+                common : common,
+                setCommon : setCommon,
+                // accept sound
+                acceptSound : acceptSound,
+                setAcceptSound : setAcceptSound,
+                // loader
+                loader : loader,
+                setLoader : setLoader,
+                // user Device
+                userDevice : userDevice,
+                setUserDevice : setUserDevice,
                 // get URL
                 fromSite : fromSite,
-                setFromSite : setFromSite
-
+                setFromSite : setFromSite,
+                // modal Index
+                modalIndex : modalIndex,
+                setModalIndex : setModalIndex
             }}>
                 <Screens />
             </CommonContext.Provider>

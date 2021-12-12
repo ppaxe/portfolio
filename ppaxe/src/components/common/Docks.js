@@ -1,7 +1,24 @@
+// eslint-disable-next-line
+
+// ================================================================
+
+// Docks js
+
+// Author : 박세연
+
+// Summary : 공통 하위 앱 컨테이너. CommonContext.common의 인덱스 수에 맞춰 map으로 ActiveApp 컴포넌트를 호출한다.
+
+// Reporting Date : 2021.12.12
+
+// Update : 
+
+// ================================================================
+
+
 import React, { memo, useContext } from 'react';
 import styled from 'styled-components';
+import { CommonContext } from './../../screens/Container';
 import ActiveApp from './ActiveApp';
-import { AppsContext } from './../../screens/Screens';
 
 const DocksWrap = styled.nav`
     
@@ -59,7 +76,7 @@ ul{
 
 const Docks = memo(function(){
 
-    const activeContext = useContext(AppsContext);
+    const commonContext = useContext(CommonContext);
 
     return(
         <>
@@ -67,11 +84,11 @@ const Docks = memo(function(){
 
                 <ul>
                     {
-                        activeContext.apps.map((element,index) =>{
+                        commonContext.common.map((element,index) =>{
                             
                             return(
                             <li key={ index }>
-                                    <ActiveApp index={ index } param={ activeContext.apps } setParam={ activeContext.setApps } zIndexer={ activeContext.zIndexer } setZIndexer={ activeContext.setZIndexer }  />
+                                    <ActiveApp index={ index }  />
                             </li>
                             )
                         })

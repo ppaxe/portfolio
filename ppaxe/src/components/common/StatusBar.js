@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
@@ -109,7 +109,7 @@ const StatusWrap = styled.header`
     `;
 
 
-const StatusBar = memo(function({music}){
+const StatusBar = memo(function(){
     return(
         <>
             <StatusWrap>
@@ -120,11 +120,11 @@ const StatusBar = memo(function({music}){
                         </Logo>
                     </h1>
                 </LogoWrap>
-                <AppStatus>
-                    <MusicStatus active={music}>
-                        <i>{ music ? '배경음악 재생 중' : '배경음악 중지' }</i>
-                    </MusicStatus>
-                </AppStatus>
+                {/* <AppStatus>
+                    <MusicStatus> */}
+                        {/* <i>{ music ? '배경음악 재생 중' : '배경음악 중지' }</i> */}
+                    {/* </MusicStatus>
+                </AppStatus> */}
                 <TimeWrap>
                     <Moment format="HH : mm" />
                 </TimeWrap>

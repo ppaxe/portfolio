@@ -1,6 +1,6 @@
 import React, { memo, useContext } from 'react';
 import styled from 'styled-components';
-import { AppsContext } from './../../screens/Screens';
+import { CommonContext } from './../../screens/Container';
 import Modal from './Modal';
 
 const WallPaperWrap = styled.section`
@@ -18,7 +18,7 @@ const WallPaperWrap = styled.section`
 const WallPaper = memo(function(){
 
 
-    const activeContext = useContext(AppsContext);
+    const commonContext = useContext(CommonContext);
 
     return(
 
@@ -27,13 +27,13 @@ const WallPaper = memo(function(){
                     <article>
 
                         {
-                            activeContext.apps.map((element, index) => {
+                            commonContext.common.map((element, index) => {
 
                                 return(
                                     index < 6 && element.active && 
                                     <Modal key={ index } 
                                            index={ index }
-                                           param={ activeContext }
+                                        //    param={ commonContext }
                                     />
                                 )
                             })

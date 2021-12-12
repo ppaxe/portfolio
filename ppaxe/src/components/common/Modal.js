@@ -1,5 +1,22 @@
-import React, {memo, useState, useRef} from 'react';
+// eslint-disable-next-line
+
+// ================================================================
+
+// Modal js
+
+// Author : 박세연
+
+// Summary : WallPaper 하위 모달 팝업. CommonContext[index].common.active 값에 따라 작용한다.
+
+// Reporting Date : 2021.12.12
+
+// Update : 
+
+// ================================================================
+
+import React, {memo, useState, useRef, useContext} from 'react';
 import styled from 'styled-components';
+import { CommonContext } from './../../screens/Container';
 import Draggable from 'react-draggable';
 import Profile from './../contents/Profile';
 import Web from './../contents/Web';
@@ -7,8 +24,6 @@ import Mobile from './../contents/Mobile';
 import Responsive from './../contents/Responsive';
 import Contact from './../contents/Contact';
 import Resume from './../contents/Resume';
-import Utils from './../../utils/Utils';
-
 
 const ModalWrap = styled.div`
 
@@ -179,22 +194,24 @@ const ModalSection = styled.div`
 `;
 
 
-const Modal = memo(({index, param}) => {
+const Modal = memo(({index}) => {
+
+    const commonContext = useContext(CommonContext);
 
     // modal - close Fn
     const modalClose = () => {
 
-        let returnState = [...param.apps];
+        let returnState = [...commonContext.common];
         returnState[index].active = !returnState[index].active;
-        param.setZIndexer(( param.zIndexer - 1 ));
-        param.setApps(returnState);
+        commonContext.setModalIndex(( commonContext.modalIndex - 1 ));
+        commonContext.setCommon(returnState);
 
     }
 
     // modal - drag Fn
     const [position, setPosition] = useState({ x: 0, y: 0 }),
           dragModal = useRef(null),
-          [isDrag,  setIsDrag] = useState( 9999 + param.zIndexer );
+          [isDrag,  setIsDrag] = useState( 9999 + commonContext.modalIndex );
 
     const trackPos = (e, data) => {
         
@@ -212,9 +229,7 @@ const Modal = memo(({index, param}) => {
 
     const mobileCheck = () => {
 
-        let user = Utils.checkUser();
-
-        return user.device === 'mobile' ? true : false
+        return commonContext.userDevice === 'pc' ? false : true
 
     }
 
@@ -232,8 +247,10 @@ const Modal = memo(({index, param}) => {
                 disabled={mobileCheck()}
             > 
             <ModalWrap 
-                zIndexer={ param.apps[index].zIndex }
+                zIndexer={ commonContext.common[index].zIndex }
+
                 dragPosition={ position }
+
                 ref={ dragModal }
             >
                 <ModalTop id="dragHandler">
@@ -243,19 +260,19 @@ const Modal = memo(({index, param}) => {
                         </ModalButton>
                         <ModalButton>
                         </ModalButton>
-                        <ModalButton onClick={(e) => { param.apps[index].redirect() }}>
+                        <ModalButton onClick={(e) => { commonContext.common[index].redirect() }}>
                         </ModalButton>
                     </TopBtnWrap>
                     <TopLocationWrap>
                         <LocationBar>
-                           { param.apps[index].kor }
+                           { commonContext.common[index].kor }
                         </LocationBar>
                     </TopLocationWrap>
                 </ModalTop>
                 <ModalSection>
                     {
                         index === 0 ?
-                        <Profile job={ param.fromSite } /> :
+                        <Profile job={ commonContext.fromSite } /> :
                         index === 1 ?
                         <Web /> :
                         index === 2 ?
@@ -263,9 +280,9 @@ const Modal = memo(({index, param}) => {
                         index === 3 ?
                         <Responsive /> :
                         index === 4 ?
-                        <Contact job={ param.fromSite } /> :
+                        <Contact job={ commonContext.fromSite } /> :
                         index === 5 ?
-                        <Resume job={ param.fromSite } /> :
+                        <Resume job={ commonContext.fromSite } /> :
                         false
                     }
                 </ModalSection>

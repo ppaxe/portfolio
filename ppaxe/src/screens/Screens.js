@@ -1,19 +1,31 @@
 // eslint-disable-next-line
 
-import React, { useEffect, useState } from 'react';
+// ================================================================
+
+// Screens js
+
+// Author : 박세연
+
+// Summary : Container에서 받아 온 Props를 Front에 적용한다.
+
+// Reporting Date : 2021.12.12
+
+// Update : 
+
+// ================================================================
+
+
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
+import { CommonContext } from './Container';
 import StatusBar from './../components/common/StatusBar';
 import Docks from './../components/common/Docks';
-import WallPaper from './../components/common/WallPaper';
-import { Data } from './../utils/Data';
-
-export const AppsContext = React.createContext();
-
+import WallPaper from '../components/common/WallPaper';
 
 const ScreenWrapper = styled.div`
     
         width: 100vw;
-        ${({theme}) => theme.isVh()};
+        height: 100vh;
         background: url('https://ppaxe.kr/profile/contents/images/common/app_laptop_background.png') center center;
         background-size:cover;
 
@@ -25,58 +37,49 @@ const ScreenWrapper = styled.div`
 
 const Screens = () => {
 
+    const commonContext = useContext(CommonContext);
 
-    // variables useStates
+    // Window Click Event Fn Start
 
-    const [apps, setApps] = useState(Data.Apps),
-          [fromSite, setFromSite] = useState('PB'),
-          [music, setMusic] = useState(false),
-          [bgm, setBgm] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3')),
-          clickSound = new Audio('https://ppaxe.kr/profile/contents/sound/sound_click.mp3'),
-          [zIndexer, setZIndexer] = useState(0);
+    const winClickFn = () => {
 
-    //  bgm
+        const clickSound = new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_${ commonContext.userDevice === 'pc' ? 'pc' : 'mobile' }.mp3`);
+
+        return clickSound.play()
+
+    }
+
+    // Window Click Event Fn End
+
+    // Background Audio Fn Start
+
+    const [backgroundAudio, setBackgroundAudio] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
 
     useEffect(() => {
 
-        if(apps[6].active){
-            bgm.volume = .5;
-            bgm.loop = true;
-            bgm.play();
-            setMusic(true);
+        if(commonContext.common[6].active){
+
+            commonContext.setAcceptSound(true);
+            backgroundAudio.volume = .5;
+            backgroundAudio.loop = true;
+            backgroundAudio.play();
 
         }else{
-            bgm.pause();
-            setMusic(false);
-        } 
 
-    },[apps[6].active]);
+            backgroundAudio.pause();
 
-    // bgm
+        }
 
-    // GET URLparams Publish or FrontEnd
+    },[commonContext.common[6].active]);
 
-    useEffect(() => {
-        
-        const $loc = new URL(window.location.href),
-              $params = $loc.searchParams;
-
-        $params.get('job') === 'FE' ? setFromSite('FE') : setFromSite('PB');
-    
-    },[fromSite])
-
-    // GET URLparams Publish or FrontEnd
+    // Background Audio Fn End
     
     return(
         <>
-        <ScreenWrapper id="contents" 
-        onClick={ () => clickSound.play() }
-        >
-            <AppsContext.Provider value={ { apps : apps, setApps : setApps, zIndexer : zIndexer, setZIndexer : setZIndexer, fromSite : fromSite } }>
-                <StatusBar music={ music } />
-                <Docks />
-                <WallPaper />
-            </AppsContext.Provider>
+        <ScreenWrapper id="contents" onClick={ winClickFn }>
+            <StatusBar />
+            <Docks />
+            <WallPaper />
         </ScreenWrapper>
         </>
     )

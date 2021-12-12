@@ -1,6 +1,22 @@
+// eslint-disable-next-line
+
+// ================================================================
+
+// ActiveApps js
+
+// Author : 박세연
+
+// Summary : Dock 하위 앱, 토글에 대한 작용은 CommoContext.common[index].active로 작용한다.
+
+// Reporting Date : 2021.12.12
+
+// Update : 
+
+// ================================================================
+
 import React, { memo, useContext } from 'react';
 import styled from 'styled-components';
-import {AppsContext} from './../../screens/Screens';
+import { CommonContext } from './../../screens/Container';
 
 const AppWrap = styled.button`
     
@@ -79,32 +95,40 @@ const AppWrap = styled.button`
 
 const ActiveApp = memo(function( { index } ){
 
-    const activeContext = useContext(AppsContext);
+    const commonContext = useContext(CommonContext);
 
     const toggleActive = () => {
 
-        let returnState = [...activeContext.apps];
+        let returnState = [...commonContext.common];
 
         returnState[index].active = !returnState[index].active;
 
-        ( returnState[index].active ) ? activeContext.setZIndexer((activeContext.zIndexer + 1)) :  activeContext.setZIndexer((activeContext.zIndexer - 1));
+        if( index < 6 ){
 
-        returnState[index].zIndex = activeContext.zIndexer;
+            ( returnState[index].active ) ? commonContext.setModalIndex((commonContext.modalIndex + 1)) :  commonContext.setModalIndex((commonContext.modalIndex - 1));
 
-        activeContext.setApps(returnState);
+        }
+
+        returnState[index].zIndex = commonContext.modalIndex;
+
+        commonContext.setCommon(returnState);
     }
 
     return(
         <>
             <AppWrap type="button"
-            title={ activeContext.apps[index].title }
 
-            onClick={ () => toggleActive() }
+            title={ commonContext.common[index].title }
+
+            onClick={ toggleActive }
             
-            $on={ activeContext.apps[index].active }
+            $on={ commonContext.common[index].active }
+
             >
                 <AppIcon index={ index } />
-                <AppName>{ activeContext.apps[index].title }</AppName>
+                
+                <AppName>{ commonContext.common[index].title }</AppName>
+
             </AppWrap>
         </>
     )
