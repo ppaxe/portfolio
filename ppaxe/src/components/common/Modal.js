@@ -29,7 +29,7 @@ const ModalWrap = styled.div`
 
         position: fixed;
         width: 90%; 
-        ${({theme}) => theme.isVh(80) };
+        height: 80vh;
         background: ${ ({theme}) => theme.mainLGray };
         border-radius: 1rem;
         border: 2px solid ${ ({theme}) => theme.mainBlack };

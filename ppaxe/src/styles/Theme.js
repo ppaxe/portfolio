@@ -1,7 +1,4 @@
-import Utils from './../utils/Utils';
-
 const vhUnit = window.innerHeight / 100,
-      user = Utils.checkUser(),
       responsiveSizes = {
           mobile : '415px',
           tablet :  '769px',
@@ -25,21 +22,7 @@ const Theme = {
     mainYellow : '#ffc400',
     mainWhite : '#F2F2F2',
     mainBlack : '#404040',
-    deviceQuery,
-
-    isVh : (unit = 100) => {
-
-        let deviceInnerHeight;
-
-        user.os &&
-            user.os === 'ios' ? 
-                deviceInnerHeight = `${( Math.floor(unit * vhUnit) )}px` :
-                deviceInnerHeight = `${unit}vh`;
-
-        return `height : ${deviceInnerHeight}`;
-
-    }
-
+    deviceQuery
 }
 
 export default Theme;
