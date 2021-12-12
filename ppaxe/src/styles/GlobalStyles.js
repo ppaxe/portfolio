@@ -5,12 +5,13 @@ const GlobalStyles = createGlobalStyle`
 
     ${ reset }
 
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+    @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 
     *{
         margin:0;
         padding:0;
-        font-family: 'Noto Sans KR', sans-serif;
+        font-family: 'Jeju Gothic', sans-serif;
         font-weight: 400;
         color: #404040;
         word-break: keep-all;
