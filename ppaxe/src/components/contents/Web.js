@@ -1,5 +1,6 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
+import CommonButton from './../common/CommonButton';
 
 const MainImg = styled.div`
     
@@ -14,29 +15,27 @@ const MainImg = styled.div`
             display: block;
         }
 
-    `
-    
-    const ButtonWrap = styled.div`
-    
-        text-align: center;
-        margin-top : 4rem;
+`;
 
-    `;
+const MainTitle = styled.h2`
 
-    const ToLinkButton = styled.a`
-         
-        cursor : pointer;
-        display: inline-block;
-        line-height: 58px;
-        font-size: 2.4rem;
-        color: ${props => props.theme.mainWhite};
-        background: ${props => props.theme.mainBlue};
-        border: 2px solid ${props => props.theme.mainBlack};
-        border-radius: .5rem;
-        padding: 0 10rem;
-        text-decoration : none;
+    font-size: 3.2rem;
+    font-weight: 600;
+    display:block;
+    text-align: center; 
+    padding: 6rem 0 2rem;
+    line-height:160%;
 
-    `;
+`;
+
+const SubTitle = styled.p`
+
+font-size: 2.0rem;
+text-align: center;
+line-height: 160%;
+margin-bottom: 4rem;
+
+`;
     
 const Web = memo(function(){
 
@@ -45,11 +44,18 @@ const Web = memo(function(){
         <MainImg>
             <img src="https://ppaxe.kr/profile/contents/images/contents/profile_web_gif.gif" alt="web 포트폴리오" />
         </MainImg>
-        <ButtonWrap>
-            <ToLinkButton role="button" href="https://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
-                보기
-            </ToLinkButton>
-        </ButtonWrap>
+        <MainTitle>
+            사용 기술
+        </MainTitle>
+        <SubTitle>
+            HTML5, CSS3 (SCSS), javaScript(es6)
+        </SubTitle>
+        <CommonButton params={{
+                type : 'link',
+                link : 'https://ppaxe.kr/web/',
+                title : '포트폴리오 새 창 열림',
+                text : '포트폴리오 보기'
+        }} />
         </>
     );
 

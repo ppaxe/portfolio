@@ -1,5 +1,6 @@
 import React, {memo, useEffect, useState} from 'react';
 import styled from 'styled-components';
+import CommonButton from './../common/CommonButton';
 
 const ProfileWrap = styled.div`
     
@@ -7,6 +8,26 @@ const ProfileWrap = styled.div`
         overflow: hidden;
     
     `;
+
+    
+    
+const SectionTitle = styled.h2`
+
+font-size: 3.2rem;
+line-height: 160%;
+font-weight: 600;
+margin: 4rem 0 2rem;
+
+`;
+
+const SectionSubTitle = styled.h3`
+
+font-size: 2.0rem;
+font-weight: 600;
+line-height: 160%;
+
+`;
+
 
     const ProfileImg = styled.div`
     
@@ -41,48 +62,73 @@ const ProfileWrap = styled.div`
         font-weight: 500;
         word-break : keep-all;
 
-        h2{
-            font-size: 3.6rem;
-            line-height: 160%;
-            font-weight: 600;
-        }
         p{
             margin-top: 2rem;
             font-size: 1.6rem;
             line-height: 160%;
-
-            strong{
-                font-size: 2.2rem;
-                font-weight: 600;
-            }
         }
 
         @media ${props => props.theme.deviceQuery.tablet}{
 
             width: 100%;
 
-            h2{
-                margin-top: 4rem;
-            }
         }
 
     `;
 
+    const ResumeText = styled.div`
 
-        const DownLoadButton = styled.a`
-        
-            margin-top: 4rem;
-            display: block;
-            line-height: 58px;
-            font-size: 2.4rem;
-            color: ${props => props.theme.mainWhite};
-            background: ${props => props.theme.mainBlue};
-            border: 2px solid ${props => props.theme.mainBlack};
-            border-radius: .5rem;
-            text-align: center;
-            text-decoration : none;
+        margin: 2rem 0;
+        display: block;
+        position: relative;
+        font-size: 1.6rem;
+    
+    `;
 
-        `;
+    const InfoList = styled.dl`
+    
+            margin: 2rem 0;
+            background: ${({theme}) => theme.mainLGray};
+            padding: 2rem 0 2rem 1rem;
+            border-radius: 10px;
+
+            dt{
+                font-weight:600;
+                color: ${({theme}) => theme.mainBlue};
+                margin-bottom: 1rem;
+                position: relative;
+                padding-left: 55px;
+                font-size: 1.6rem;
+
+                &:before{
+                    content: '';
+                    display:block;
+                    position: absolute;
+                    top:5px;
+                    left:5px;
+                    width:40px;
+                    height:40px;
+                    background:url('https://ppaxe.kr/profile/contents/images/contents/content_icon.png') 0 0 no-repeat;
+                    background-size: auto 80px;
+                    background-position: -120px 0px;
+                }
+
+                &:nth-of-type(2){
+                    margin-top: 2rem;
+                }
+
+            }
+            dd{
+                padding-left: 55px;
+                font-size: 1.4rem;
+
+                ul{
+                    margin-top:1rem;
+                }
+            }
+
+    `;
+
 
 const Profile = memo(function({fromSite}){
 
@@ -101,11 +147,11 @@ const Profile = memo(function({fromSite}){
                     <img src="https://ppaxe.kr/profile/contents/images/contents/profile_img.png" alt="내 사진" />
                 </ProfileImg>
                 <ProfileText>
-                    <h2>
-                        박세연 <em>@ppaxe</em>< br/>
-                    </h2>
+                    <SectionTitle>
+                        박세연 <em>@ppaxe</em>
+                    </SectionTitle>
+                    <SectionSubTitle>소통하는 { job } 박세연입니다.</SectionSubTitle>
                     <p>
-                        <strong>소통하는 { job } 박세연입니다.</strong><br /><br />
                         소통(疏通) &#123; 뜻이서로 통하여 오해가 없음. &#125;
                     </p>
                     <p>
@@ -120,10 +166,87 @@ const Profile = memo(function({fromSite}){
                     <p>
                         저는 사소한 소통도 놓치지 않는 { job }가 되고 싶습니다.
                     </p>
-                    <DownLoadButton href="https://file2.jobkorea.co.kr/Net/Mng/UserDown/ResumeAttach?idx=5675285" role="button" rel="noopener noreferrer" target="_blank">
-                        스토리보드 보기
-                    </DownLoadButton>
+                    <CommonButton params={{
+                        type : 'link',
+                        title : '스토리보드 새 창 열림',
+                        text : '스토리보드 보기',
+                        link : 'https://ppaxe.kr/web/'
+                    }}
+                    />
                 </ProfileText>
+                <ResumeText>
+                    <SectionTitle>
+                        저는 이런 경험을 했습니다.
+                    </SectionTitle>
+                    <SectionSubTitle>경력 사항</SectionSubTitle>
+                    <InfoList>
+                        <dt>
+                            농협은행 주식회사
+                        </dt>
+                        <dd>
+                            <strong>농협카드 웹/앱 상시 운영 퍼블리셔</strong>
+                            <ul>
+                                <li>2020.07 ~ 재직중 (1년 6개월)</li>
+                            </ul>
+                        </dd>
+                    </InfoList>
+                    <SectionSubTitle>교육 과정</SectionSubTitle>
+                    <InfoList>
+                        <dt>프론트엔드 / 디지털 컨버전스 교육 과정 수료</dt>
+                        <dd>
+                            <strong>그린컴퓨터 아카데미</strong>
+                            <ul>
+                                언제지..
+                            </ul>
+                        </dd>
+                        <dt>계원예술대학교</dt>
+                        <dd>
+                            <strong>리빙디자인과 학사 수료</strong>
+                            <ul>
+                                <li>2013.03 ~ 2019.02</li>
+                            </ul>
+                        </dd>
+                    </InfoList>
+                    <SectionTitle>
+                        저는 이런 기술을 다뤄요.
+                    </SectionTitle>
+                    <SectionSubTitle>HTML5, CSS3 (SCSS / Styled-Components)</SectionSubTitle>
+                    <InfoList>
+                        <dt>
+                            SEO 최적화 / 웹 표준과 접근성을 준수하는 마크업
+                        </dt>
+                        <dd>
+                            <strong>WAI-ARIA 등을 사용한 마크업을 할 수 있어요.</strong>
+                        </dd>
+                    </InfoList>
+                    <SectionSubTitle>javaScript, jQuery</SectionSubTitle>
+                    <InfoList>
+                        <dt>
+                            웹 표준과 접근성을 준수하는 마크업
+                        </dt>
+                        <dd>
+                            <strong>WAI-ARIA 등을 사용한 마크업이 가능합니다.</strong>
+                        </dd>
+                    </InfoList>
+                    <SectionSubTitle>React</SectionSubTitle>
+                    <InfoList>
+                        <dt>
+                            웹 표준과 접근성을 준수하는 마크업
+                        </dt>
+                        <dd>
+                            <strong>WAI-ARIA 등을 사용한 마크업이 가능합니다.</strong>
+                        </dd>
+                    </InfoList>
+                    <SectionSubTitle>PhotoShop, illustrator</SectionSubTitle>
+                    <InfoList>
+                        <dt>
+                            웹 표준과 접근성을 준수하는 마크업
+                        </dt>
+                        <dd>
+                            <strong>WAI-ARIA 등을 사용한 마크업이 가능합니다.</strong>
+                        </dd>
+                    </InfoList>
+                </ResumeText>
             </ProfileWrap>
         </>
     );

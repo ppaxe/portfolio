@@ -1,5 +1,4 @@
-const vhUnit = window.innerHeight / 100,
-      responsiveSizes = {
+const responsiveSizes = {
           mobile : '415px',
           tablet :  '769px',
           laptop : '1081px',

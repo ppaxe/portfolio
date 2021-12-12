@@ -5,12 +5,15 @@ const GlobalStyles = createGlobalStyle`
 
     ${ reset }
 
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
     *{
         margin:0;
         padding:0;
         font-family: 'Noto Sans KR', sans-serif;
         font-weight: 400;
         color: #404040;
+        word-break: keep-all;
     }
 
     html, body{
@@ -24,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
         font-size: 62.5%;
     }
     body{
-        font-size: 1.4rem/1.5;
+        font-size: 1.5rem;
     }
     ::-webkit-scrollbar { 
         width: 10px;

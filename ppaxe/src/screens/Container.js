@@ -15,7 +15,7 @@
 // ================================================================
 
 import React, { useEffect, useState } from 'react';
-import { debounce, set } from 'lodash';
+import { debounce } from 'lodash';
 import Screens from './Screens';
 import { Data } from './../utils/Data';
 
@@ -63,12 +63,12 @@ const Container = () => {
       
     }else{
             
-    setTimeout(() => {
-      
-        localStorage.setItem('USER_LOADER','DONE');
-        setLoader(false);
-      
-    },2000)
+        setTimeout(() => {
+        
+            localStorage.setItem('USER_LOADER','DONE');
+            setLoader(false);
+        
+        },2000)
       
     }
       

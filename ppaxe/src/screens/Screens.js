@@ -18,6 +18,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { CommonContext } from './Container';
+import Loader from './../components/common/Loader';
 import StatusBar from './../components/common/StatusBar';
 import Docks from './../components/common/Docks';
 import WallPaper from '../components/common/WallPaper';
@@ -41,11 +42,12 @@ const Screens = () => {
 
     // Window Click Event Fn Start
 
+    const [clickSound, setClickSound] = useState(new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_pc.mp3`)),
+          [touchSound, setTouchSound] = useState(new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_mobile.mp3`));
+
     const winClickFn = () => {
 
-        const clickSound = new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_${ commonContext.userDevice === 'pc' ? 'pc' : 'mobile' }.mp3`);
-
-        return clickSound.play()
+        return commonContext.userDevice === 'pc' ? clickSound.play() : touchSound.play()
 
     }
 
@@ -77,6 +79,10 @@ const Screens = () => {
     return(
         <>
         <ScreenWrapper id="contents" onClick={ winClickFn }>
+            {
+                commonContext.loader &&
+                <Loader />
+            }
             <StatusBar />
             <Docks />
             <WallPaper />

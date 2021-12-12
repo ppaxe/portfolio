@@ -198,7 +198,7 @@ const Modal = memo(({index}) => {
 
     const commonContext = useContext(CommonContext);
 
-    // modal - close Fn
+    // Modal - Close Fn Start
     const modalClose = () => {
 
         let returnState = [...commonContext.common];
@@ -207,8 +207,10 @@ const Modal = memo(({index}) => {
         commonContext.setCommon(returnState);
 
     }
+    // Modal - Close Fn End
 
-    // modal - drag Fn
+    // Modal - Drag Fn Start
+
     const [position, setPosition] = useState({ x: 0, y: 0 }),
           dragModal = useRef(null),
           [isDrag,  setIsDrag] = useState( 9999 + commonContext.modalIndex );
@@ -233,6 +235,8 @@ const Modal = memo(({index}) => {
 
     }
 
+    // Modal - Drag Fn End
+
 
     return(
         <>
@@ -255,12 +259,23 @@ const Modal = memo(({index}) => {
             >
                 <ModalTop id="dragHandler">
                     <TopBtnWrap>
-                        <ModalButton onClick={(e) => {  modalClose(); } }>
+                        <ModalButton 
+                                onClick={(e) => {  modalClose(); } } 
+                                title="팝업 닫기"
+                                type="button"
+                        >
                             팝업 닫기
                         </ModalButton>
-                        <ModalButton>
-                        </ModalButton>
-                        <ModalButton onClick={(e) => { commonContext.common[index].redirect() }}>
+                        <ModalButton
+                            aria-hidden="true"
+                            type="button"
+                        />
+                        <ModalButton 
+                                onClick={(e) => { commonContext.common[index].redirect(commonContext.userDevice) }}
+                                title="새 창 열림"
+                                type="button"
+                            >
+                            새 창 열기
                         </ModalButton>
                     </TopBtnWrap>
                     <TopLocationWrap>
@@ -272,15 +287,15 @@ const Modal = memo(({index}) => {
                 <ModalSection>
                     {
                         index === 0 ?
-                        <Profile job={ commonContext.fromSite } /> :
+                        <Profile /> :
                         index === 1 ?
-                        <Web /> :
+                        <Web userDevice={commonContext.userDevice} /> :
                         index === 2 ?
-                        <Mobile /> :
+                        <Mobile userDevice={commonContext.userDevice} /> :
                         index === 3 ?
                         <Responsive /> :
                         index === 4 ?
-                        <Contact job={ commonContext.fromSite } /> :
+                        <Contact userDevice={commonContext.userDevice} /> :
                         index === 5 ?
                         <Resume job={ commonContext.fromSite } /> :
                         false

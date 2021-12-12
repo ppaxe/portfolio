@@ -68,7 +68,7 @@ $prodData = ['m10' => [
 <meta name="title" content="LEICA CAM">
 <meta name="description" content="Emotional CAMERA"0>
 <meta property="og:title" content="LEICA CAM">
-<meta property="og:url" content="https://ppaxe.kr/pc">
+<meta property="og:url" content="https://ppaxe.kr/web">
 <meta property="og:description" content="Emotional CAMERA">
 <meta name="format-detection" content="telephone=no">
 <title>LEICA :: EMOTIONAL CAMERA</title>

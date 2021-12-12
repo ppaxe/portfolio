@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import CommonButton from '../common/CommonButton';
 
 const MainTitle = styled.h2`
     
-font-size: 3.6rem;
+font-size: 3.0rem;
 font-weight: 600;
 display:block;
 text-align: center; 
@@ -14,7 +15,7 @@ line-height:160%;
 
 const SubTitle = styled.p`
 
-font-size: 2.4rem;
+font-size: 2.0rem;
 text-align: center;
 line-height: 160%;
 margin-bottom: 4rem;
@@ -40,14 +41,14 @@ padding: 20px 20px 20px 60px;
 background: ${props => props.theme.mainLGray};
 border-radius: 1rem;
 margin: 20px 0;
-font-size: 1.8rem;
+font-size: 1.4rem;
 line-height: 160%;
 color: ${props => props.theme.mainBlack};
 
 h4{
     display:block;
     font-weight:600;
-    font-size: 2.4rem;
+    font-size: 2.0rem;
     margin-bottom: 2rem;
 
 }
@@ -62,39 +63,16 @@ strong{
     content: '';
     position: absolute;
     display:block;
-    top:10px;
-    left:10px;
-    width:50px;
-    height:50px;
+    top:15px;
+    left:15px;
+    width:40px;
+    height:40px;
     background: url('https://ppaxe.kr/profile/contents/images/contents/content_icon.png') 0 0 no-repeat;
-    background-size: auto 100px;
-    background-position: -100px 0;
+    background-size: auto 80px;
+    background-position: -80px 0;
 
 }
 `;
-
-const ButtonWrap = styled.div`
-
-text-align: center;
-margin-top : 4rem;
-
-`;
-
-const ToLinkButton = styled.a`
- 
-cursor : pointer;
-display: inline-block;
-line-height: 58px;
-font-size: 2.4rem;
-color: ${props => props.theme.mainWhite};
-background: ${props => props.theme.mainBlue};
-border: 2px solid ${props => props.theme.mainBlack};
-border-radius: .5rem;
-padding: 0 10rem;
-text-decoration : none;
-
-`;
-
 
 function Resume(){
     
@@ -111,11 +89,12 @@ function Resume(){
                     </InputText>
                 </LabelText>
             </div>
-            <ButtonWrap>
-                <ToLinkButton role="button" href="https://ppaxe.kr/web/" target="_blank" title="web 포트폴리오 새 창 열림">
-                    이력서 받아보기
-                </ToLinkButton>
-            </ButtonWrap>
+            <CommonButton params={{
+                type : 'link',
+                title : '이력서 새 창 열림',
+                link : 'https://ppaxe.kr/web',
+                text : '이력서 보기'
+            }} />
             <SubInfo>
                 <h4>걱정 말아요!</h4>
                 귀한 발걸음을 해주신 멋진 회사명에 맞춤형 이력서를 작성할 뿐,<br />

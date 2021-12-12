@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const MainTitle = styled.h2`
     
-font-size: 3.6rem;
+font-size: 3.2rem;
 font-weight: 600;
 display:block;
 text-align: center; 
@@ -14,7 +14,7 @@ line-height:160%;
 
 const SubTitle = styled.p`
 
-font-size: 2.4rem;
+font-size: 2.0rem;
 text-align: center;
 line-height: 160%;
 margin-bottom: 4rem;
@@ -28,7 +28,6 @@ const ContactList = styled.ul`
 
     li{
         display:block;
-        /* padding: 2rem 0; */
         margin: 2rem 0;
 
         &:first-of-type{
@@ -92,7 +91,7 @@ const ContactList = styled.ul`
 `;
 
 
-function Contact(){
+const Contact = memo(({userDevice}) => {
 
     return(
         <>
@@ -106,8 +105,8 @@ function Contact(){
                         </a>
                     </li>
                     <li>
-                        <a href="tel:010-9911-1230" rel="noreferrer" role="button" title="전화 걸기">
-                        <strong>핸---드폰</strong>
+                        <a href={ userDevice === 'pc' ? '#none' : 'tel:010-9911-1230' } rel="noreferrer" role="button" title="전화 걸기">
+                        <strong>핸--드폰</strong>
                         010-9911-1230
                         </a>
                     </li>
@@ -115,6 +114,6 @@ function Contact(){
         </>
     );
 
-}
+});
 
 export default Contact;
