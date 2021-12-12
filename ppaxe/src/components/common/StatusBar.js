@@ -14,11 +14,13 @@ const StatusWrap = styled.header`
         height: 40px;
         z-index: 9999;
         background: rgba(64, 64, 64, 0.4);
+        backdrop-filter: blur(5px);
 
         @media ${({theme}) => theme.deviceQuery.mobile}{
 
             height: 30px;
             background: transparent;
+            backdrop-filter: inherit;
 
         }
     
@@ -53,7 +55,7 @@ const StatusWrap = styled.header`
         overflow: hidden;
         color: transparent;
         text-indent: -9999rem;
-        /* background: url('https://ppaxe.kr/profile/contents/images/common/logo.png') center center no-repeat; */
+        background: url('https://ppaxe.kr/profile/contents/images/common/logo.png') center center no-repeat;
         background-size: cover;
         border: none;
         cursor: pointer;
@@ -63,6 +65,26 @@ const StatusWrap = styled.header`
             height: 20px;
         }
 
+
+    `;
+
+    const AppStatus = styled.div`
+    
+        position: absolute;
+        display: block;
+        right: 90px;
+        padding: 5px;
+
+    `;
+
+    const MusicStatus = styled.div`
+    
+        position: relative;
+        display: block;
+        width: 30px;
+        height: 30px;
+
+        }
 
     `;
 
@@ -87,7 +109,7 @@ const StatusWrap = styled.header`
     `;
 
 
-const StatusBar = memo(function(){
+const StatusBar = memo(function({music}){
     return(
         <>
             <StatusWrap>
@@ -98,6 +120,11 @@ const StatusBar = memo(function(){
                         </Logo>
                     </h1>
                 </LogoWrap>
+                <AppStatus>
+                    <MusicStatus active={music}>
+                        <i>{ music ? '배경음악 재생 중' : '배경음악 중지' }</i>
+                    </MusicStatus>
+                </AppStatus>
                 <TimeWrap>
                     <Moment format="HH : mm" />
                 </TimeWrap>

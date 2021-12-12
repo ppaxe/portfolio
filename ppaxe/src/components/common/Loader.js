@@ -12,7 +12,8 @@ const LoaderWrap = styled.div`
     display: block;
     overflow: hidden;
     z-index:999999;
-    background: ${({theme}) => theme.mainRed};
+    background: url('https://ppaxe.kr/profile/contents/images/common/noise.gif') center center no-repeat;
+    background-size:cover;
 
 `
 

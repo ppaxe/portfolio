@@ -10,11 +10,11 @@ function App() {
 
   useEffect(() => {
 
-    if( localStorage.getItem('USER_LOADER') ){
+    // if( localStorage.getItem('USER_LOADER') ){
 
-      setLoader(false);
+    //   setLoader(false);
 
-    }else{
+    // }else{
       
       setTimeout(() => {
 
@@ -23,7 +23,7 @@ function App() {
 
       },2000)
 
-    }
+    // }
 
   },[loader])
 

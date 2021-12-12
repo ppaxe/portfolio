@@ -11,6 +11,7 @@ const AppWrap = styled.button`
         border: none;
         background: transparent;
         cursor: pointer;
+        padding-bottom: 1rem;
 
         ${
             ({$on}) => $on &&
@@ -18,7 +19,7 @@ const AppWrap = styled.button`
                 position: absolute;
                 display:block;
                 content:'';
-                top: 100%;
+                bottom: 0;
                 left:50%;
                 width:10px;
                 height:10px;
@@ -39,12 +40,12 @@ const AppWrap = styled.button`
         display: block;
         width: 100px;
         height: 100px;
-        /* background: url('https://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat; */
+        background: url('https://ppaxe.kr/profile/contents/images/common/nav_icon.png') center center no-repeat;
         background-size: auto 100px;
         background-position: -${ ({index}) => index * 100}px 0;
         margin : 0 auto;
 
-        @media ${ ({theme}) => theme.deviceQuery.tablet }{
+        @media ${ ({theme}) => theme.deviceQuery.laptop }{
 
             width: 80px;
             height: 80px;
@@ -59,6 +60,10 @@ const AppWrap = styled.button`
     
         font-size: 1.8rem;
         margin-top: .5rem;
+
+        @media ${({theme}) => theme.deviceQuery.tablet}{
+            color: ${({theme}) => theme.mainWhite};
+        }
 
         @media ${({theme}) => theme.deviceQuery.mobile }{
 

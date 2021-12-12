@@ -14,11 +14,11 @@ const ScreenWrapper = styled.div`
     
         width: 100vw;
         ${({theme}) => theme.isVh()};
-        /* background: url('https://ppaxe.kr/profile/contents/images/common/app_laptop_background.png') center center; */
+        background: url('https://ppaxe.kr/profile/contents/images/common/app_laptop_background.png') center center;
         background-size:cover;
 
         @media ${({theme}) => theme.deviceQuery.tablet}{
-            /* background: url('https://ppaxe.kr/profile/contents/images/common/app_tablet_background.png') center center; */
+            background: url('https://ppaxe.kr/profile/contents/images/common/app_tablet_background.png') center center;
         }
     `;
 
@@ -29,22 +29,26 @@ const Screens = () => {
     // variables useStates
 
     const [apps, setApps] = useState(Data.Apps),
-        [fromSite, setFromSite] = useState('PB'),
-        //   [bgm, setBgm] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3')),
-        //   clickSound = new Audio('https://ppaxe.kr/profile/contents/sound/sound_click.mp3'),
-        [zIndexer, setZIndexer] = useState(0);
+          [fromSite, setFromSite] = useState('PB'),
+          [music, setMusic] = useState(false),
+          [bgm, setBgm] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3')),
+          clickSound = new Audio('https://ppaxe.kr/profile/contents/sound/sound_click.mp3'),
+          [zIndexer, setZIndexer] = useState(0);
 
     //  bgm
 
     useEffect(() => {
 
-        // if(apps[6].active){
-        //     bgm.volume = .8;
-        //     bgm.loop = true;
-        //     bgm.play();
-        // }else{
-        //     bgm.pause();
-        // } 
+        if(apps[6].active){
+            bgm.volume = .5;
+            bgm.loop = true;
+            bgm.play();
+            setMusic(true);
+
+        }else{
+            bgm.pause();
+            setMusic(false);
+        } 
 
     },[apps[6].active]);
 
@@ -66,10 +70,10 @@ const Screens = () => {
     return(
         <>
         <ScreenWrapper id="contents" 
-        // onClick={ () => clickSound.play() }
+        onClick={ () => clickSound.play() }
         >
-            <AppsContext.Provider value={ { apps : apps, setApps : setApps, zIndexer : zIndexer, setZIndexer : setZIndexer, job : fromSite } }>
-                <StatusBar />
+            <AppsContext.Provider value={ { apps : apps, setApps : setApps, zIndexer : zIndexer, setZIndexer : setZIndexer, fromSite : fromSite } }>
+                <StatusBar music={ music } />
                 <Docks />
                 <WallPaper />
             </AppsContext.Provider>

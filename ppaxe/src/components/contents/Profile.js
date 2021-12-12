@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 const ProfileWrap = styled.div`
@@ -84,7 +84,15 @@ const ProfileWrap = styled.div`
 
         `;
 
-const Profile = memo(function(){
+const Profile = memo(function({fromSite}){
+
+    const [job, setJob] = useState('프론트엔드 개발자');
+
+    useEffect(() => {
+
+        fromSite === 'PB' && setJob('퍼블리셔');
+
+    },[fromSite])
 
     return(
         <>
@@ -97,20 +105,20 @@ const Profile = memo(function(){
                         박세연 <em>@ppaxe</em>< br/>
                     </h2>
                     <p>
-                        <strong>소통하는 프론트엔드 개발자 박세연입니다.</strong><br /><br />
+                        <strong>소통하는 { job } 박세연입니다.</strong><br /><br />
                         소통(疏通) &#123; 뜻이서로 통하여 오해가 없음. &#125;
                     </p>
                     <p>
-                        소통은 프론트엔드 개발자의 필수 덕목입니다. 
+                        소통은 { job }의 필수 덕목입니다. 
                     </p>
                     <p>
                         기획, 디자인, 개발 등 각 위치에서의 역할이 나뉘어 있는 만큼, 서로간의 소통이 매우 중요합니다. 
                     </p>
                     <p>
-                        기획과 디자인, 백엔드 사이의 징검다리 역할을 하는 프론트엔드 개발자의 입장에선, 한 번의 의사 소통은 한 줄의 코드보다 중요한 역할을 합니다. 
+                        기획과 디자인, 백엔드 사이의 징검다리 역할을 하는 { job }의 입장에선, 한 번의 의사 소통은 한 줄의 코드보다 중요한 역할을 합니다. 
                     </p>
                     <p>
-                        저는 사소한 소통도 놓치지 않는 프론트엔드 개발자가 되고 싶습니다.
+                        저는 사소한 소통도 놓치지 않는 { job }가 되고 싶습니다.
                     </p>
                     <DownLoadButton href="https://file2.jobkorea.co.kr/Net/Mng/UserDown/ResumeAttach?idx=5675285" role="button" rel="noopener noreferrer" target="_blank">
                         스토리보드 보기

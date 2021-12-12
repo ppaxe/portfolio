@@ -7,6 +7,7 @@ import Mobile from './../contents/Mobile';
 import Responsive from './../contents/Responsive';
 import Contact from './../contents/Contact';
 import Resume from './../contents/Resume';
+import Utils from './../../utils/Utils';
 
 
 const ModalWrap = styled.div`
@@ -22,8 +23,8 @@ const ModalWrap = styled.div`
         max-width: 980px; 
         max-height: 760px; 
         transform: translate(calc(-50% + ${({dragPosition}) => dragPosition.x}px), calc(-50% + ${({dragPosition}) => dragPosition.y}px)) !important;
-        top: calc(50% + ${ ({zIndexer}) => zIndexer * 60}px);
-        left: calc(50% + ${ ({zIndexer}) => zIndexer * 60}px);
+        top: calc(50% + ${ ({zIndexer}) => zIndexer * 62}px);
+        left: calc(50% + ${ ({zIndexer}) => zIndexer * 62}px);
         z-index: ${ ({zIndexer}) => 9999 + zIndexer};
 
         @media ${ ({theme}) => theme.deviceQuery.mobile }{
@@ -209,18 +210,27 @@ const Modal = memo(({index, param}) => {
 
     }
 
+    const mobileCheck = () => {
+
+        let user = Utils.checkUser();
+
+        return user.device === 'mobile' ? true : false
+
+    }
+
 
     return(
         <>
         <Draggable
-            onDrag={ (e, data) => 
-                trackPos(e, data)
-            }
-            onStart={ () => 
-                setDragZIndex()
-            }
-            handle="#dragHandler"
-        > 
+                onDrag={ (e, data) => 
+                    trackPos(e, data)
+                }
+                onStart={ () => 
+                    setDragZIndex()
+                }
+                handle="#dragHandler"
+                disabled={mobileCheck()}
+            > 
             <ModalWrap 
                 zIndexer={ param.apps[index].zIndex }
                 dragPosition={ position }
@@ -245,7 +255,7 @@ const Modal = memo(({index, param}) => {
                 <ModalSection>
                     {
                         index === 0 ?
-                        <Profile job={ param.job } /> :
+                        <Profile job={ param.fromSite } /> :
                         index === 1 ?
                         <Web /> :
                         index === 2 ?
@@ -253,9 +263,9 @@ const Modal = memo(({index, param}) => {
                         index === 3 ?
                         <Responsive /> :
                         index === 4 ?
-                        <Contact job={ param.job } /> :
+                        <Contact job={ param.fromSite } /> :
                         index === 5 ?
-                        <Resume job={ param.job } /> :
+                        <Resume job={ param.fromSite } /> :
                         false
                     }
                 </ModalSection>

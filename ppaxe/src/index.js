@@ -6,12 +6,10 @@ import GlobalStyles from './styles/GlobalStyles';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
     <HashRouter>
       <GlobalStyles />
       <App />
-    </HashRouter>
-  </React.StrictMode>,
+    </HashRouter>,
   document.getElementById('root')
 );
 

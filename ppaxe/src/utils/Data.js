@@ -19,7 +19,7 @@ const Data = {
             id : 1,
             title : 'Web',
             kor : 'PC 홈페이지',
-            redirect : () => window.open('https://ppaxe.kr/web/'),
+            redirect : () => { return User.device === 'pc' ? window.open('https://ppaxe.kr/mobile/','_blank','width=414, height=736') : window.open('https://ppaxe.kr/mobile/') },
             active : false,
             zIndex : 0,
         },

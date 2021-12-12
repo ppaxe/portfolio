@@ -35,15 +35,16 @@ type:'text'
 
 const SubInfo = styled.div`
 
-padding: 2rem;
-background: ${props => props.theme.mainGray};
+position: relative;
+padding: 20px 20px 20px 60px;
+background: ${props => props.theme.mainLGray};
 border-radius: 1rem;
-margin: 2rem 0;
+margin: 20px 0;
 font-size: 1.8rem;
 line-height: 160%;
 color: ${props => props.theme.mainBlack};
 
-strong{
+h4{
     display:block;
     font-weight:600;
     font-size: 2.4rem;
@@ -51,6 +52,25 @@ strong{
 
 }
 
+strong{
+    color:${({theme}) => theme.mainBlue};
+    font-weight:600;
+    text-decoration:underline;
+}
+
+&:before{
+    content: '';
+    position: absolute;
+    display:block;
+    top:10px;
+    left:10px;
+    width:50px;
+    height:50px;
+    background: url('https://ppaxe.kr/profile/contents/images/contents/content_icon.png') 0 0 no-repeat;
+    background-size: auto 100px;
+    background-position: -100px 0;
+
+}
 `;
 
 const ButtonWrap = styled.div`
@@ -97,9 +117,9 @@ function Resume(){
                 </ToLinkButton>
             </ButtonWrap>
             <SubInfo>
-                <strong>걱정 말아요!</strong>
-                귀한 발걸음을 해주신 멋진 회사명에 맞춰 이력서를 작성할 뿐,<br />
-                회사명은 어디에도 수집 및 제공되지 않아요!
+                <h4>걱정 말아요!</h4>
+                귀한 발걸음을 해주신 멋진 회사명에 맞춤형 이력서를 작성할 뿐,<br />
+                <strong>회사명은 어디에도 수집·이용 및 제공되지 않아요!</strong>
             </SubInfo>
         </>
     );
