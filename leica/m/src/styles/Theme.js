@@ -12,7 +12,7 @@ const Theme = {
     textWhiteShadow : '-1px -1px 0 #e1262a, 1px -1px 0 #e1262a, -1px 1px 0 #e1262a, 1px 1px 0 #e1262a, -2px -2px 0 #232323, 2px -2px 0 #232323, -2px 2px 0 #232323, 2px 2px 0 #232323;',
     
     // Mixin
-    isActive : (ifVal, elseVal) => props => props.active === 'active' ? ifVal : elseVal,
+    isActive : (trueVal, falseVal) => ({active}) => active ? trueVal : falseVal,
     isVh : (unit = 100) => `height : ${ Math.floor(unit * vhUnit) }px `,
     isCenter : (top = null, left = null) => `position: absolute; top: ${top}%; ${ left != null ?  `left: ${left}%` : ';' }; transform: translateY(-${top}%) ${ left != null ? 'translateX(-50%)' : ';' }; text-align: center; `,
     isImagin : `content: ''; display: block; position: absolute;`,

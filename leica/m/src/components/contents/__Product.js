@@ -7,7 +7,7 @@ import styled, { keyframes, css } from 'styled-components';
 
 import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { SwiperStyles } from './../../styles/CommonStyles';
+import { SwiperStyles } from '../../styles/CommonStyles';
 
 SwiperCore.use([Pagination]);
 

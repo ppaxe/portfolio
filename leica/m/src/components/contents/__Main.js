@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 import SwiperCore, { Autoplay,Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { SwiperStyles } from './../../styles/CommonStyles';
+import { SwiperStyles } from '../../styles/CommonStyles';
 
 import styled, { css, keyframes } from "styled-components";
 

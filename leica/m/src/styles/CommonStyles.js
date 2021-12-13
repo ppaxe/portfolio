@@ -1,11 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-
-const vhUnit = Math.floor(window.innerHeight / 100);
-
-
 //  plugins
-
 
 const SwiperStyles = createGlobalStyle`
 
