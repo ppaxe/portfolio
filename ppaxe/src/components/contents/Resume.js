@@ -140,12 +140,12 @@ function Resume(){
             <MainTitle>
                 제 이력서를 받아주시겠어요?
             </MainTitle>
-            <SubTitle>회사명을 말씀해주시면 바로 작성할게요!</SubTitle>
+            <SubTitle>아래에 회사명을 말씀해주시면 바로 작성할게요!</SubTitle>
             <form>
                 <InputTextWrap>
                     <input type="text" onKeyDown={ () => { keyUpSound.play() }} onBlur={() => { keyUpSound.pause() }} id="companyName" name="companyName" required />
                     <label htmlFor="companyName">
-                        멋진 회사명은
+                        나와 만날 회사 이름은
                     </label>
                 </InputTextWrap>
                 <CommonButton params={{

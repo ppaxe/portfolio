@@ -5,13 +5,12 @@ const GlobalStyles = createGlobalStyle`
 
     ${ reset }
 
-    @import url('//fonts.googleapis.com/earlyaccess/jejugothic.css');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 
     *{
         margin:0;
         padding:0;
-        font-family: 'Jeju Gothic', sans-serif;
         font-weight: 400;
         color: #404040;
         word-break: keep-all;
@@ -22,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
         height:100%;
         overflow:hidden;
         background: #2C8693;
+        font-family: 'Noto Sans KR', sans-serif;
         min-height: 320px;
     }
     html{
