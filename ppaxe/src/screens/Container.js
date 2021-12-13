@@ -104,10 +104,12 @@ const Container = () => {
     const winResizeFn = debounce(() => {
 
         return(
+
             window.innerWidth > 1081 ? setUserDevice('pc') :
             window.innerWidth > 769 ? setUserDevice('tablet') :
             window.innerWidth > 415 ? setUserDevice('mobile') :
             false
+
         )
 
     }, 100);
@@ -116,14 +118,16 @@ const Container = () => {
         
         winResizeFn();
 
-    },[])
+    },[]);
 
     useEffect(() => {
 
         window.addEventListener('resize', winResizeFn);
 
         return() => {
-            window.removeEventListener('resize', winResizeFn)
+
+            window.removeEventListener('resize', winResizeFn);
+
         }
 
     },[]);

@@ -5,7 +5,7 @@ const GlobalStyles = createGlobalStyle`
 
     ${ reset }
 
-    @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+    @import url('//fonts.googleapis.com/earlyaccess/jejugothic.css');
 
 
     *{

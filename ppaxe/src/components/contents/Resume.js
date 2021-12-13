@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import CommonButton from '../common/CommonButton';
+import { debounce } from 'lodash';
 
 const MainTitle = styled.h2`
     
@@ -22,15 +23,67 @@ margin-bottom: 4rem;
 
 `;
 
-const LabelText = styled.label`
+const InputTextWrap = styled.div`
 
+    display: block;
+    position: relative;
+    margin-top: 4rem;
+    padding: 0 2rem;
 
-`;
+    input{
+        position:relative;
+        outline:none;
+        border: 2px solid ${({theme}) => theme.mainBlack};
+        border-width: 0 0 2px 0;
+        background: transparent;
+        display:block;
+        line-height:6rem;
+        width:100%;
+        height:auto;
+        top:0;
+        left:0;
+        font-size: 2.0rem;
+        text-indent: 2rem;
+        transition: .5s ease;
 
-const InputText = styled.input.attrs({
-type:'text'
-})`
+        &:focus, &:active{
 
+            ~label{
+
+                top: -4rem;
+                font-size: 1.6rem;
+                color: ${({theme}) => theme.mainDGray}
+
+            }
+        
+        }
+
+        &:valid{
+
+            border-color: ${({theme}) => theme.mainBlue};
+            
+            ~label{
+
+                top: -4rem;
+                font-size: 1.6rem;
+                color: ${({theme}) => theme.mainBlue}
+
+            }
+
+        }
+    }
+    label{
+        position:absolute;
+        display:block;
+        top:0;
+        left: 4rem;
+        width:${({theme}) => theme.mainBlue};
+        font-weight:600;
+        font-size: 2.0rem;
+        line-height:6rem;
+        transition: .5s ease;
+
+    }
 
 `;
 
@@ -75,26 +128,33 @@ strong{
 `;
 
 function Resume(){
-    
+
+    // on Key UP Sound Fn Start
+
+    const [keyUpSound, setKeyUpSound] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/sound_typing.mp3'));
+
+    // on Key Up Sound Fn End
+
     return(
         <>
             <MainTitle>
                 제 이력서를 받아주시겠어요?
             </MainTitle>
             <SubTitle>회사명을 말씀해주시면 바로 작성할게요!</SubTitle>
-            <div>
-                <LabelText>
-                    <InputText>
-
-                    </InputText>
-                </LabelText>
-            </div>
-            <CommonButton params={{
-                type : 'link',
-                title : '이력서 새 창 열림',
-                link : 'https://ppaxe.kr/web',
-                text : '이력서 보기'
-            }} />
+            <form>
+                <InputTextWrap>
+                    <input type="text" onKeyDown={ () => { keyUpSound.play() }} onBlur={() => { keyUpSound.pause() }} id="companyName" name="companyName" required />
+                    <label htmlFor="companyName">
+                        멋진 회사명은
+                    </label>
+                </InputTextWrap>
+                <CommonButton params={{
+                    type : 'submit',
+                    title : '이력서 새 창 열림',
+                    link : 'https://ppaxe.kr/web',
+                    text : '이력서 보기'
+                }} />
+            </form>
             <SubInfo>
                 <h4>걱정 말아요!</h4>
                 귀한 발걸음을 해주신 멋진 회사명에 맞춤형 이력서를 작성할 뿐,<br />

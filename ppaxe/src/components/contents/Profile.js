@@ -88,9 +88,12 @@ line-height: 160%;
     const InfoList = styled.dl`
     
             margin: 2rem 0;
-            background: ${({theme}) => theme.mainLGray};
             padding: 2rem 0 2rem 1rem;
             border-radius: 10px;
+
+            &:hover{
+                background: ${({theme}) => theme.mainLGray};
+            }
 
             dt{
                 font-weight:600;
@@ -170,7 +173,7 @@ const Profile = memo(function({fromSite}){
                         type : 'link',
                         title : '스토리보드 새 창 열림',
                         text : '스토리보드 보기',
-                        link : 'https://ppaxe.kr/web/'
+                        link : `https://ppaxe.kr/profile/contents/file/portfolio_storyboard.pdf`
                     }}
                     />
                 </ProfileText>
@@ -196,7 +199,7 @@ const Profile = memo(function({fromSite}){
                         <dd>
                             <strong>그린컴퓨터 아카데미</strong>
                             <ul>
-                                언제지..
+                                <li>2019.11 ~ 2020.04</li>
                             </ul>
                         </dd>
                         <dt>계원예술대학교</dt>
@@ -219,31 +222,31 @@ const Profile = memo(function({fromSite}){
                             <strong>WAI-ARIA 등을 사용한 마크업을 할 수 있어요.</strong>
                         </dd>
                     </InfoList>
-                    <SectionSubTitle>javaScript, jQuery</SectionSubTitle>
+                    <SectionSubTitle>javaScript(es 5-6), jQuery</SectionSubTitle>
                     <InfoList>
                         <dt>
-                            웹 표준과 접근성을 준수하는 마크업
+                            인터랙티브 웹을 위한 동적 UI를 개발하는 스크립트
                         </dt>
                         <dd>
-                            <strong>WAI-ARIA 등을 사용한 마크업이 가능합니다.</strong>
+                            <strong>재사용성이 뛰어나게 구조화가 가능해요.</strong>
                         </dd>
                     </InfoList>
                     <SectionSubTitle>React</SectionSubTitle>
                     <InfoList>
                         <dt>
-                            웹 표준과 접근성을 준수하는 마크업
+                            효율적인 State 관리
                         </dt>
                         <dd>
-                            <strong>WAI-ARIA 등을 사용한 마크업이 가능합니다.</strong>
+                            <strong>탄탄한 HTML5,CSS3,javaScript 이해를 기반으로 State관리에 능해요.</strong>
                         </dd>
                     </InfoList>
                     <SectionSubTitle>PhotoShop, illustrator</SectionSubTitle>
                     <InfoList>
                         <dt>
-                            웹 표준과 접근성을 준수하는 마크업
+                            웹을 인터랙티브하게 만들기위한 디자인 서포트
                         </dt>
                         <dd>
-                            <strong>WAI-ARIA 등을 사용한 마크업이 가능합니다.</strong>
+                            <strong>다양한 디자인 수상경력으로 입증된 디자인 보조 실력까지!</strong>
                         </dd>
                     </InfoList>
                 </ResumeText>

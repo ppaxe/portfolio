@@ -33,7 +33,6 @@ const WallPaper = memo(function(){
                                     index < 6 && element.active && 
                                     <Modal key={ index } 
                                            index={ index }
-                                        //    param={ commonContext }
                                     />
                                 )
                             })
