@@ -30,6 +30,17 @@ const GlobalStyles = createGlobalStyle`
     body{
         font-size: 1.5rem;
     }
+    .blind{
+        overflow: hidden;
+        display: inline-block;
+        position: absolute;
+        z-index: -1;
+        border: 0;
+        width: 1px;
+        height: 1px;
+        clip: rect(1px, 1px, 1px, 1px);
+        clip-path: inset(50%);
+    }
     ::-webkit-scrollbar { 
         width: 10px;
     } 

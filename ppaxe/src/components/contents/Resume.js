@@ -127,7 +127,7 @@ strong{
 }
 `;
 
-function Resume(){
+const Resume = () => {
 
     // on Key UP Sound Fn Start
 
@@ -143,7 +143,20 @@ function Resume(){
             <SubTitle>아래에 회사명을 말씀해주시면 바로 작성할게요!</SubTitle>
             <form>
                 <InputTextWrap>
-                    <input type="text" onKeyDown={ () => { keyUpSound.play() }} onBlur={() => { keyUpSound.pause() }} id="companyName" name="companyName" required />
+                    <input type="text"
+                    onKeyDown={ (e) => { 
+
+                        keyUpSound.play();
+
+                    }}
+                    onKeyUp={ (e) => { 
+                      
+                        keyUpSound.pause();
+
+                    } }
+                    id="companyName"
+                    name="companyName"
+                    required />
                     <label htmlFor="companyName">
                         나와 만날 회사 이름은
                     </label>
@@ -163,6 +176,6 @@ function Resume(){
         </>
     );
 
-}
+};
 
 export default Resume;

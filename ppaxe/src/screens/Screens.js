@@ -12,16 +12,20 @@
 
 // Update : 
 
+// 2021-12-17 // useLayoutEffect Audio Update
+
 // ================================================================
 
 
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { CommonContext } from './Container';
 import Loader from './../components/common/Loader';
 import StatusBar from './../components/common/StatusBar';
 import Docks from './../components/common/Docks';
 import WallPaper from '../components/common/WallPaper';
+
+const audioSrc =  new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3');
 
 const ScreenWrapper = styled.div`
     
@@ -42,10 +46,13 @@ const Screens = () => {
 
     // Window Click Event Fn Start
 
-    const [clickSound, setClickSound] = useState(new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_pc.mp3`)),
-          [touchSound, setTouchSound] = useState(new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_mobile.mp3`));
+    // const [clickSound] = useState(new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_pc.mp3`)),
+    //       [touchSound] = useState(new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_mobile.mp3`));
 
     const winClickFn = () => {
+
+        const clickSound = new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_pc.mp3`),
+              touchSound = new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_mobile.mp3`);
 
         return commonContext.userDevice === 'pc' ? clickSound.play() : touchSound.play()
 
@@ -55,13 +62,13 @@ const Screens = () => {
 
     // Background Audio Fn Start
 
-    const [backgroundAudio, setBackgroundAudio] = useState(new Audio('https://ppaxe.kr/profile/contents/sound/background_relax_bgm.mp3'));
+    const [backgroundAudio] = useState(audioSrc);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         if(commonContext.common[6].active){
 
-            commonContext.setAcceptSound(true);
+            // commonContext.setAcceptSound(true);
             backgroundAudio.volume = .5;
             backgroundAudio.loop = true;
             backgroundAudio.play();

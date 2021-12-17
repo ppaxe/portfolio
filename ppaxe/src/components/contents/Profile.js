@@ -11,7 +11,7 @@ const ProfileWrap = styled.div`
 
     
     
-const SectionTitle = styled.h2`
+const SectionTitle = styled.h5`
 
 font-size: 3.2rem;
 line-height: 160%;
@@ -20,7 +20,7 @@ margin: 4rem 0 2rem;
 
 `;
 
-const SectionSubTitle = styled.h3`
+const SectionSubTitle = styled.h6`
 
 font-size: 2.0rem;
 font-weight: 600;

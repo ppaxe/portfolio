@@ -24,7 +24,9 @@ const WallPaper = memo(function(){
 
             <>
                 <WallPaperWrap>
+                    <h2 className="blind">메인 컨텐츠</h2>
                     <article>
+                        <h3 className="blind">배경화면</h3>
 
                         {
                             commonContext.common.map((element, index) => {

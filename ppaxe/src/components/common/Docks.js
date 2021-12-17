@@ -81,7 +81,7 @@ const Docks = memo(function(){
     return(
         <>
             <DocksWrap>
-
+                <h2 className="blind">글로벌 네비게이션</h2>
                 <ul>
                     {
                         commonContext.common.map((element,index) =>{

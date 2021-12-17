@@ -25,7 +25,7 @@ import Responsive from './../contents/Responsive';
 import Contact from './../contents/Contact';
 import Resume from './../contents/Resume';
 
-const ModalWrap = styled.div`
+const ModalWrap = styled.article`
 
         position: fixed;
         width: 90%; 
@@ -257,6 +257,7 @@ const Modal = memo(({index}) => {
 
                 ref={ dragModal }
             >
+                <h4 className="blind">팝업</h4>
                 <ModalTop id="dragHandler">
                     <TopBtnWrap>
                         <ModalButton 
