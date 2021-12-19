@@ -31,6 +31,7 @@ const InputTextWrap = styled.div`
     padding: 0 2rem;
 
     input{
+        
         position:relative;
         outline:none;
         border: 2px solid ${({theme}) => theme.mainBlack};
@@ -45,6 +46,7 @@ const InputTextWrap = styled.div`
         font-size: 2.0rem;
         text-indent: 2rem;
         transition: .5s ease;
+        border-radius: 0;
 
         &:focus, &:active{
 

@@ -54,7 +54,7 @@ const Screens = () => {
         const clickSound = new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_pc.mp3`),
               touchSound = new Audio(`https://ppaxe.kr/profile/contents/sound/sound_click_mobile.mp3`);
 
-        return commonContext.userDevice === 'pc' ? clickSound.play() : touchSound.play()
+        return commonContext.userDevice === 'pc' ? clickSound.play() : touchSound.play();
 
     }
 
